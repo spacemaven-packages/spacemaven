@@ -2,7 +2,7 @@
 // For more customization options, see https://containers.dev/implementors/json_reference
 {
   name: "Default",
-  image: "ubuntu:latest",
+  image: "gradle:8.14.3-jdk-21-and-24-graal",
 
   customizations : {
     // Configure JetBrains IDE-specific properties
@@ -18,14 +18,7 @@
       ]
     }
   },
-  postCreateCommand: [
-    "apt update -y",
-    "apt upgrade -y",
-    "apt install snapd",
-    "snap install graalvm-jdk",
-    "gu install native-image"
-  ],
-  appPort: [8080],
+
   features: {
     "ghcr.io/devcontainers/features/git" : {}
     // Add additional features to your project using auto-completion.
