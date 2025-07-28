@@ -2,7 +2,7 @@
 // For more customization options, see https://containers.dev/implementors/json_reference
 {
   name: "Default",
-  image: "gradle:8.14.3-jdk-21-and-24-graal-noble",
+  image: "ubuntu:latest",
 
   customizations : {
     // Configure JetBrains IDE-specific properties
@@ -18,9 +18,19 @@
       ]
     }
   },
-
+//  postCreateCommand: "useradd -G sudoers ubuntu",
   features: {
-    "ghcr.io/devcontainers/features/git" : {}
+    "ghcr.io/devcontainers/features/git" : {},
+    "ghcr.io/devcontainers-extra/features/curl-apt-get" : {},
+    "ghcr.io/devcontainers/features/java" : {
+      "installGradle": true,
+      "gradleVersion": "8.14.3",
+      "version": "21",
+      "jdkDistro": "open"
+    },
+    "ghcr.io/audacioustux/devcontainers/graalvm" : {
+      "java": "24"
+    },
     // Add additional features to your project using auto-completion.
   },
 
