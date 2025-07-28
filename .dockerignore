@@ -1,0 +1,6 @@
+build
+.kotlin
+.gradle
+.idea
+.gitignore
+!build/tasks/_spacemaven_executableJarJvm
