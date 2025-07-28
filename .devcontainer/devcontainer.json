@@ -29,5 +29,5 @@
   },
 
   // Comment out to connect as the root user.
-  remoteUser: "ubuntu"
+//  remoteUser: "ubuntu"
 }
