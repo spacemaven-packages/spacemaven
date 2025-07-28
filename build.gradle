@@ -10,6 +10,11 @@ plugins {
 
 application {
     mainClass = 'net.derfruhling.spacemaven.ApplicationKt'
+    applicationDefaultJvmArgs = [
+            "--enable-native-access=ALL-UNNAMED",
+            "-Xms512MiB",
+            "-Xmx512MiB"
+    ]
 }
 
 repositories {
@@ -35,6 +40,8 @@ dependencies {
     implementation 'io.ktor:ktor-server-netty'
     implementation 'io.ktor:ktor-server-content-negotiation'
     implementation 'io.ktor:ktor-serialization-kotlinx-json'
+    implementation 'io.ktor:ktor-serialization-kotlinx-cbor'
+    implementation 'io.ktor:ktor-serialization-kotlinx-xml'
     implementation 'io.ktor:ktor-server-jte'
     implementation 'io.github.oshai:kotlin-logging:7.0.3'
     implementation 'com.google.cloud:google-cloud-datastore:2.31.0'

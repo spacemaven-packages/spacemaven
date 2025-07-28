@@ -5,7 +5,9 @@ import com.google.cloud.datastore.Query
 import com.google.cloud.datastore.StringValue
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.*
+import io.ktor.serialization.kotlinx.cbor.*
 import io.ktor.serialization.kotlinx.json.*
+import io.ktor.serialization.kotlinx.xml.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import io.ktor.server.http.content.*
@@ -19,6 +21,7 @@ import io.ktor.utils.io.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import org.w3c.dom.Element
 import java.io.EOFException
@@ -38,8 +41,11 @@ val validatePath = createRouteScopedPlugin("validatePath") {
 fun Application.configureRouting() {
     val dir = File(System.getenv("DATA_PATH") ?: "data").absoluteFile
 
+    @OptIn(ExperimentalSerializationApi::class)
     install(ContentNegotiation) {
-        json()
+        jsonIo()
+        cbor()
+        xml()
     }
 
     routing {
