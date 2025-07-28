@@ -1,0 +1,123 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '2.1.21'
+    id 'application'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '2.1.21'
+    id 'io.ktor.plugin' version '3.2.2'
+    id 'gg.jte.gradle' version '3.2.1'
+    id 'org.graalvm.buildtools.native' version '0.11.0'
+}
+
+application {
+    mainClass = 'net.derfruhling.spacemaven.ApplicationKt'
+}
+
+graalvmNative {
+    binaries {
+        main {
+            javaLauncher = javaToolchains.launcherFor {
+                languageVersion = JavaLanguageVersion.of(24)
+                vendor = JvmVendorSpec.matching("GraalVM")
+            }
+
+            imageName = 'spacemaven'
+            mainClass = 'net.derfruhling.spacemaven.ApplicationKt'
+            debug = false
+
+
+            resources {
+                autodetect()
+            }
+        }
+    }
+
+    agent {
+        enabled = true
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    development {
+
+    }
+
+    if(!project.hasProperty("spm.buildingForDockerImage")) {
+        implementation.extendsFrom(development)
+    } else {
+        compileOnly.extendsFrom(development)
+    }
+}
+
+dependencies {
+//    implementation platform('io.ktor:ktor-bom:3.2.2')
+
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:2.1.21'
+    implementation 'io.ktor:ktor-server-core'
+    implementation 'io.ktor:ktor-server-auth'
+    implementation 'io.ktor:ktor-server-jetty-jakarta'
+    implementation 'io.ktor:ktor-server-content-negotiation'
+    implementation 'io.ktor:ktor-serialization-kotlinx-json'
+    implementation 'io.ktor:ktor-server-jte'
+    implementation 'io.github.oshai:kotlin-logging:7.0.3'
+    implementation 'com.google.cloud:google-cloud-datastore:2.31.0'
+    implementation 'com.google.cloud:google-cloud-logging-logback:0.131.11-alpha'
+    implementation 'ch.qos.logback:logback-classic:1.5.18'
+    implementation 'org.codehaus.janino:commons-compiler:3.1.12'
+    implementation 'org.codehaus.janino:janino:3.1.12'
+    implementation 'org.jline:jline:3.25.1'
+
+    development 'gg.jte:jte-kotlin:3.2.1'
+
+    testImplementation 'io.ktor:ktor-server-test-host'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5:2.1.21'
+}
+
+jte {
+    generate()
+
+    sourceDirectory = file('src/main/resources/templates').toPath()
+}
+
+/*
+ * this is actually built with jvm 24, but 24 is so new that kotlin doesn't
+ * know about it yet, so we'll have to settle with 23
+ */
+
+java {
+    targetCompatibility = JavaVersion.VERSION_23
+    sourceCompatibility = JavaVersion.VERSION_23
+}
+
+kotlin {
+    target {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_23
+        }
+    }
+}
+
+if(project.hasProperty("spm.buildingFromDockerImage")) {
+    processResources {
+        exclude 'logback.xml'
+        rename("logback.cloud.xml", "logback.xml")
+    }
+
+    kotlin.target.compilations.main.getCompileTaskProvider().configure {
+        dependsOn('generateJte')
+    }
+
+    kotlin.sourceSets.named("main") {
+        kotlin.srcDir project.layout.buildDirectory.get().file('generated-sources/jte')
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+

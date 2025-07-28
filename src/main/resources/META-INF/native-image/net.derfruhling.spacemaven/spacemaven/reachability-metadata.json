@@ -1,0 +1,21 @@
+{
+  "reflection": [
+    {
+      "type": "com.google.cloud.logging.logback.LoggingAppender",
+      "methods": [
+        { "name": "addEnhancer", "parameterTypes": ["java.lang.String"] }
+      ]
+    },
+    {
+      "type": "net.derfruhling.spacemaven.ApplicationKt",
+      "methods": [
+        {
+          "name": "module",
+          "parameterTypes": [
+            "io.ktor.server.application.Application"
+          ]
+        }
+      ]
+    }
+  ]
+}

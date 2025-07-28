@@ -3,42 +3,30 @@ package net.derfruhling.spacemaven
 import com.google.cloud.datastore.FullEntity
 import com.google.cloud.datastore.Query
 import com.google.cloud.datastore.StringValue
-import com.google.cloud.datastore.StructuredQuery
-import com.google.cloud.datastore.Value
 import io.github.oshai.kotlinlogging.KotlinLogging
-import io.ktor.http.CacheControl
-import io.ktor.http.ContentType
-import io.ktor.http.HttpStatusCode
-import io.ktor.http.takeFrom
-import io.ktor.serialization.kotlinx.json.json
+import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
-import io.ktor.server.auth.authenticate
-import io.ktor.server.auth.principal
-import io.ktor.server.http.content.staticFiles
-import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.server.request.path
-import io.ktor.server.request.receiveChannel
-import io.ktor.server.response.cacheControl
-import io.ktor.server.response.respond
-import io.ktor.server.response.respondRedirect
+import io.ktor.server.auth.*
+import io.ktor.server.http.content.*
+import io.ktor.server.jte.*
+import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.request.*
+import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import io.ktor.server.util.getValue
-import io.ktor.utils.io.read
+import io.ktor.server.util.*
+import io.ktor.utils.io.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.io.EOFException
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import org.slf4j.LoggerFactory
 import org.w3c.dom.Element
+import java.io.EOFException
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.StandardOpenOption
 import javax.xml.parsers.DocumentBuilderFactory
-import kotlin.io.path.absolutePathString
 import kotlin.time.Duration.Companion.days
-
 
 val validatePath = createRouteScopedPlugin("validatePath") {
     onCall { call ->
@@ -113,6 +101,16 @@ fun Application.configureRouting() {
         bucket(!developmentMode, "/tools/", dir.resolve("tools"))
         bucket(!developmentMode, "/gradle-plugins/", dir.resolve("gradle-plugins"))
         bucket(!developmentMode, "/native/", dir.resolve("native"))
+
+        // webapp
+
+        route("/") {
+            get {
+                call.respond(JteContent("index.kte", mapOf(
+                    "locale" to getLocalizationContext(call.request.acceptLanguageItems().map { it.value })
+                )))
+            }
+        }
     }
 }
 

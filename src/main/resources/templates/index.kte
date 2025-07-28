@@ -1,0 +1,7 @@
+@import net.derfruhling.spacemaven.LocalizationContext
+
+@param locale: LocalizationContext
+
+@template.page(title = "Spacemaven", locale = locale, content = @`
+miaw
+`)

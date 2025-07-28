@@ -1,0 +1,18 @@
+@import gg.jte.Content
+@import net.derfruhling.spacemaven.LocalizationContext
+
+@param title: String?
+@param locale: LocalizationContext
+@param content: Content
+
+<html lang="${locale.language}">
+<head>
+    <title>${title ?: "Spacemaven"}</title>
+</head>
+
+<body>
+
+<div class="content">${content}</div>
+
+</body>
+</html>

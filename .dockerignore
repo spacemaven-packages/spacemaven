@@ -4,3 +4,4 @@ build
 .idea
 .gitignore
 !build/tasks/_spacemaven_executableJarJvm
+/jte-classes/

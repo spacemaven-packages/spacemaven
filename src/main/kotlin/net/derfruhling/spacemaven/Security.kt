@@ -1,10 +1,9 @@
 package net.derfruhling.spacemaven
 
-import com.google.cloud.datastore.Entity
 import com.google.cloud.datastore.StringValue
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
-import io.ktor.util.decodeBase64Bytes
+import io.ktor.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.security.MessageDigest
