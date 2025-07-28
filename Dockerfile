@@ -1,4 +1,4 @@
-FROM gradle:8.14.3-jdk-21-and-24-graal AS build
+FROM gradle:8.14.3-jdk-21-and-24-graal-noble AS build
 COPY . /build-env
 RUN cd /build-env && gradle -Pspm.buildingFromDockerImage nativeCompile precompileJte
 

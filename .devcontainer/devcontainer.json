@@ -2,7 +2,7 @@
 // For more customization options, see https://containers.dev/implementors/json_reference
 {
   name: "Default",
-  image: "gradle:8.14.3-jdk-21-and-24-graal",
+  image: "gradle:8.14.3-jdk-21-and-24-graal-noble",
 
   customizations : {
     // Configure JetBrains IDE-specific properties
@@ -25,5 +25,5 @@
   },
 
   // Comment out to connect as the root user.
-  remoteUser: "root"
+  remoteUser: "ubuntu"
 }
