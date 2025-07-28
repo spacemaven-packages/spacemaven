@@ -12,8 +12,8 @@ application {
     mainClass = 'net.derfruhling.spacemaven.ApplicationKt'
     applicationDefaultJvmArgs = [
             "--enable-native-access=ALL-UNNAMED",
-            "-Xms512MiB",
-            "-Xmx512MiB"
+            "-Xms512M",
+            "-Xmx512M"
     ]
 }
 
