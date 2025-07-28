@@ -5,3 +5,5 @@ build
 .gitignore
 !build/tasks/_spacemaven_executableJarJvm
 /jte-classes/
+Dockerfile
+.dockerignore

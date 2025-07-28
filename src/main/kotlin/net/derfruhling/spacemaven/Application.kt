@@ -16,7 +16,7 @@ val datastore = DatastoreOptions.newBuilder()
     .build().service!!
 
 fun main(args: Array<String>) {
-    io.ktor.server.jetty.jakarta.EngineMain.main(args)
+    io.ktor.server.netty.EngineMain.main(args)
 }
 
 fun Application.module() {
