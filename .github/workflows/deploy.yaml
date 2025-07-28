@@ -3,9 +3,9 @@ on:
     branches:
       - master
     paths-ignore:
-      - test
-      - amper
-      - amper.bat
+      - test/**
+      - gradlew
+      - gradlew.bat
       - .gitignore
       - '*.md'
 
@@ -32,17 +32,10 @@ jobs:
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: 21
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Configure Docker to push to gcloud
         run: gcloud auth configure-docker ${{ secrets.GCP_LOCATION }}-docker.pkg.dev
-      - name: Build with Amper
-        run: ./amper package
       - name: Build Docker image
         run: docker build --tag=${{ secrets.GCP_DOCKER_REGISTRY }}/server:${{ github.ref_name }} .
       - name: Push Docker image
