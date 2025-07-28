@@ -19,7 +19,10 @@
     }
   },
   postCreateCommand: [
-    "sudo snap install graalvm-jdk",
+    "apt update -y",
+    "apt upgrade -y",
+    "apt install snapd",
+    "snap install graalvm-jdk",
     "gu install native-image"
   ],
   appPort: [8080],
