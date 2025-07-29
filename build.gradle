@@ -4,7 +4,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.1.21'
     id 'application'
     id 'org.jetbrains.kotlin.plugin.serialization' version '2.1.21'
-    id 'io.ktor.plugin' version '3.2.2'
+    id 'io.ktor.plugin' version '3.2.3'
     id 'gg.jte.gradle' version '3.2.1'
 }
 
@@ -63,7 +63,7 @@ dependencies {
     implementation 'io.opentelemetry:opentelemetry-sdk-extension-autoconfigure'
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
     implementation 'io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:2.18.1'
-    runtimeOnly "io.opentelemetry.contrib:opentelemetry-gcp-auth-extension"
+    runtimeOnly "io.opentelemetry.contrib:opentelemetry-gcp-auth-extension:1.48.0-alpha"
     runtimeOnly 'io.opentelemetry.contrib:opentelemetry-gcp-resources:1.48.0-alpha'
 
     development 'gg.jte:jte-kotlin:3.2.1'
