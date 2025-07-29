@@ -1,7 +1,49 @@
 @import net.derfruhling.spacemaven.LocalizationContext
+@import net.derfruhling.spacemaven.HeadRef
 
 @param locale: LocalizationContext
+@param allSpecs: List<Pair<String, List<HeadRef>>>
 
-@template.page(title = "Spacemaven", locale = locale, content = @`
-miaw
+@template.page(title = "Spacemaven", locale = locale, head = @`
+    <style>
+        .horizontal-rule {
+            border: 0 solid black;
+            border-bottom-width: 1px;
+            width: 300px;
+            max-width: 100%;
+            margin: 15px 5px;
+        }
+
+        li::marker {
+            content: '>  ';
+        }
+    </style>
+`, content = @`
+    @for((name, specs) in allSpecs)
+        <div class="repository">
+            <div class="horizontal-rule"></div>
+            <h3>${locale.lookup("index.repository.$name")}</h3>
+            <p>${locale.lookup("index.repository.$name.description")}</p>
+
+            @template.code_blocks.repository(repositoryName = name)
+
+            <ul>
+                @for(ref in specs)
+                    <li>
+                        <a href="/repo/${name}/${ref.groupId}/${ref.artifactId}">
+                            @if(name == "gradle-plugins")
+                            <%-- gradle moment --%>
+                                ${ref.groupId}
+                            @else
+                                ${ref.fullyQualifiedName}
+                            @endif
+                        </a>
+                        @if(ref.latestReleaseVersion != null)
+                            ${ref.latestReleaseVersion}
+                        @endif
+                    </li>
+                @endfor
+            </ul>
+        </div>
+    @endfor
 `)

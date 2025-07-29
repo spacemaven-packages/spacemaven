@@ -1,0 +1,9 @@
+indexes:
+  - kind: SpecRef
+    properties:
+      - name: groupId
+      - name: artifactId
+  - kind: HeadRef
+    properties:
+      - name: groupId
+      - name: artifactId

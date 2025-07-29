@@ -1,8 +1,12 @@
 package net.derfruhling.spacemaven
 
+import com.google.cloud.datastore.Entity
 import com.google.cloud.datastore.FullEntity
+import com.google.cloud.datastore.Key
 import com.google.cloud.datastore.Query
 import com.google.cloud.datastore.StringValue
+import com.google.cloud.datastore.aggregation.Aggregation
+import com.google.common.collect.Iterables
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.cbor.*
@@ -18,9 +22,6 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.util.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import org.w3c.dom.Element
@@ -30,6 +31,10 @@ import java.nio.file.Files
 import java.nio.file.StandardOpenOption
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.time.Duration.Companion.days
+import kotlin.time.Duration.Companion.hours
+import com.google.cloud.datastore.StructuredQuery.CompositeFilter.and
+import com.google.cloud.datastore.StructuredQuery.PropertyFilter.eq
+import kotlinx.coroutines.*
 
 val validatePath = createRouteScopedPlugin("validatePath") {
     onCall { call ->
@@ -49,6 +54,8 @@ fun Application.configureRouting() {
     }
 
     routing {
+        staticResources("/static", "/static")
+
         get("/spec") {
             val page: Int = call.request.queryParameters["page"]?.toInt() ?: 0
 
@@ -112,13 +119,200 @@ fun Application.configureRouting() {
 
         route("/") {
             get {
-                call.respond(JteContent("index.kte", mapOf(
-                    "locale" to getLocalizationContext(call.request.acceptLanguageItems().map { it.value })
-                )))
+                call.response.cacheControl(
+                    CacheControl.MaxAge(
+                        24.hours.inWholeSeconds.toInt(),
+                        visibility = CacheControl.Visibility.Public
+                    )
+                )
+
+                val specs = listOf(
+                    async { "native" to getAllHeadRefs(0, "native") },
+                    async { "tools" to getAllHeadRefs(0, "tools") },
+                    async { "public" to getAllHeadRefs(0, "public") },
+                    async { "gradle-plugins" to getAllHeadRefs(0, "gradle-plugins") },
+                )
+
+                call.respond(
+                    JteContent(
+                        "index.kte", mapOf(
+                            "locale" to getLocalizationContext(call.request.acceptLanguageItems().map { it.value }),
+                            "allSpecs" to specs.awaitAll(),
+                            /*
+                    "page" to page,
+                    "count" to datastore.runAggregation(Query.newAggregationQueryBuilder()
+                        .over(Query.newEntityQueryBuilder()
+                            .setKind("HeadRef")
+                            .build())
+                        .addAggregation(Aggregation.count().`as`("count"))
+                        .build())
+                        .let { Iterables.getOnlyElement(it).get("count") }*/
+                        )
+                    )
+                )
+            }
+
+            route("/repo/{repo}/{groupId}/{artifactId}") {
+                get {
+                    call.response.cacheControl(
+                        CacheControl.MaxAge(
+                            24.hours.inWholeSeconds.toInt(),
+                            visibility = CacheControl.Visibility.Public
+                        )
+                    )
+
+                    val repo: String by call.parameters
+                    val groupId: String by call.parameters
+                    val artifactId: String by call.parameters
+
+                    val page = call.queryParameters["page"]?.toInt() ?: 1
+                    val specs = getAllSpecRefs(repo, page - 1, groupId, artifactId)
+
+                    if (specs.isEmpty()) {
+                        call.respond(HttpStatusCode.NotFound)
+                        return@get
+                    }
+
+                    call.respond(
+                        JteContent(
+                        "head.kte", mapOf(
+                        "locale" to getLocalizationContext(call.request.acceptLanguageItems().map { it.value }),
+                        "specs" to specs,
+                        "page" to page,
+                        "groupId" to groupId,
+                        "artifactId" to artifactId,
+                        "repoName" to repo,
+                        "count" to datastore.runAggregation(
+                            Query.newAggregationQueryBuilder()
+                                .over(
+                                    Query.newEntityQueryBuilder()
+                                        .setKind("SpecRef")
+                                        .setNamespace(repo)
+                                        .setFilter(and(eq("groupId", groupId), eq("artifactId", artifactId)))
+                                        .build()
+                                )
+                                .addAggregation(Aggregation.count().`as`("count"))
+                                .build()
+                        )
+                            .let { Iterables.getOnlyElement(it).get("count") }
+                    )))
+                }
+
+                route("/{version}") {
+                    get {
+                        call.response.cacheControl(
+                            CacheControl.MaxAge(
+                                24.hours.inWholeSeconds.toInt(),
+                                visibility = CacheControl.Visibility.Public
+                            )
+                        )
+
+                        val repo: String by call.parameters
+                        val groupId: String by call.parameters
+                        val artifactId: String by call.parameters
+                        val version: String by call.parameters
+
+                        val specKey = Key
+                            .newBuilder("spacemaven", "SpecRef", "$groupId:$artifactId:$version")
+                            .setNamespace(repo)
+                            .build()
+
+                        val spec = datastore.get(specKey)?.let { specRef(it) } ?: run {
+                            call.respond(HttpStatusCode.NotFound)
+                            return@get
+                        }
+
+                        call.respond(
+                            JteContent(
+                                "dep.kte", mapOf(
+                                    "locale" to getLocalizationContext(
+                                        call.request.acceptLanguageItems().map { it.value }),
+                                    "spec" to spec,
+                                )
+                            )
+                        )
+                    }
+                }
             }
         }
     }
 }
+
+private suspend fun getAllSpecRefs(page: Int): List<SpecRef> {
+    return withContext(Dispatchers.Unconfined) {
+        buildList {
+            val results = datastore.run(
+                Query.newEntityQueryBuilder()
+                    .setLimit(20)
+                    .setOffset(page * 20)
+                    .setKind("SpecRef")
+                    .build()
+            )
+            for (it in results) {
+                add(
+                    specRef(it)
+                )
+            }
+        }
+    }
+}
+
+private suspend fun getAllSpecRefs(repoName: String, page: Int, groupId: String, artifactId: String): List<SpecRef> {
+    return withContext(Dispatchers.Unconfined) {
+        buildList {
+            val results = datastore.run(
+                Query.newEntityQueryBuilder()
+                    .setLimit(20)
+                    .setOffset(page * 20)
+                    .setKind("SpecRef")
+                    .setNamespace(repoName)
+                    .setFilter(and(eq("groupId", groupId), eq("artifactId", artifactId)))
+                    .build()
+            )
+            for (it in results) {
+                add(
+                    specRef(it)
+                )
+            }
+        }
+    }
+}
+
+private fun specRef(it: Entity) = SpecRef(
+    it.getString("groupId"),
+    it.getString("artifactId"),
+    it.getString("version"),
+    it.getString("repository"),
+    it.getString("latest"),
+    it.getString("release")
+)
+
+private fun getAllHeadRefs(page: Int, repository: String): List<HeadRef> {
+    val results = datastore.run(
+        Query.newEntityQueryBuilder()
+            .setLimit(20)
+            .setOffset(page * 20)
+            .setKind("HeadRef")
+            .setNamespace(repository)
+            .build()
+    )
+
+    return buildList {
+        for (it in results) {
+            add(
+                headRef(it)
+            )
+        }
+    }
+}
+
+fun headRef(it: Entity) = HeadRef(
+    it.getString("groupId"),
+    it.getString("artifactId"),
+    it.getString("repository"),
+    it.getString("latest"),
+    it.getString("release")
+)
 
 @Serializable
 data class SpecRef(
@@ -128,7 +322,22 @@ data class SpecRef(
     val repository: String,
     val latestVersion: String?,
     val latestReleaseVersion: String?
-)
+) {
+    val fullyQualifiedName get() = "$groupId:$artifactId:$version"
+    val repositoryUrl get() = "https://spacemaven.derfruhling.net/$repository/"
+}
+
+@Serializable
+data class HeadRef(
+    val groupId: String,
+    val artifactId: String,
+    val repository: String,
+    val latestVersion: String?,
+    val latestReleaseVersion: String?
+) {
+    val fullyQualifiedName get() = "$groupId:$artifactId"
+    val repositoryUrl get() = "https://spacemaven.derfruhling.net/$repository/"
+}
 
 private fun Route.bucket(developmentMode: Boolean, path: String, dir: File) {
     if(developmentMode) {
@@ -208,6 +417,7 @@ private suspend fun readMetadataDocument(dir: File, repoName: String, newFile: F
     val versions = versioning.getElementsByTagName("versions").item(0) as Element? ?: return@withContext
 
     val versionNodes = versions.childNodes
+    var updated = 0
     for(i in 0..<versionNodes.length) {
         val e = (versionNodes.item(i) ?: continue) as? Element ?: continue
         if(e.tagName != "version") continue
@@ -215,11 +425,15 @@ private suspend fun readMetadataDocument(dir: File, repoName: String, newFile: F
         val version = e.textContent ?: continue
         val fullSpecifier = "$groupId:$artifactId:$version";
 
+        updated++
+        log.debug { "Cataloging artifact $fullSpecifier" }
+
         launch {
-            log.info { "Writing spec ref: $fullSpecifier, latest = $latest, release = $release" }
+            log.debug { "Writing spec ref: $fullSpecifier, latest = $latest, release = $release" }
 
             val key = datastore.newKeyFactory()
                 .setKind("SpecRef")
+                .setNamespace(repoName)
                 .newKey(fullSpecifier)
 
             datastore.put(FullEntity.newBuilder(key)
@@ -231,5 +445,24 @@ private suspend fun readMetadataDocument(dir: File, repoName: String, newFile: F
                 .set("release", StringValue.newBuilder(release).setExcludeFromIndexes(true).build())
                 .build())
         }
+
+        launch {
+            log.debug { "Writing head ref: $fullSpecifier, latest = $latest, release = $release" }
+
+            val partialKey = datastore.newKeyFactory()
+                .setKind("HeadRef")
+                .setNamespace(repoName)
+                .newKey("$groupId:$artifactId")
+
+            datastore.put(FullEntity.newBuilder(partialKey)
+                .set("groupId", groupId)
+                .set("artifactId", artifactId)
+                .set("repository", repoName)
+                .set("latest", StringValue.newBuilder(latest).setExcludeFromIndexes(true).build())
+                .set("release", StringValue.newBuilder(release).setExcludeFromIndexes(true).build())
+                .build())
+        }
     }
+
+    log.info { "Observed ${versionNodes.length}, updated $updated versions of $groupId:$artifactId" }
 }

@@ -1,0 +1,33 @@
+.code-block {
+    display: flex;
+    flex-flow: column nowrap;
+    max-width: 500px;
+    font-family: monospace;
+}
+
+.line {
+    min-height: 1lh;
+}
+
+.indent {
+    margin-left: 4ch;
+    display: flex;
+    flex-flow: column nowrap;
+    max-width: 500px;
+}
+
+.comment {
+    color: gray;
+}
+
+.keyword {
+    color: #a17011;
+}
+
+.string {
+    color: steelblue;
+}
+
+.number {
+    color: #e1398d;
+}
