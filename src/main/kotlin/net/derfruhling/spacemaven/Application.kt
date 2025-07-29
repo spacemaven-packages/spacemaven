@@ -1,19 +1,18 @@
 package net.derfruhling.spacemaven
 
-import com.google.auth.Credentials
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.cloud.datastore.DatastoreOptions
+import gg.jte.ContentType
 import gg.jte.TemplateEngine
-import gg.jte.resolve.DirectoryCodeResolver
 import gg.jte.resolve.ResourceCodeResolver
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.jte.*
+import io.ktor.server.netty.*
 import io.opentelemetry.api.trace.SpanKind
 import io.opentelemetry.api.trace.StatusCode
 import io.opentelemetry.instrumentation.ktor.v3_0.KtorServerTelemetry
 import java.time.Instant
-import kotlin.io.path.Path
 
 val datastore = DatastoreOptions.newBuilder()
     .setProjectId("spacemaven")
@@ -21,10 +20,12 @@ val datastore = DatastoreOptions.newBuilder()
     .build().service!!
 
 fun main(args: Array<String>) {
-    io.ktor.server.netty.EngineMain.main(args)
+    EngineMain.main(args)
 }
 
 fun Application.module() {
+    install(loggingPlugin)
+
     Builtin.openTelemetry?.let { openTelemetry ->
         install(KtorServerTelemetry) {
             setOpenTelemetry(openTelemetry)
@@ -57,13 +58,11 @@ fun Application.module() {
     install(Jte) {
         if(this@module.developmentMode) {
             val resolver = ResourceCodeResolver("templates", ClassLoader.getSystemClassLoader())
-            templateEngine = TemplateEngine.create(resolver, gg.jte.ContentType.Html)
+            templateEngine = TemplateEngine.create(resolver, ContentType.Html)
         } else {
-            templateEngine = TemplateEngine.createPrecompiled(gg.jte.ContentType.Html)
+            templateEngine = TemplateEngine.createPrecompiled(ContentType.Html)
         }
     }
-
-
 
     configureSecurity()
     configureRouting()

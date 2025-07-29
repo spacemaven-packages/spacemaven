@@ -54,9 +54,10 @@ dependencies {
     implementation 'com.google.cloud:google-cloud-datastore:2.31.0'
     implementation 'io.opentelemetry.instrumentation:opentelemetry-ktor-3.0:2.18.1-alpha'
 
-    implementation 'org.apache.logging.log4j:log4j-core'
-    runtimeOnly 'org.apache.logging.log4j:log4j-slf4j2-impl'
+    implementation 'ch.qos.logback:logback-core:1.5.18'
     implementation 'org.slf4j:slf4j-api:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.5.18'
+    implementation 'net.logstash.logback:logstash-logback-encoder:8.1'
 
     implementation 'io.opentelemetry:opentelemetry-sdk'
     implementation 'io.opentelemetry:opentelemetry-sdk-extension-autoconfigure'
@@ -94,10 +95,10 @@ kotlin {
 }
 
 if(project.hasProperty("spm.buildingFromDockerImage")) {
-    processResources {
+    /*processResources {
         exclude 'log4j2.xml'
         rename("log4j2-prod.xml", "log4j2.xml")
-    }
+    }*/
 
     kotlin.target.compilations.main.getCompileTaskProvider().configure {
         dependsOn('generateJte')

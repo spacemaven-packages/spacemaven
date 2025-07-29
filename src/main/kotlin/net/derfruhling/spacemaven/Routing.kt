@@ -36,11 +36,34 @@ import com.google.cloud.datastore.StructuredQuery.CompositeFilter.and
 import com.google.cloud.datastore.StructuredQuery.PropertyFilter.eq
 import kotlinx.coroutines.*
 
+import io.ktor.server.routing.get as getVerbatim
+import io.ktor.server.routing.put as putVerbatim
+
 val validatePath = createRouteScopedPlugin("validatePath") {
     onCall { call ->
         val path = call.request.path()
         if(path.contains("..")) call.respond(HttpStatusCode.Forbidden)
     }
+}
+
+@KtorDsl
+inline fun Route.get(crossinline f: suspend RoutingContext.() -> Unit) = getVerbatim {
+    setupLogging { f() }
+}
+
+@KtorDsl
+inline fun Route.put(crossinline f: suspend RoutingContext.() -> Unit) = putVerbatim {
+    setupLogging { f() }
+}
+
+@KtorDsl
+inline fun Route.get(path: String, crossinline f: suspend RoutingContext.() -> Unit) = getVerbatim(path) {
+    setupLogging { f() }
+}
+
+@KtorDsl
+inline fun Route.put(path: String, crossinline f: suspend RoutingContext.() -> Unit) = putVerbatim(path) {
+    setupLogging { f() }
 }
 
 fun Application.configureRouting() {
@@ -57,6 +80,9 @@ fun Application.configureRouting() {
         staticResources("/static", "/static")
 
         get("/spec") {
+            val log = KotlinLogging.logger {}
+            log.info { "Hello world" }
+
             val page: Int = call.request.queryParameters["page"]?.toInt() ?: 0
 
             val specRef = withContext(Dispatchers.Unconfined) {
