@@ -129,7 +129,7 @@ class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
 
     class TraceJsonProvider : AbstractJsonProvider<ILoggingEvent>() {
         override fun writeTo(generator: JsonGenerator, event: ILoggingEvent) {
-            generator.writeStringField("level", when(event.level) {
+            generator.writeStringField("severity", when(event.level) {
                 Level.ERROR -> "ERROR"
                 Level.WARN -> "WARNING"
                 Level.INFO -> "INFO"
