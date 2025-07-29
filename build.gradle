@@ -63,6 +63,7 @@ dependencies {
     implementation 'io.opentelemetry:opentelemetry-sdk-extension-autoconfigure'
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
     implementation 'io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:2.18.1'
+    runtimeOnly "io.opentelemetry.contrib:opentelemetry-gcp-auth-extension"
     runtimeOnly 'io.opentelemetry.contrib:opentelemetry-gcp-resources:1.48.0-alpha'
 
     development 'gg.jte:jte-kotlin:3.2.1'

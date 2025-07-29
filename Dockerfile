@@ -9,7 +9,8 @@ ENV JAVA_OPTS="-Dotel.service.name=spacemaven \
     -Dotel.traces.exporter=otlp \
     -Dotel.logs.exporter=none \
     -Dotel.exporter.otlp.endpoint=https://telemetry.googleapis.com \
-    -Dotel.exporter.otlp.protocol=http/protobuf"
+    -Dotel.exporter.otlp.protocol=http/protobuf \
+    -Dgoogle.cloud.project=spacemaven"
 COPY --from=build /build-env/build/install/spacemaven /app
 WORKDIR /app
 EXPOSE 8080:8080/tcp
