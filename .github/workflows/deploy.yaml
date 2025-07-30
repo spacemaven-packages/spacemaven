@@ -19,6 +19,8 @@ jobs:
     environment:
       name: production
       url: https://spacemaven.derfruhling.net
+    env:
+      CI: true
     steps:
       - uses: actions/checkout@v4
       - id: auth

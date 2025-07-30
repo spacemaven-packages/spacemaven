@@ -36,7 +36,12 @@ class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
 
     private val mapped = ThreadLocal.withInitial { mutableListOf<String>() }
 
-    val traceValue by lazy { call.request.header("x-cloud-trace-context") }
+    val traceValue by lazy {
+        (call.request.header("traceparent")?.split('-')?.get(1)
+            ?: call.request.header("x-cloud-trace-context")?.split('/')?.first())
+            ?.let { "projects/spacemaven/traces/$it" }
+    }
+
     val methodValue by lazy { call.request.httpMethod.value.uppercase() }
     val requestUrlValue by lazy { call.request.uri }
     val userAgentValue by lazy { call.request.userAgent() }
