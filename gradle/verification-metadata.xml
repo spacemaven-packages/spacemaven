@@ -1,0 +1,1474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<verification-metadata xmlns="https://schema.gradle.org/dependency-verification" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://schema.gradle.org/dependency-verification https://schema.gradle.org/dependency-verification/dependency-verification-1.3.xsd">
+   <configuration>
+      <verify-metadata>true</verify-metadata>
+      <verify-signatures>true</verify-signatures>
+      <keyring-format>armored</keyring-format>
+      <trusted-artifacts>
+         <trust file=".*-javadoc[.]jar" regex="true"/>
+         <trust file=".*-sources[.]jar" regex="true"/>
+      </trusted-artifacts>
+      <ignored-keys>
+         <ignored-key id="991EFB94DB91127D" reason="Key couldn't be downloaded from any key server"/>
+         <ignored-key id="CF776DADF519DEE3" reason="Key couldn't be downloaded from any key server"/>
+         <ignored-key id="E7AE839CD7C58886" reason="Key couldn't be downloaded from any key server"/>
+      </ignored-keys>
+      <trusted-keys>
+         <trusted-key id="05F1A5DA5701D415BEFC67FC6329ADE2B25B244B" group="io.github.pdvrieze.xmlutil"/>
+         <trusted-key id="073F7A9345756F3B40CDB99E6C70A3B7599C5736">
+            <trusting group="org.apache.maven"/>
+            <trusting group="org.codehaus.plexus"/>
+            <trusting group="org.fusesource.jansi"/>
+         </trusted-key>
+         <trusted-key id="077E8893A6DCC33DD4A4D5B256E73BA9A0B592D0" group="^org[.]apache[.]logging($|([.].*))" regex="true"/>
+         <trusted-key id="0785B3EFF60B1B1BEA94E0BB7C25280EAE63EBE5" group="org.apache.httpcomponents"/>
+         <trusted-key id="0A123C1ED3F13A6A0140E166C71FB765CD9DE313" group="org.apache.ant"/>
+         <trusted-key id="0CC641C3A62453AB390066C4A41F13C999945293" group="commons-logging" name="commons-logging" version="1.2"/>
+         <trusted-key id="0D35D3F60078655126908E8AF3D1600878E85A3D" group="io.netty"/>
+         <trusted-key id="0E6E990FD54E8532780086612B183B279DFD639E" group="com.typesafe" name="config" version="1.4.3"/>
+         <trusted-key id="0F07D1201BDDAB67CFB84EB479752DB6C966F0B8" group="com.google.android" name="annotations" version="4.1.1.4"/>
+         <trusted-key id="1597AB231B7ADD7E14B1D9C43F00DB67AE236E2E" group="org.conscrypt" name="conscrypt-openjdk-uber" version="2.5.2"/>
+         <trusted-key id="19BEAB2D799C020F17C69126B16698A4ADF4D638" group="org.checkerframework" name="checker-qual"/>
+         <trusted-key id="1A55F091AD28C07F831FA44D7905DE25C78AD456" group="com.google.protobuf"/>
+         <trusted-key id="1D217F8475EEE9F19AB8DD6B793FD5751A0F0780" group="^com[.]squareup($|([.].*))" regex="true"/>
+         <trusted-key id="1D7DC2587E655C72EB4463F2E082500F4BE1F6DD" group="gg.jte"/>
+         <trusted-key id="1DE5E75F1040F8B0DC3A4320F2B5B2B1B9B1180A" group="com.google.re2j" name="re2j" version="1.8"/>
+         <trusted-key id="28118C070CB22A0175A2E8D43D12CA2AC19F3181">
+            <trusting group="org.codehaus.woodstox"/>
+            <trusting group="^com[.]fasterxml($|([.].*))" regex="true"/>
+         </trusted-key>
+         <trusted-key id="2B34821418CF19CF1F2A8352953E02E4F573B46F" group="jakarta.platform"/>
+         <trusted-key id="2DB4F1EF0FA761ECC4EA935C86FDC7E2A11262CB">
+            <trusting group="commons-codec"/>
+            <trusting group="commons-io"/>
+            <trusting group="org.apache.commons"/>
+         </trusted-key>
+         <trusted-key id="2E3A1AFFE42B5F53AF19F780BCF4173966770193" group="org.jetbrains" name="annotations" version="13.0"/>
+         <trusted-key id="2F528D36D67B69EDF998D85778BD65473CB3BD13" group="com.google.cloud.tools"/>
+         <trusted-key id="32118CF76C9EC5D918E54967CA80D1F0EB6CA4BA" group="^org[.]codehaus($|([.].*))" regex="true"/>
+         <trusted-key id="33FD4BFD33554634053D73C0C2148900BCD3C2AF" group="org.jetbrains" name="annotations" version="23.0.0"/>
+         <trusted-key id="3F05DDA9F317301E927136D417A27CE7A60FF5F0" group="^io[.]opentelemetry($|([.].*))" regex="true"/>
+         <trusted-key id="47504B76CF89C15C0512D9AFE16AB52D79FD224F">
+            <trusting group="com.google.analytics"/>
+            <trusting group="com.google.api"/>
+            <trusting group="com.google.api-client"/>
+            <trusting group="com.google.api.grpc"/>
+            <trusting group="com.google.auth"/>
+            <trusting group="com.google.http-client"/>
+            <trusting group="com.google.oauth-client"/>
+            <trusting group="^com[.]google[.]cloud($|([.].*))" regex="true"/>
+         </trusted-key>
+         <trusted-key id="47EB6836245D2D40E89DFB4136D4E9618F3ADAB5" group="io.github.oshai"/>
+         <trusted-key id="4857D1CE04E78FAB2A172E8F39B48E1BADDB933F" group="com.gradleup.shadow" name="shadow-gradle-plugin" version="8.3.8"/>
+         <trusted-key id="4F7E32D440EF90A83011A8FC6425559C47CC79C4" group="javax.annotation" name="javax.annotation-api" version="1.3.2"/>
+         <trusted-key id="600EA202B1EC682F4A788E5AAC7A514BC9F9BB70" group="io.opencensus"/>
+         <trusted-key id="60200AC4AE761F1614D6C46766D68DAA073BE985">
+            <trusting group="ch.qos.logback"/>
+            <trusting group="org.slf4j"/>
+         </trusted-key>
+         <trusted-key id="694621A7227D8D5289699830ABE9F3126BB741C1" group="com.google.guava"/>
+         <trusted-key id="6F538074CCEBF35F28AF9B066A0975F8B1127B83" group="org.jetbrains.kotlin"/>
+         <trusted-key id="70F2A0348AD509C85811F7276A6F4EDF793A24F4" group="com.google.cloud.opentelemetry" name="detector-resources-support" version="0.36.0"/>
+         <trusted-key id="7616EB882DAF57A11477AAF559A252FB1199D873" group="com.google.code.findbugs" name="jsr305" version="3.0.2"/>
+         <trusted-key id="78DF98EF7F95578FD545B9A159A7C2A1BD98C013" group="org.jdom" name="jdom2" version="2.0.6.1"/>
+         <trusted-key id="79156E0351AF8604DE9B186B09A79E1E15A04694" group="org.vafer" name="jdependency" version="2.13"/>
+         <trusted-key id="84789D24DF77A32433CE1F079EB80E92EB2135B1">
+            <trusting group="org.apache"/>
+            <trusting group="^org[.]codehaus($|([.].*))" regex="true"/>
+         </trusted-key>
+         <trusted-key id="8756C4F765C9AC3CB6B85D62379CE192D401AB61" group="org.jetbrains.intellij.deps" name="trove4j" version="1.0.20200330"/>
+         <trusted-key id="8E3A02905A1AE67E7B0F9ACD3967D4EDA591B991" group="io.ktor"/>
+         <trusted-key id="A5BD02B93E7A40482EB1D66A5F69AD087600B22C" group="org.ow2.asm"/>
+         <trusted-key id="A7892505CF1A58076453E52D7999BEFBA1039E8B" group="net.bytebuddy"/>
+         <trusted-key id="AED5EE6C45D0FE8D5D1B164F27DED4BF6216DB8F" group="org.eclipse.jetty.alpn" name="alpn-api" version="1.1.3.v20160715"/>
+         <trusted-key id="B02335AA54CCF21E52BBF9ABD9C565AA72BA2FDD" group="io.grpc"/>
+         <trusted-key id="B14A66F050D04940305B700EBD93646C69851AA9" group="net.logstash.logback" name="logstash-logback-encoder" version="8.1"/>
+         <trusted-key id="B41089A2DA79B0FA5810252872385FF0AF338D52" group="org.threeten" name="threetenbp" version="1.7.0"/>
+         <trusted-key id="BDB5FA4FE719D787FB3D3197F6D4A1D411E9D1AE" group="^com[.]google($|([.].*))" regex="true"/>
+         <trusted-key id="C6F7D1C804C821F49AF3BFC13AD93C3C677A106E" group="io.perfmark" name="perfmark-api" version="0.27.0"/>
+         <trusted-key id="C7BE5BCC9FEC15518CFDA882B0F3710FA64900E7" group="^com[.]google($|([.].*))" regex="true"/>
+         <trusted-key id="C8D37E9675158FF5B29B6D6452FC3551DA8DC57E" group="org.graalvm.buildtools"/>
+         <trusted-key id="E7DC75FC24FB3C8DFE8086AD3D5839A2262CBBFB" group="org.jetbrains.kotlinx"/>
+         <trusted-key id="EB1B3DE71713C9EC2E87CC26EE92349AD86DE446" group="com.google.j2objc" name="j2objc-annotations" version="2.8"/>
+         <trusted-key id="EE0CA873074092F806F59B65D364ABAA39A47320" group="com.google.errorprone"/>
+         <trusted-key id="FA7929F83AD44C4590F6CC6815C71C0A4E0B8EDD" group="net.java.dev.jna"/>
+         <trusted-key id="FF6E2C001948C5F2F38B0CC385911F425EC61B51">
+            <trusting group="org.apiguardian"/>
+            <trusting group="org.opentest4j"/>
+            <trusting group="^org[.]junit($|([.].*))" regex="true"/>
+         </trusted-key>
+      </trusted-keys>
+   </configuration>
+   <components>
+      <component group="ch.qos.logback" name="logback-classic" version="1.5.18">
+         <artifact name="logback-classic-1.5.18.jar">
+            <sha512 value="48edf62d089a13dc3a572aedebf9f881d61690983f03831838c79caecb13cf749786ea215156d9bf39c1b936fcc32ba37dd265f7d191708c5e24ba3ba654ee50" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="logback-classic-1.5.18.pom">
+            <sha512 value="ddf3400281b94dcb0b61e1d091afca2159b883b229db9409d229ca82f23b3b4e2fbae52688b4a071a4a24178f23c9aa2c84abeeb1361182b63dab5db087d2ee6" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="ch.qos.logback" name="logback-core" version="1.5.18">
+         <artifact name="logback-core-1.5.18.jar">
+            <sha512 value="fe6e259238f349839b6a30e71e533b5f2fa0a33a462efe9d09152518d3ad7759ce036f7c66744f1edf95eec4f7c2b7261de616aded28def93de85b8c7ab77d8f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="logback-core-1.5.18.pom">
+            <sha512 value="ed1a32fcb87601c05a811e46e68e2b18f43f229f9b530ae0f18e1884fc6bec8fb86a6d2370ba7fd4872acc16ed3b0f9503780bce508958261ecac4e563e10164" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="ch.qos.logback" name="logback-parent" version="1.5.18">
+         <artifact name="logback-parent-1.5.18.pom">
+            <sha512 value="6aecc972a5eaef34c4e890d1898ea9ce75168c213de22ffec0edd0988f4e6badcc4334f787af30ebcec126cab7bf98947e75c6c62f09426d6653f87a3dbcf5be" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.github.openjson" name="openjson" version="1.0.13">
+         <artifact name="openjson-1.0.13.jar">
+            <sha256 value="7d4184cf891f359ee72095a4ce1cb9cd8f3c676676dfe716ea89fab4d0e6e953" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+            <sha512 value="115345dc6efd0d9a7b56ddc58b28343a10e125c253b218c216e169f3b0984d8182dd1d4fe86fc4f28511b8c58a2ce416a36ed1e3f239272a4a10e0cc3f2ca1bc" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="openjson-1.0.13.pom">
+            <sha256 value="6c7e953b4f5ab7df94a699ee9ba8e4ecd9de2a084b72899b57647a23758986a8" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+            <sha512 value="f0430f001ec9d4f1b2d8c823307c13b4907b4773f3ada7d559e873bda4412ad0d3491852812a502b9e900007a9ffac0e73246d8dda79aabb0d49b2149152e455" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.android" name="annotations" version="4.1.1.4">
+         <artifact name="annotations-4.1.1.4.jar">
+            <sha512 value="530bfa9e7aea7b2dc2e8776f083705f12772045f6f4bbe235a1c3e97646bd0b0a367358aab0f129058d1899573f4bce97d7db3dfff96dfdabc99377c5d837222" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="annotations-4.1.1.4.pom">
+            <sha512 value="6727ecc1bc63112555f4ff8013d0b136f44641d73673e03e89ccb45d6b918c05717ff32065088d72e94b7b6600e9536b83e96faa842bcb837cb34aff7eebe88e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.area120" name="google-area120-tables-bom" version="0.67.0">
+         <artifact name="google-area120-tables-bom-0.67.0.pom">
+            <pgp value="47504B76CF89C15C0512D9AFE16AB52D79FD224F"/>
+         </artifact>
+      </component>
+      <component group="com.google.cloud.opentelemetry" name="detector-resources-support" version="0.36.0">
+         <artifact name="detector-resources-support-0.36.0.jar">
+            <sha512 value="5fc01437283f7e136af269809c33d4e407f4418b122ad9219ee487f92880b8330515fdae79fa5ed9edc95b74a7909d6a56229904dc49dfe700585c54f6c97adb" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="detector-resources-support-0.36.0.module">
+            <sha512 value="994b70459bf43b6ee525e0bdfb5adf09b5e8a58d0a0de6f81632ac70f7d27bf40aa915d6423096be03b135b50c0f3072c9d39d4d845a6e0d8da59c5df6aa1ee1" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.cloud.tools" name="jib-gradle-plugin" version="3.4.5">
+         <artifact name="jib-gradle-plugin-3.4.5.jar">
+            <sha256 value="5b6b8443e45a021f024086108c2d5b0fdf51a1650f78ec731869fc36d06306a4" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="02cc0c69b51c39a1b396dc2a8db10e76532fdae281036cdceb1ee47222454c4595dc5cb3b72806692919a520255d3dbea03dd8a4d9b9415fe2b9cbff70aa8ad6" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+         <artifact name="jib-gradle-plugin-3.4.5.module">
+            <sha256 value="984a04f24ec416bfbe4c400f33e7a6e0a607db849013708db902df7980f4e453" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="bb9e1ce1b8d3868257d64c18ea8143c83d0cf8aab6f1db339ef717b278f529ab0f1095d63f5f22db0d9471f25b154748c8eced45cf9d0cf956e251939d43ce2f" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+      </component>
+      <component group="com.google.code.findbugs" name="jsr305" version="3.0.2">
+         <artifact name="jsr305-3.0.2.jar">
+            <sha512 value="bb09db62919a50fa5b55906013be6ca4fc7acb2e87455fac5eaf9ede2e41ce8bbafc0e5a385a561264ea4cd71bbbd3ef5a45e02d63277a201d06a0ae1636f804" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="jsr305-3.0.2.pom">
+            <sha512 value="08e1cc341a153f64b670d87831eedfe79a150b8fb7e3a4afbaef54deaa28d2767ae86d12b4f0c5404184360ab8e48a3655e610f3bf2fe6c97a06e9fc3df49b37" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.guava" name="failureaccess" version="1.0.1">
+         <artifact name="failureaccess-1.0.1.jar">
+            <sha512 value="f8d59b808d6ba617252305b66d5590937da9b2b843d492d06b8d0b1b1f397e39f360d5817707797b979a5bf20bf21987b35333e7a15c44ed7401fea2d2119cae" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="failureaccess-1.0.1.pom">
+            <sha512 value="d8384a1a93045eefe330570dc9d0de4d0704ca396580d41d20d683eeab452cf78973ef166d5582f0d7e1d4dd5856da5beb88d4fd9ff5d28cd8e862306a471839" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.guava" name="guava-parent" version="26.0-android">
+         <artifact name="guava-parent-26.0-android.pom">
+            <sha512 value="1d786f14fbfa5c90eedcc160d1e0a71acb2141f372049b22ce62b0bd1e883c17cc24a59dc8b00e5037e959cccdb54d4d8dc8f252302d4bb7ce82dfdaff764476" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.j2objc" name="j2objc-annotations" version="1.3">
+         <artifact name="j2objc-annotations-1.3.pom">
+            <pgp value="B801E2F8EF035068EC1139CC29579F18FA8FD93B"/>
+            <sha512 value="a52065553142f524a032b4ee474aff07d6b01860f1208865591e9caa3501fe3d2ee872fa4f20e6caf1576684d449656985c918feb61f0d119c63f5ce4183caae" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.protobuf" name="protobuf-bom" version="3.25.5">
+         <artifact name="protobuf-bom-3.25.5.pom">
+            <sha512 value="b900a81cfd33a1e85c903ef0eeea375a1e5d85cc6ccb3470b7bbbcceaf928e9e8670405a546aafe2cd0e7e9ed565628eb0990bcb1ae643e0c394f2745cd84007" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.protobuf" name="protobuf-bom" version="3.25.8">
+         <artifact name="protobuf-bom-3.25.8.pom">
+            <sha512 value="43e49bdbb7fe1c7cd9289ab5a99d892d8c1592b4937fd3245c628026d4eae142005e70bc6aac6f99e7d1332b8534fbeefa481545086721b0772ce2e58e02f7db" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.protobuf" name="protobuf-bom" version="4.29.4">
+         <artifact name="protobuf-bom-4.29.4.pom">
+            <sha512 value="ddd49b8cdfa8669c558cbbbdb26af8e068b8a208c45b62cb124118dd75d9b6a5f8268185ba0f9b6540e2df8f518c7a8afbb3e6645b185771e9c6d0752e1c5c6a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.protobuf" name="protobuf-java" version="4.29.4">
+         <artifact name="protobuf-java-4.29.4.jar">
+            <sha512 value="428b6d7acb317f7412253f9b02c8772aeb2f637537f66a3de29e66cf01bef5962a9f94a5baa02b2a779efa9193d400890b6554cb34a52835904ecdfbd0e3e7d6" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="protobuf-java-4.29.4.pom">
+            <sha512 value="d315e61c7766a838a30590c58facadb7622cd6ebbcd2f0a4621a60f68939ec2afae8e749cc5a923cfafdc124aa2408d32246c6f65df8cf48174f91f81b18fd9a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.protobuf" name="protobuf-java-util" version="4.29.4">
+         <artifact name="protobuf-java-util-4.29.4.jar">
+            <sha512 value="5a97b7174c547418ce70f57fa6b6fda9eb1e11fa7b883d9b3d1330e78963bb2f7680cf172593d9dd87d959cf04992f6651d51519ed7e5e888e4175ce0410a0ea" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="protobuf-java-util-4.29.4.pom">
+            <sha512 value="a0d153e17085073cec96acf12ed20b1a03ad3af2c64fee93ba574154bd18f0b7615f714a2418824ea921575ced65d2c8ba689d19f95ff0d5c184e13aa50bb663" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.google.protobuf" name="protobuf-parent" version="4.29.4">
+         <artifact name="protobuf-parent-4.29.4.pom">
+            <sha512 value="0efbe8a61b75bd87fcca36e6c10a2c7dab1d2f06173579046f238ff14f745a439ec10356a9941df2e371a1e6b6ad7cbbed15e395d026267820e7a65d7484df1a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.squareup.okhttp3" name="okhttp" version="5.1.0">
+         <artifact name="okhttp-5.1.0.module">
+            <sha512 value="f10e7e0967089e2f92c25aaf51b2dfb9c62088090e6e168fef2a9a71f1b33e70eb81be2dabb2c6795ea02ad3d970c9b395257bbf6156c587992f00d1b34d86d4" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.squareup.okhttp3" name="okhttp-jvm" version="5.1.0">
+         <artifact name="okhttp-jvm-5.1.0.jar">
+            <sha512 value="ec41b95bb3a71fde13c51e21cd3b6aee3f93601dd49af533edeab21f71c1a8f0231bfbfee75e223ceba66a02d2f53ab8e4026218efbe9beb9a6c3678588c88cf" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="okhttp-jvm-5.1.0.module">
+            <sha512 value="c4b86738ce1add4e53661190078f15fcf335c00b7643b7efce0108ae5c7d416145e199c13650a5a756d02f6603413280c4e731815634742329a172adad923ec4" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.squareup.okio" name="okio" version="3.15.0">
+         <artifact name="okio-3.15.0.module">
+            <sha512 value="f4e05aed7505aee3bc75eb410402b035c730406e130c252c4b79f9514c8f6723e2a2ebf53253003eb7f9ba2c06e5de3dcfd3a8643566aceb96bc607f86382447" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.squareup.okio" name="okio-jvm" version="3.15.0">
+         <artifact name="okio-jvm-3.15.0.jar">
+            <sha512 value="f327600f43ab5f56753934848d9f49c3509cc5d4b871271345aa3a457a55bf9e244ff4d7d4e5c3de5eadb024cd2e13aca24817763005ce1b0ef0dc0a06be93dc" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="okio-jvm-3.15.0.module">
+            <sha512 value="e6fdcb7181a8b160cead504bb3a298023cbe84e1d31ddd3ad05ebb8a08578981b22ddd459a7c8fa5d51cb1ea79f1657e6162eaea8a2c83b929e3d97945584913" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="com.typesafe" name="config" version="1.4.3">
+         <artifact name="config-1.4.3.jar">
+            <sha512 value="0ba68d0f68b847dbf11d5d66489151afb5ac98bfec15b6a2612712fc9f798413e2d30391f07ad370cd6fe69982d33deb40956f05a9e1d47e2f5cb8362cf1c221" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="config-1.4.3.pom">
+            <sha512 value="cc95e0a39da1b486dee15a13206215f63b239b6fb73d82cd9a5507c70b5f19061000d99b0421cd7a25638c4c02ce24198f88db2670498256c0620c678a3dafa8" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="commons-codec" name="commons-codec" version="1.11">
+         <artifact name="commons-codec-1.11.jar">
+            <sha512 value="d9586162b257386b5871e7e9ae255a38014a9efaeef5148de5e40a3b0200364dad8516bddd554352aa2e5337bec2cc11df88c76c4fdde96a40f3421aa60650d7" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="commons-codec-1.11.pom">
+            <sha512 value="1b7a0a986a1bd222c0795972daabee4f16e308498f67d62b99749506b5a71e9811deaa323c080517a8184d6481e8281c91bd012d5614b7d5d2ba14aa96f2596c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="commons-codec" name="commons-codec" version="1.18.0">
+         <artifact name="commons-codec-1.18.0.jar">
+            <sha512 value="4d974c2203dd6780da6e50ec1c7d8ff727f9ed55fba706fdc50b9484fc5da5e03b67bc6ad2f0d9ae74f823ecce04a40c513bbabd8bf9e91ac8fec04cd3519ffa" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="commons-codec-1.18.0.pom">
+            <sha512 value="849cbb8cf29fdf09c5d3374d655d03b05f339ca35341efb549ac94a8a7a3efd3610a58e1f254839137e77276306225776f734afbfdd9536e405d5b437c9b48bb" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="commons-io" name="commons-io" version="2.19.0">
+         <artifact name="commons-io-2.19.0.jar">
+            <sha512 value="98ad3cb92c31b51461c44d06c223a425c3ee8254ad3ddfdc3724e7d14444d2eeac3b054f70be5d4500268f712c1f08779fd5e4360437b4a883c406c0dc3a2c7c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="commons-io-2.19.0.pom">
+            <sha512 value="da62da1a247b02823fb1cf38a3ce90551a35fa84747793da74231134646f2bb7260ab6ed738439a38f4d7f6973b9b79f5324d16cd366c2293ccb695ed9fe6f45" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="commons-logging" name="commons-logging" version="1.2">
+         <artifact name="commons-logging-1.2.jar">
+            <sha512 value="ed00dbfabd9ae00efa26dd400983601d076fe36408b7d6520084b447e5d1fa527ce65bd6afdcb58506c3a808323d28e88f26cb99c6f5db9ff64f6525ecdfa557" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="commons-logging-1.2.pom">
+            <sha512 value="75bef548eea62ab04569791f2fdeed3d0a61edae0534aa035a905dc1d011988fc0f06f52bde377f44e94e6afd4380197148120b152b7a4d20628fb6236cc7261" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="gg.jte" name="jte-gradle-plugin" version="3.2.1">
+         <artifact name="jte-gradle-plugin-3.2.1.jar">
+            <sha256 value="2b762c52747a36c6c0e9aefcbab7e69428c9034aed5d683d7d2516866224d7f7" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="16a4c4ecb2fe3d54f2a7231ff822be84dd0eb0c2bb973f56728f57b58e731cee9cd07832b8681a3d9293bcfc399c2518901500eedb3af345a8da9e5b7ec36fe8" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+         <artifact name="jte-gradle-plugin-3.2.1.module">
+            <sha256 value="bd40f4dc344084de080e5b23f98a86cf0f7b8d7b2ac7dc62da37b49a7d83452b" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="b6a24fae73d3facf5d23e66108e1235d2b49ab492086b3fb18aaa6296e3911b4b3094f7b056148a5a9903665dae6e4db59a4bfb78aa8a2da4d8e0bfe57bf07f0" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+      </component>
+      <component group="gg.jte.gradle" name="gg.jte.gradle.gradle.plugin" version="3.2.1">
+         <artifact name="gg.jte.gradle.gradle.plugin-3.2.1.pom">
+            <sha256 value="fa601320fd2a21348ce84d9e16ace68473cbaaab2c4435857b3b9c7cb73350e6" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="baf4f1bc81975de028aa7854ae3dbb9a20e1eb96a98c57af2243b15298bd4db007c3de3c6bcf20ffedcb1df7d85207ea98eb2a167808d9a65acb8b5161212965" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+      </component>
+      <component group="io.github.oshai" name="kotlin-logging" version="7.0.3">
+         <artifact name="kotlin-logging-7.0.3.module">
+            <sha512 value="6d39eba01f50820548ae5562f8b8136c6710e6f4aa3a4585b8f20326f7f6c3fde3b04019dae81a308294ae7a8657e21bff5d97f10c756adbc469329578ba3c8a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-logging-metadata-7.0.3.jar">
+            <sha512 value="27dbaf706eee2d818888fa2feb89228f347d619115a7358d8fcad905347f90f29288785e629acc26acb4e0203c688f89722e95c93d29fe167182ca4c49904187" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.github.oshai" name="kotlin-logging-jvm" version="7.0.3">
+         <artifact name="kotlin-logging-jvm-7.0.3.jar">
+            <sha512 value="f5bcfd28f279fb0daaec46f3a958c3d0da1774ff5f4cfadb71437d6ce5ab87b773cc32a7b9efedd71fe6c7472853f1f0958484c3052d737cce25d69701003daf" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-logging-jvm-7.0.3.module">
+            <sha512 value="f4b0ff489aa12c21d757e8b323263ecb0ee87cfb299cae2b81808d262b66cf07a311f3f0c90ddb6f242e06e84ea1d132ddb8affeda0e4560547c4436e360c3de" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.ktor.plugin" name="io.ktor.plugin.gradle.plugin" version="3.2.3">
+         <artifact name="io.ktor.plugin.gradle.plugin-3.2.3.pom">
+            <sha256 value="229e4ad32d4b0b98ba8a6966f90ac87b3cfd8fdf937df4021f462471970a56b1" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="97d183386c2a2d8bc6ca77510cc631eab846889ec9dc2f78aa189ac5bd060ce12459fbe160f0930e546c21352ac5e07faf4482e943515c90159d3ead918a9c9e" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+      </component>
+      <component group="io.ktor.plugin" name="plugin" version="3.2.3">
+         <artifact name="plugin-3.2.3.jar">
+            <sha256 value="67aac97365ecdffbc5b3ad7e18b7cd59308d174c47a9609eacadf46f7a7d602d" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="d7682db9f881c2c5e3deaf195da6ae7e07c54502bba0cb802479f07e9753fae6422e8be6501c6a8e6aea49ad3c39a30a6afef7c6d101f5f027f714af029b5e1a" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+         <artifact name="plugin-3.2.3.module">
+            <sha256 value="64512d23d15507fbdd56a079890638d38962ccd008a675b91a276f9b88b8d8de" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="af7c690d338a68384ea9f12749fc99da921b61577338ffb1a1727a6ce94e06bfc7700a4003ddc8344f649a74515aa801de132d69c4e859474f008328fd7207b9" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-buffer" version="4.2.2.Final">
+         <artifact name="netty-buffer-4.2.2.Final.jar">
+            <sha512 value="5712d2386983562009fb340b6b687a6a14c13b99b1c4aedc032f0e6081656cb515b0406487c1be1f3bde8375413f17c59d64d8bdb1abafb91976f725cf101ec5" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-buffer-4.2.2.Final.pom">
+            <sha512 value="8f486a47508ae5fe4b1f5d7e0c1b31657347f4dd38a563b926fd5ece3f0431fd6cc838dc4b7583afdd75650eb8fe97599f5ab897bff6ace662673b586c59172c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-codec-base" version="4.2.2.Final">
+         <artifact name="netty-codec-base-4.2.2.Final.jar">
+            <sha512 value="951b131bc8894fcebed3ab7723e17b0bfaea8a2e0a71810cb3fd50c5f64b7ea3a2bee5f59b5a364523fc2855152529f075c6c9eacfc1fd099daf7101ed79d725" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-codec-base-4.2.2.Final.pom">
+            <sha512 value="220bf32d748c45c2ecf94682a25791f510f40271e59726f444e028cbb8f7f6361059eee5fc25588eb9c943e99d0059073bbfa06f8df912c6215d3d3d29eada4c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-codec-compression" version="4.2.2.Final">
+         <artifact name="netty-codec-compression-4.2.2.Final.jar">
+            <sha512 value="d0af0e31a75eb5fa6655d2da16b82f29987d10020a82e46a345547cef8de2e208d625ff84a3f905d7293f9c67ee579607880eff674dfbc7764116e55a5f383c5" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-codec-compression-4.2.2.Final.pom">
+            <sha512 value="43bf28f63d4fecca15d4e437987018b64be3c31a3deb02164e28c7ac595c49068bb607d18bb9d07a5ab52b68a992f51cfb6a1c1140ed7abdf1dafa3ab69a35ba" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-codec-http" version="4.2.2.Final">
+         <artifact name="netty-codec-http-4.2.2.Final.jar">
+            <sha512 value="cbd9c8a6d645e14edd328c98f849997bb8b1c3922e6aa9f23ac33b9a8dcc358338490676664cb05219b3174c8bc1a47d50cb2bf9cb86dd62a1809f75aff330ac" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-codec-http-4.2.2.Final.pom">
+            <sha512 value="a0c2f0313da9d7fc77c20837962186cbe49799d38b7c7e3dc31a888efdb6ff68b95d047f6c0fedd08371e607e078dd942e7850a6bd491fa240b668f8f666d271" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-codec-http2" version="4.2.2.Final">
+         <artifact name="netty-codec-http2-4.2.2.Final.jar">
+            <sha512 value="e0093fa40bc1b47cc6e6719d520c8da7b7be3491e891d213fb6f7fa69216042fca837a9325a0a55dbafe39b3b8d0ad59f658cabc55d7d0bea008d9bb424f16ca" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-codec-http2-4.2.2.Final.pom">
+            <sha512 value="1d83c84281304d4b3b4027f6a484051f4ff11b51d3e40da8d2d6ee5593b9afed6f6f3a973e6ec585bb6786451979a0d4cc135b8d19f41f23ef99da35fc9c2ab8" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-common" version="4.2.2.Final">
+         <artifact name="netty-common-4.2.2.Final.jar">
+            <sha512 value="b008dd9a8eb5ca302af4a21ca3347acfa3da200d718d56a5398310d1baeb592de0201053fc2e4a3e7a0ff7419a771415933b3d2d3dae1385605b62bb136a036a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-common-4.2.2.Final.pom">
+            <sha512 value="7f96ba34a28b66b3f842310bf28af83099d4fc9035881380fa29f5851674d9a6a762925d3b931f569cf9f227f38fa85288e8e8530ec5df974dff5f2eab1c6012" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-handler" version="4.2.2.Final">
+         <artifact name="netty-handler-4.2.2.Final.jar">
+            <sha512 value="c0ae75a64f7f332d5236ffc06d4acd2c5b0d16d33188ef31997d8a9bebb0a7e221a192e6429f08e500da4d2755e6f7ada2b81bbd2fe60758cb896d4143426653" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-handler-4.2.2.Final.pom">
+            <sha512 value="b36f94d418066e231f5bb32e26d32bd69102771cbe80a6ae2d9df698ee3f603a04bdcf51c9aaf11e7e8f2e9edae524fa48d6689fe76ae9c75ca296eeb299ba8b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-parent" version="4.2.2.Final">
+         <artifact name="netty-parent-4.2.2.Final.pom">
+            <sha512 value="db859ffbdbca3d6ebd52d28a486715e94324dac8abe60628bfa433fd14fd45628c574633185ffd4f480db39f1a43eb641f0e0ba73701f0f6e2ea75a325aa5e38" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-resolver" version="4.2.2.Final">
+         <artifact name="netty-resolver-4.2.2.Final.jar">
+            <sha512 value="2fc46e4f717ea75511efae241c00b1fb7ea5d49df55f979e038df7b4c9220264ac9be47f97b587b72a79cc35cec13d130d4ada841b5ae1ef8f6b1c9cbcd818d3" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-resolver-4.2.2.Final.pom">
+            <sha512 value="0f6a87c4addeb99d6ba8d016de55eab7567a3a4b24ab1b10de8321e0a38a2455c3d98d4f9702df2db22c0f13b508a80655e0f9e7f5dc1a2f012059618d392418" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-transport" version="4.2.2.Final">
+         <artifact name="netty-transport-4.2.2.Final.jar">
+            <sha512 value="9e108e7b6dde9c6879b91852f55184f6c3d2d31894a67fae6f6a69b31621af78968d1450b546f5f5896788ba939d6bda4e8dca2b1d841af8938ae715b5efe55e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-transport-4.2.2.Final.pom">
+            <sha512 value="b6bc1ccd236893e23571c586399bb962440a6d9ed084a2bc1739411c9b9ad113819e864ae8e8c284acabc90a3bc096ccfbb7579ea16076784bb3407397719607" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-transport-classes-epoll" version="4.2.2.Final">
+         <artifact name="netty-transport-classes-epoll-4.2.2.Final.jar">
+            <sha512 value="27141460168e160155ec5218db99b762af09a82e4e1b5dd88ac5cd2885237e80b0c124d8982be6505311e36a4608e3e66d02faf1c22a519954144e9f6642f5fc" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-transport-classes-epoll-4.2.2.Final.pom">
+            <sha512 value="034a261b4be71e30425355544f8296c6dd8eff867803a0cb5829d16b41444d000be497876e8e5b227706118c45843d543e5031176275492ab78670c2c62f1c97" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-transport-classes-kqueue" version="4.2.2.Final">
+         <artifact name="netty-transport-classes-kqueue-4.2.2.Final.jar">
+            <sha512 value="e9b0ee230b086401aed038ccb24849507842bf8ca170339561669e2a0d55d634a71c2d97c58aaa1f633df7597e279103836f82dece96a3389db7a87bd3792313" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-transport-classes-kqueue-4.2.2.Final.pom">
+            <sha512 value="7647929deee2a06eae702682698307bbfc9316c8b0f3211ee8f3c276934041f5f80ffdc856d1ce45d4525cabe4b795075a14c2746a9a54b02750a25315505d86" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-transport-native-epoll" version="4.2.2.Final">
+         <artifact name="netty-transport-native-epoll-4.2.2.Final.jar">
+            <sha512 value="4fb0516ab4850d070904924a99db740b741182ff626d497b3ac20678a59331e8e40b4934babf82cc53669db72bf5877a0750823463a1bd6e6dc70533c3ea0ab5" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-transport-native-epoll-4.2.2.Final.pom">
+            <sha512 value="8a5c221e5af11c109bf4617140f226f6d57ae285ee52305d9e2e96f708fa778fd5d5969c703b28b64716cf5cd1e3bbcbeef55c1d624d41a45e7e25e91789383f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-transport-native-kqueue" version="4.2.2.Final">
+         <artifact name="netty-transport-native-kqueue-4.2.2.Final.jar">
+            <sha512 value="7fb99dc0f2739f7ead0ba6ca4fc72192eed13e0181afe9167f6b6980e8c792021209a70558448b416cdc286d84f460ca946080aa8eab87b0ac5274c460e210a9" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-transport-native-kqueue-4.2.2.Final.pom">
+            <sha512 value="cfb6a736676670c1c2d0587467625421d748c51ef9a60e3e6219a67c6daab238e287adbc45292f9ffe0ac63a34da55e292fc2dca0d0cdaee79117e3ec914ab5e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.netty" name="netty-transport-native-unix-common" version="4.2.2.Final">
+         <artifact name="netty-transport-native-unix-common-4.2.2.Final.jar">
+            <sha512 value="02740b36a3bd0c2979da5101f0121da93b807b6720c4fdda6885016e0abdf9bea514cee3239e268c6e0eecd92b07ff6cca162038530e6223f11c8a1e05bcecba" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="netty-transport-native-unix-common-4.2.2.Final.pom">
+            <sha512 value="c81febc68ebd071977ebe9a8a16a056f5d48d19ccee08eb1b3bb68cade283a72e582584703b2a0a5bdb05942dc97324d218cda95e24199165df880ad5a5c5733" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-api" version="1.42.1">
+         <artifact name="opentelemetry-api-1.42.1.module">
+            <sha512 value="ff8f1245c55a6bbfe5eb42605dbf2ae48aa362645ca7876ba346b82bb813666c0fc92c4a9190359c24e3e5c24888307c7147cf440af1af53aec00ada33f59b7f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-api" version="1.52.0">
+         <artifact name="opentelemetry-api-1.52.0.jar">
+            <sha512 value="25482bd9cf891ee44444d5b7066e079c2a41538b3a916c6bc4c7a22f3a4adedb8bb0ac10ca52148f93a59bed7df752ce9d63fd2dd01be5aa0ad1b3569edb4d34" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-api-1.52.0.module">
+            <sha512 value="12542bbf2f6f7bbef4bc9db9766c3cc2bda191983efd9bfb4208c77d17f83aac023ae884d9ee1d2db44c1e1be7c7206bdac67430e25d878eb779e75d35675310" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-api-incubator" version="1.52.0-alpha">
+         <artifact name="opentelemetry-api-incubator-1.52.0-alpha.jar">
+            <sha512 value="a96f802f84f096024af56e7dfac54b0e708d8faff39ddba06ed1f5f5e6124243a4148b7c70556b5c4c7a1a59bf36478392a6952fe3c63ba48ef8a78717d2918f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-api-incubator-1.52.0-alpha.module">
+            <sha512 value="0f08181fd8ab7fcee45ea450d8868185953e66f66f96cc6202dbf90f17816a65b982715fc780d82938795b9b21c49314d74054e3a64da5ec4d1f2a774a978661" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-bom" version="1.47.0">
+         <artifact name="opentelemetry-bom-1.47.0.pom">
+            <sha512 value="52c19996fc539a1bf3b84f31cd0128f747ba73110660cf7ef4cf36804dbc1a0e7997d24773f755e19780c1188303a064e52b61d816d3985fc874fb875dcebb52" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-bom" version="1.52.0">
+         <artifact name="opentelemetry-bom-1.52.0.module">
+            <sha512 value="a6f2e422a8d781ec81c34e9d2e657cddff1ac5e1987705c01fcc831c14cb429726a2d9d074787070b085c7b590fe080ed6e34c7a6e46a2376d4029eb648903d7" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-common" version="1.52.0">
+         <artifact name="opentelemetry-common-1.52.0.jar">
+            <sha512 value="a956df257ca854be767b31551a01125a43a2b38ba4307ba8784a6e655df21eb4d94d366f32961cffee5403640a86d7bb3dfd521dbf36d66a04cf3e906d84b9f3" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-common-1.52.0.module">
+            <sha512 value="84ebd36350994e5964a764c15d1e7053b4fd1ff8e0e668b2093bf0f1dbf485ee989fb50969639ee5f043cf08cb08e64da273db2eee8dab352b722d7e8fb7a402" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-context" version="1.42.1">
+         <artifact name="opentelemetry-context-1.42.1.module">
+            <sha512 value="74d4fe2f7a8a9f98ec3a85d4a693555d3733d0221b03aa1a51292f38510bdcff7ea949433d99d06455cfd8befac544c53cc4914b2812df83bb15b9d8f0959b7f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-context" version="1.52.0">
+         <artifact name="opentelemetry-context-1.52.0.jar">
+            <sha512 value="e3bb9ea92d329019a6187fe3a02f84027482e8a7dcbebe0f58621bfaa91ea1fee32066716ecce60045213f090c3808cac6ed1bfff66051eb95e0129c9bf01e27" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-context-1.52.0.module">
+            <sha512 value="d9c480cfbf440acd28f901fe68fa40aa228a9fd26f18b735c783bcb95dbe084fcfcc306fde669de75e5c4e0a600986f79751ceea8b9b7747d0df144e386d666d" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-exporter-common" version="1.52.0">
+         <artifact name="opentelemetry-exporter-common-1.52.0.jar">
+            <sha512 value="875ea57e4548b2ac92ce517abf12661eb0e5b49794be26f2a0f5399d0208dddf91d47e64e876b6b36fcc0cd80051e8ffb404e530660e9b42ab88b02e29c10be3" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-exporter-common-1.52.0.module">
+            <sha512 value="eb8b683812067237531c5321175499ddedf8c06cb3be908ee3b855abe0403b71812f4c4bad5f1b034911591b010180ba4c6c0feacb7c189f084354ae3d68544a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-exporter-otlp" version="1.52.0">
+         <artifact name="opentelemetry-exporter-otlp-1.52.0.jar">
+            <sha512 value="0384bfd40bb8d347659eefdf6084fa642093c390f68e156437d69970a9738ee831155161df2f037b05d40cac4034a39b9e2cf879533215880a0dd4f7f9bcb0db" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-exporter-otlp-1.52.0.module">
+            <sha512 value="372bca323b2ac5ecd080623e1075c1aad92978ee6154d86fe54d326b846a40b65995991c8bf78fe92ce29a21de1634a49d0593cc218b891794b7be4b57df39ac" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-exporter-otlp-common" version="1.52.0">
+         <artifact name="opentelemetry-exporter-otlp-common-1.52.0.jar">
+            <sha512 value="428837110be50c522d12b85488cad4f464b9db27bcd01db98634534ae05e7895f4054e07088e7d7ccd8edd1cc9c217ead992bf0a7759ae148c8ec3b678ead3fb" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-exporter-otlp-common-1.52.0.module">
+            <sha512 value="93d935a5cbbcdd821a60073fc188c38303948ce0d85f8cb99d7b9ed3a06fa07298e350013cb9daa3aee0730c98edcd1c32cd37955c851d726fb9e39d913f0239" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-exporter-sender-okhttp" version="1.52.0">
+         <artifact name="opentelemetry-exporter-sender-okhttp-1.52.0.jar">
+            <sha512 value="3107f9d014c5d5e05ac88caf2802e421487c3d5ba79669f1c8b7b0066e5d3d48fc7dacd91b894f4c15647840f8afe93c21a35c9370aee3b3b3785d8469078c01" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-exporter-sender-okhttp-1.52.0.module">
+            <sha512 value="6f5c14c4e278fb9a1424bd470d82d2f6e5a84f0a9092b16861f13bbc1678ae2c11143468a862a08f99bebf268b7d0d130768f2fba3304dc50f8a8c3a3d46c098" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-extension-incubator" version="1.35.0-alpha">
+         <artifact name="opentelemetry-extension-incubator-1.35.0-alpha.jar">
+            <sha512 value="b61451eca738bb39b000abe018c91ac750e191d1995faf320204a8496495724981039c9bae87ac1569a98a36fa48bd405f2f36b7bc1dcaa7808c387c1dd05175" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-extension-incubator-1.35.0-alpha.module">
+            <sha512 value="c319b5ee0115df1f05b785bf70a74678ab5693e06ca65b72e1127f9f27bd72e5cfcb9e6e8af74fb9babeb230df76e79f4252b39fffffc897d6a86bf2a2e50b9d" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-extension-kotlin" version="1.52.0">
+         <artifact name="opentelemetry-extension-kotlin-1.52.0.jar">
+            <sha512 value="000fbe9dbfc10c7f3a6fe0450f9b73402750e794bea674fab6a809cfbc1bb27c11e506baf454ca1d0c15ab19d8f1f424d1b368243bff03a7e471ed64555aabf2" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-extension-kotlin-1.52.0.module">
+            <sha512 value="fbce9ecc28d44bde1a306a22b5150fa1c5613a1f811ed38121ada2ff117b259c893a095c5c7256993a52bb2952042e1aadfde33839b367b048f0fb4d71944901" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-sdk" version="1.52.0">
+         <artifact name="opentelemetry-sdk-1.52.0.jar">
+            <sha512 value="72da616621adbdeaffbf060962638d4c7dbdcf0d855acf77372ff2de8df18dc478b6c356fed23f327827c49d7e9a41c29031330b1872927427eff5ca90894576" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-sdk-1.52.0.module">
+            <sha512 value="b80c9b84d46f1a07cb4a350a7231d70de85296c2dffeec0bc5ad48c7da6ec063eb82dc4dfc2620c14444dab15972c874fa773dd5ec1396475fe120b0cebf01d1" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-sdk-common" version="1.52.0">
+         <artifact name="opentelemetry-sdk-common-1.52.0.jar">
+            <sha512 value="097fb1faa4f632a65fee151c89717ff659fad7b888bc52dd3683fe327a105b062830aeacc51c11a25249fa892c498fe0d330b5ed52c06222a8db8c07fda45d78" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-sdk-common-1.52.0.module">
+            <sha512 value="36180f937896265292c800a09b928089724faae559d1cbd8415213153c79c96ea646e05a92d53b15ed2d828c14188dee3eba5baa95962ad1d47a81f6b113d297" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-sdk-extension-autoconfigure" version="1.52.0">
+         <artifact name="opentelemetry-sdk-extension-autoconfigure-1.52.0.jar">
+            <sha512 value="a9afeca0dd69f07658cf4536e251389c84f3051104b14bda79be7330bc649f8ef5ba10b4b85c6543d5eff6cd5cc52c3d82831ef25984304503ae8bfb093887e1" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-sdk-extension-autoconfigure-1.52.0.module">
+            <sha512 value="59460cdc74cc4b3e5b66f5ecfbfa95f2496ade48e3900e498c4dde8451cb9b073cc78e04ac7be140487fede305ed37738a202095f963df196eebe98bd0bcb326" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-sdk-extension-autoconfigure-spi" version="1.52.0">
+         <artifact name="opentelemetry-sdk-extension-autoconfigure-spi-1.52.0.jar">
+            <sha512 value="16d642681270a2beb2a3e4cb37f3b0c381e5211ac06bf605c3042e1c0c5f511abefd6721c98e58e0f3e112d383eb54009d140d5247554ee3a37862585df146f0" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-sdk-extension-autoconfigure-spi-1.52.0.module">
+            <sha512 value="96c5c1a2e7c7b8437821d667a8dc2226a8070fe614fec83d8758496632f065ca4f866badd1be4189be7537c189dae76558de215adfff152fb01dc03afb907443" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-sdk-logs" version="1.52.0">
+         <artifact name="opentelemetry-sdk-logs-1.52.0.jar">
+            <sha512 value="bd2af32a6981d5d7cce2f1f06f71d3a0043a1d6816aea8c053d5ed046d28ed63ed84b33da34a91bed72f6fa08998e277ec11d79c93ba1bc92873992e4c23901c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-sdk-logs-1.52.0.module">
+            <sha512 value="fc22fcfaee3bf7729814c984a90c0a3d0a0f974027ab357cf1595e20bd70e04e7a57a1e629da6946127eecabc64b212a537ea443f883140de23dca8067b994c2" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-sdk-metrics" version="1.52.0">
+         <artifact name="opentelemetry-sdk-metrics-1.52.0.jar">
+            <sha512 value="bb7cd23fefe4f5de90b6148d76c9e859d120ac8b5b033690c77a39576605732a8c3d1b58b1545d872b3ff5e3ab52772c8c02ab3fd8bc06d690138defb2841f98" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-sdk-metrics-1.52.0.module">
+            <sha512 value="19c1a0eb8acd327339a30ac469cc81cc5b24a493fe7e791e14691de15c132b799ecad127e42ae33b69e70f6bbe5890b71f387d4f718d99e36f8dcc370efcf2a1" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry" name="opentelemetry-sdk-trace" version="1.52.0">
+         <artifact name="opentelemetry-sdk-trace-1.52.0.jar">
+            <sha512 value="05835374f919a73308f46b7c008689f7aa7c9465d8f524ef289e6c081de709f7dce5b17712410003dd836ff59a9f00b4873300cfaf5b89fcf38be2ff2e05fe2e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-sdk-trace-1.52.0.module">
+            <sha512 value="842bdb30b7a34ff0367d8ad18dc8e3545fe3f0a193a7e75d90143575cf62c90ebbf78d44cc82fc26559c9bbe7d72d443c891b90d2081f892c4b0198a3e8180b7" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.contrib" name="opentelemetry-gcp-auth-extension" version="1.48.0-alpha">
+         <artifact name="opentelemetry-gcp-auth-extension-1.48.0-alpha.jar">
+            <sha512 value="99763eda48bcdd02447416ca644139a4b22ccebec06f8806f5677b2a518e8aa54e7575c89ea08abf2d90b22f0eb18ffd44a9f1badd5ab7d30515884f2ffa0910" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-gcp-auth-extension-1.48.0-alpha.module">
+            <sha512 value="5132bc43107b82224854aff73930fbafc861a515a249f5d722f8ae64b2cb80f090a9422c40c804ac7e2bb327104f45c63f57092cbe989eed7fc078852d92a9ba" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.contrib" name="opentelemetry-gcp-resources" version="1.48.0-alpha">
+         <artifact name="opentelemetry-gcp-resources-1.48.0-alpha.jar">
+            <sha512 value="da6a6f6b337d61758a0d67aa9b4c7b00e8bd765f2341e2b5c9b96befd08dd4b90a8d4b85f466c9e222467cf234f90a95c7459410e766d99dd94190f41774c69e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-gcp-resources-1.48.0-alpha.module">
+            <sha512 value="3de76ceebe9fceb07e1bc671b6ddb02f32c0141a978a5a0b31014d4c1f66cf9d2679f69f36d75475d1e1cbc1b6b596e895548fef040cfc6d4595a907dfb78b1e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.instrumentation" name="opentelemetry-grpc-1.6" version="2.1.0-alpha">
+         <artifact name="opentelemetry-grpc-1.6-2.1.0-alpha.jar">
+            <sha512 value="29cb8462346caeeab293ca973d899c5ef4af3b4698f4ec97fc4532d698792ddc4a33cf1b4131d02842055a8ad9b4aaaf591518478c4371a0739b5b116a696d64" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-grpc-1.6-2.1.0-alpha.module">
+            <sha512 value="922b29a303ce1072e6e73f4b286c7c0e60227ca94f7ac74246ecbc8dc2e64a4eb702d41236b35340455a8fd6ff7cbf2d6d8e6a2c7c3f641e8fa162981ac93593" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.instrumentation" name="opentelemetry-instrumentation-annotations" version="2.18.1">
+         <artifact name="opentelemetry-instrumentation-annotations-2.18.1.jar">
+            <sha512 value="5947fd0ee202c634ea0dbe3c8e93851018c17f18178b481e43f668e8a82bf7b7d7ba16f94d120958a022ad40a7ee4988c6f7f1d2c832344ac9dd15b79b1badcd" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-instrumentation-annotations-2.18.1.module">
+            <sha512 value="be2cf516ae47e038cad8e5358e7c4df898eafacb08f044995bac563f36e61cac164ff3349b878bbbb08cf9b5296437db7a8e556755530f068ccede8f8abb1626" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.instrumentation" name="opentelemetry-instrumentation-api" version="2.18.1">
+         <artifact name="opentelemetry-instrumentation-api-2.18.1.jar">
+            <sha512 value="2d1e0ea643547deafd8f32f7e24cf69b677b93c7801eecadeb2012246ccca6579bb7598df70fd31f33cb087f4e16f65a873589a82564a4030da3d1dfcd4ff252" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-instrumentation-api-2.18.1.module">
+            <sha512 value="b20aed425adb6c73a5f28eb4c224ce813d862e34efbdc3dce08c2e12a118590f5f71b1c4ae00cb77382806465f44e14cc49361e6460be8a17f467bc5b647bb1b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.instrumentation" name="opentelemetry-instrumentation-api-incubator" version="2.1.0-alpha">
+         <artifact name="opentelemetry-instrumentation-api-incubator-2.1.0-alpha.module">
+            <sha512 value="c435be39361d7110c433122c86b19e6eedb16c52d0a019d860ec69cba7148b0ff1c003458a7a4a56582899eb6728a827cdc1d7058a79dc6dbb909591bf62c3d0" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.instrumentation" name="opentelemetry-instrumentation-api-incubator" version="2.18.1-alpha">
+         <artifact name="opentelemetry-instrumentation-api-incubator-2.18.1-alpha.jar">
+            <sha512 value="b5f0912e9fe04113a0831ecee03d0d947ef4e86dd8d1d7df16c3cd03ec03114420404570fb6a5c78911ffea64fc07fe5329d8aea9dd29eae61c03a7ec9830b89" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-instrumentation-api-incubator-2.18.1-alpha.module">
+            <sha512 value="8ec93faff66f320e04f549bdb02c2f5f5788b3e62d132e8d17563c11d8a6bde1b27748a3d6880b73adf049d11659237f1da2c0d6d5c3db1f36146989c272ced2" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.instrumentation" name="opentelemetry-instrumentation-bom" version="2.18.1">
+         <artifact name="opentelemetry-instrumentation-bom-2.18.1.module">
+            <sha512 value="f17a7a95b131c369d33407bf6d97044e09432dc5ae21905df3ad6d5f9804b6d21a80d2a5c72af1f4896156c32ca8b3360797897e35d9c3f270af06cb82986038" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.instrumentation" name="opentelemetry-ktor-2-common" version="2.18.1-alpha">
+         <artifact name="opentelemetry-ktor-2-common-2.18.1-alpha.jar">
+            <sha512 value="c648ceacbe08150222b8bf8313722cf5b7220ee6552a52bd23d0b48c2c5250efa1438259f10c8a32635da0dd305021ad004786f20ea153b853e67f1657efbe12" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-ktor-2-common-2.18.1-alpha.module">
+            <sha512 value="04e3ecf7eb8a99e423c680978344ca32416aba37b29c8d07e29b647a35f8e4f58b5f6392282cf744cbb71d54dffc27ddc0390003f2c4d8dd58a6a87745788a55" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.instrumentation" name="opentelemetry-ktor-3.0" version="2.18.1-alpha">
+         <artifact name="opentelemetry-ktor-3.0-2.18.1-alpha.jar">
+            <sha512 value="89ed37c2aa46e306bf3d443e925d6eacf0e4206efc3a7eae73b0ce076901d9248b9eb433983476e5d60eb73b8f007d90970078acb27da5964bcc7ed1ddcd255a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-ktor-3.0-2.18.1-alpha.module">
+            <sha512 value="3b05551850bcfc467432b04506999d2e7d27047c794026d83a157527dc2b2846a07e75cac3521216b6b2c1451442e439f455a896360bd2d69dace86fb712ca84" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.instrumentation" name="opentelemetry-ktor-common" version="2.18.1-alpha">
+         <artifact name="opentelemetry-ktor-common-2.18.1-alpha.jar">
+            <sha512 value="7aadbd82aa8869c59447c76c9f93991a4c921e8e299bc2d86ffe18b12f20d4ee9623782cb613dd972d0ec86a109cd37ad12958c1f5e324eb31a4b98910ea7c27" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-ktor-common-2.18.1-alpha.module">
+            <sha512 value="1d2f871e4f3d3f6a504fa7f693ba9baa22da9496f76ec396ae029a4e02fabf1d0691e5f5fd847184387ccdd329a49055781528f72196d412a0de45a56cc9673b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="io.opentelemetry.semconv" name="opentelemetry-semconv" version="1.34.0">
+         <artifact name="opentelemetry-semconv-1.34.0.jar">
+            <sha512 value="1546989f130822451f6cac723db56694c60f5245349f1208d774b24d93591999903247fdbfe66b84878c4d46970b4964aa932e0a280505e0bf1206b0959c8ec0" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="opentelemetry-semconv-1.34.0.module">
+            <sha512 value="aca01209f5993906e91bf32d9af5227cdd4c3bec13705e166fe39083feaa80b89730bc16a5fab0c5f20ffce5740443b01a6e719ec0a442930e1686140b7ae9bf" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="javax.annotation" name="javax.annotation-api" version="1.3.2">
+         <artifact name="javax.annotation-api-1.3.2.jar">
+            <sha512 value="679cf44c3b9d635b43ed122a555d570292c3f0937c33871c40438a1a53e2058c80578694ec9466eac9e280e19bfb7a95b261594cc4c1161c85dc97df6235e553" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="javax.annotation-api-1.3.2.pom">
+            <sha512 value="b97c6fb3b5c6f9ba5c6ec2aa35713816fca94927c1393d2eaa04cac6a6c44c464baeb34d62d9af33268a7eaa817318df1b2116641ff7e8ade84c70b358e60bac" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="net.bytebuddy" name="byte-buddy" version="1.10.9">
+         <artifact name="byte-buddy-1.10.9.jar">
+            <sha512 value="0aaba0ad02ba30c840a403ce55cf76e62ebaddeb0dc50315b1ebe9706ae2b16ed149df6a1709a3347dfa328261fbc499654b1290d636da1be4969a9be6fb7c04" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="byte-buddy-1.10.9.pom">
+            <sha512 value="2da1d8fbb25153454ac3e74683f81b0931dd3473a0ed45e05644eefa44d0871ce3d089b422c2dd0432462f8924861f07d56b0c89292ace08d39ea723642a1a9c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="net.bytebuddy" name="byte-buddy-agent" version="1.10.9">
+         <artifact name="byte-buddy-agent-1.10.9.jar">
+            <sha512 value="4856e48aee2b80684d12f35406e1bb0e71a80393bea13d965cbf19ffc19f314c5ac4a2682676b43454937c4484d69b9d84e8f15e580d5170e0edc3b2fb6830e7" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="byte-buddy-agent-1.10.9.pom">
+            <sha512 value="ab9bcdcc29e2b6aee38a4f4783b88f23485c13eb565831fe832c0d9f4547a60ac1467d51ca3260c80861b2344d9ccfd20d7c75d0a64dc7fee3f586ea2f0dac6a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="net.bytebuddy" name="byte-buddy-parent" version="1.10.9">
+         <artifact name="byte-buddy-parent-1.10.9.pom">
+            <sha512 value="4fd20dd03eb5098985243d9307d98ceb740ff9367025d3d952b7928f310d21da79cb1ed420484028f486b90367715d4500dab8c209fcfa1a238466bd136cee30" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="net.java" name="jvnet-parent" version="3">
+         <artifact name="jvnet-parent-3.pom">
+            <pgp value="E82D2EAF2E83830CE1F7F6BE571A5291E827E1C7"/>
+            <sha512 value="93b78fac40ca4de12d5a2fb4e339ba9e3c40a25ddcfe58272dc2a8e4b36d2c7cc51075aa2a25f0b3c1d4bd3142551e77847d1bd5599c60f5d50d548b72b74bfa" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache" name="apache" version="13">
+         <artifact name="apache-13.pom">
+            <pgp value="F254B35617DC255D9344BCFA873A8E86B4372146"/>
+         </artifact>
+      </component>
+      <component group="org.apache" name="apache" version="18">
+         <artifact name="apache-18.pom">
+            <pgp value="190D5A957FF22273E601F7A7C92C5FEC70161C62"/>
+            <sha512 value="9ef6f99b30fe2603ad8f2c88116072de36bd2dc99590fd9e7eecf153dbf50cbd766694d861e666138d2a26137be69fe98cc38a491f6a2a68e8d421d656731ed1" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache" name="apache" version="21">
+         <artifact name="apache-21.pom">
+            <pgp value="FA77DCFEF2EE6EB2DEBEDD2C012579464D01C06A"/>
+         </artifact>
+      </component>
+      <component group="org.apache" name="apache" version="31">
+         <artifact name="apache-31.pom">
+            <sha512 value="12563230cf16a646d4a20453e6ae98e9f8eb5abf89502620314c7040f2c006cd0795c7615e02a0f4c6e1d87328b156fa89b83a9990cfcfb2a0e8fc7b7b9f97f9" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache" name="apache" version="33">
+         <artifact name="apache-33.pom">
+            <sha512 value="17ccc60c4670ded2b9b0986c8549c7f7789afb4a194c81d16c9c8de10b514396f241c8b1622150b38a8d3a889f6733af66554685b7b801647b5ddfaccef5537e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache" name="apache" version="35">
+         <artifact name="apache-35.pom">
+            <sha512 value="d599ebf085e96ab2c0fa925fec99fc046f1763743a0445e5a4bf255d8259d44aec7bd175881accf1c6562e13efc26b13a54de01c49b46032464366d41869d7e8" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache.commons" name="commons-compress" version="1.26.0">
+         <artifact name="commons-compress-1.26.0.jar">
+            <sha512 value="acbeaa2909b809cd561e7156df18340d96abacb179325622d73bdd6b82cb9b387d6fcb1a44d8195aad4e786da299289e17598a1d337b7c7d1c0bc610cc128714" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="commons-compress-1.26.0.pom">
+            <sha512 value="af3ee656faf4ed56a16d60e9f92a9dc5ec481835af0cf596981215e879f68bde6b9357b8f31d7be28cb54b738334c08722a60c1abd1baf0bfc041fcd8c4a6660" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache.commons" name="commons-lang3" version="3.18.0">
+         <artifact name="commons-lang3-3.18.0.jar">
+            <sha512 value="c2c9d497fc1be411050f4011b2407764b78aa098eb42925af8a197eabdbc25b507f09fb898805e9bed4815f35236a508ee5b096e36f363df4d407232d50fc832" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="commons-lang3-3.18.0.pom">
+            <sha512 value="8ea9b9e8605b841f95e856918cd21913e9955e42f5c4c487ba9580252a15163ed910a0aed39720394f2a80813015af99849aa2768254531c1cf75fab22036b00" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache.commons" name="commons-parent" version="34">
+         <artifact name="commons-parent-34.pom">
+            <pgp value="D6F1BC78607808EC8E9F69437A8860944FAD5F62"/>
+         </artifact>
+      </component>
+      <component group="org.apache.commons" name="commons-parent" version="42">
+         <artifact name="commons-parent-42.pom">
+            <pgp value="CE8075A251547BEE249BC151A2115AE15F6B8B72"/>
+         </artifact>
+      </component>
+      <component group="org.apache.commons" name="commons-parent" version="66">
+         <artifact name="commons-parent-66.pom">
+            <sha512 value="8369c95b56a5ba1bfa05384c01b8ef72f81e5390fb96745bd70c241d863a7d26595752b08daaa61f0248f932b91496899d4449dda0e02e539288e81caaef90c7" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache.commons" name="commons-parent" version="79">
+         <artifact name="commons-parent-79.pom">
+            <sha512 value="bba843a3588a6fe7490b5b692caa82e7f617724e1d51e8bc498600b82c98dd6028383f81bd6981fbb4a69eab359b94e48fadd7ceaebe7402397e2223870b75e6" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache.commons" name="commons-parent" version="81">
+         <artifact name="commons-parent-81.pom">
+            <sha512 value="ffd6abb50fe660ca0fd5cba86c1615430fc45716e78e2d18aa1b0a46a978e8053dbbd7e3fa36c8bfe71898c47106fbf28738d30734409cfd823ba3eb30dd21a8" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache.commons" name="commons-parent" version="85">
+         <artifact name="commons-parent-85.pom">
+            <sha512 value="f32482d030a5dbad958d91f7137f9a4cd416a1f60b4701000574222f71e3403363f7863b6c32e19e1d1fc4f752128a6b745888172c188471bc096dc81cd7a337" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.apache.groovy" name="groovy-bom" version="4.0.22">
+         <artifact name="groovy-bom-4.0.22.pom">
+            <pgp value="34441E504A937F43EB0DAEF96A65176A0FB1CD0B"/>
+            <sha512 value="9b0213d96a2d5b13f21313cf7233131563832985ba99bc5b23eaa57562eb00ed5798c7b8ed0361d95e723605276a9e744e5b4d99c93eb5415559ca6240f054dd" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.checkerframework" name="checker-qual" version="3.33.0">
+         <artifact name="checker-qual-3.33.0.jar">
+            <sha512 value="049c446677b7b386f3fb501bf65e032bdf2b1b29a3f545848035fff2b683cd275380cf302e30eea641af7f0801f779bcda3d82a71d928e4176f564f796640a64" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="checker-qual-3.33.0.module">
+            <sha512 value="7feeb5e0c7b5324955a01a3ad65e16b47e6d36117c39e075eb9dcd9a4766a3f736692898f56bfba0feba94a6f860d4d3c6f0644ee019cb2b6a2ce9cb01085666" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.checkerframework" name="checker-qual" version="3.49.0">
+         <artifact name="checker-qual-3.49.0.jar">
+            <sha512 value="60e3f521c9fccfae07a03850eaf3c044311c27fbdef973db0551eeba7992f34e93ad81ef45fe84df81217498232999a9766d77f58eb33ba2a855c7978a78ad07" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="checker-qual-3.49.0.module">
+            <sha512 value="e5fc91a865a5ab405b50ce5e1f4b4e88d6f75b2e51207b4e9a3f49d0a89029ab2ad366fab88d4f7761d019984458a1b01a4f36b5498159bc102df3fefa6f8c09" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.codehaus.mojo" name="mojo-parent" version="84">
+         <artifact name="mojo-parent-84.pom">
+            <sha512 value="2cb800cf9930fa4229facd2b0eb1d99bc04f02b302acdaa240061cb7266d5b0dfe84782e5889e8c7d15ace2328f0f6c2278e9ff9751ef41ded2b5c660e52d0c9" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.codehaus.plexus" name="plexus" version="20">
+         <artifact name="plexus-20.pom">
+            <sha512 value="8add248b20d0b702da654e5cc4a9fa830ff832d45289e5eb3d87941c87e65f02830858028ad4e95d281f505f21afa9f5e80601023b21956d1157196e0f397aa4" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.conscrypt" name="conscrypt-openjdk-uber" version="2.5.2">
+         <artifact name="conscrypt-openjdk-uber-2.5.2.jar">
+            <sha512 value="dd5800d82779a1e5d318845ef785f2ab7fac022106c07b841405ca954abdcb507dfc022747832e1cc8e38cdd4475775a953c2bd05010e465b61a7cd6b4ffbd18" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="conscrypt-openjdk-uber-2.5.2.pom">
+            <sha512 value="ecb3fbadb7b21c317bbf84a49fca1a096dc20053019cea5cc94bd59f1de242263d7287f2702f3184fc871bb847cac0898e21725cca37c2e8a0eec840deb39cd8" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.eclipse.ee4j" name="project" version="1.0.7">
+         <artifact name="project-1.0.7.pom">
+            <pgp value="AA70C7C433D501636392EC02153E7A3C2B4E5118"/>
+            <sha512 value="b33f5cf3404c4f9f5cbb69a43dcde2d6f06d6cb3d00444dbce879a1bf14f0be4e3093f21be1aa85104cf45ae86ba69374949e35ed567f82f6ede5812140628de" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.eclipse.jetty" name="jetty-parent" version="21">
+         <artifact name="jetty-parent-21.pom">
+            <sha256 value="7972e9ec6f3852a8ee1ee5d4d10dcc9dcd6077b125f935aa96b367a6c82337f5" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+            <sha512 value="f9738f04322e10b0f338ffcba5a0b3f1a11191c1753eb6a1384ac71c966f1a462fd47935aa2d79f912c25b6e5743d9ca429143846429f0e707bfd54f830357a0" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.fusesource" name="fusesource-pom" version="1.12">
+         <artifact name="fusesource-pom-1.12.pom">
+            <sha256 value="c40d960daadcef7b01c1b1c6657afbac4fffb5e53168f8fcb0b28b84e6fdcca1" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="1378fc44bd73525218e4e435b638d77de1c41185c1813220a024a564d63a1bdcb9fb20fb460937cd7e26b302d5ed0024835c8337b807f1e2f8c4cd63a16db794" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+      </component>
+      <component group="org.jdom" name="jdom2" version="2.0.6.1">
+         <artifact name="jdom2-2.0.6.1.jar">
+            <sha512 value="81642db76358fbf131dfe9c2f1d9c280fc23b6bfde6a16a2d36dacc490a1a2af4e0fb4abb5cd78005718bb1d158a42fd6834cd2bfe616ec59625df01951f2478" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="jdom2-2.0.6.1.pom">
+            <sha512 value="b20863c99ff181eb407352bcfd2adfd9b23ca01e7898bd0fdfe6dd345a2a96f0a20ee0bdb61b06f1b8dd298c3e59d78e501abe2828eb8db5ddea38e314238c5f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.intellij.deps" name="trove4j" version="1.0.20200330">
+         <artifact name="trove4j-1.0.20200330.jar">
+            <sha512 value="f80f1374015f94546f2d1bc39272de08173ac354d119f8b3f04d0976112119f9bd576af74d177a47bdab7c0e362eb3c91a999409c32ccac3488ff884d8b8d62c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="trove4j-1.0.20200330.pom">
+            <sha512 value="d88f143aa18d2875b60f684f9ccc8cd41aacd6d50abd9efdb792b36f70bcd0e56d7a52c006b169279d8ccad47565e52595317ed9870929bf83dfbdfa300d8233" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="fus-statistics-gradle-plugin" version="2.1.21">
+         <artifact name="fus-statistics-gradle-plugin-2.1.21-gradle85.jar">
+            <sha512 value="02712dcec593c326993d3120a46a97ecaa38a5585ff3b3137e1d31c3717f68857f9a4dfb394b42eaa61179b8aeb999e2254b8c6880484b2df9e803bb38c1e99a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="fus-statistics-gradle-plugin-2.1.21.module">
+            <sha512 value="2185f481648dc8dbe235acb4831aec51791bc450c2309318b75ba986d8ba3915dfb34e701541a4eea90bb8aac8f21c3691d74df45f96e4391925105eb4788115" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-bom" version="2.1.21">
+         <artifact name="kotlin-bom-2.1.21.pom">
+            <sha512 value="f40ad7dfd179d10fc919256e7337d534b9a64f4ae3e19a0f701a3dd307d94b5beee4ac0386000fadf8b41221021c3a8b3f13733977776a4cca84b6336b9b9d5d" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-build-statistics" version="2.1.21">
+         <artifact name="kotlin-build-statistics-2.1.21.jar">
+            <sha512 value="6c16870c27462dffcad19c05babde7aa587715d7838f684879a8642321cc0d03fbd5f4455809063f187d17a418d763c3c508c6b9b942cb2abc82529bf9af3116" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-build-statistics-2.1.21.pom">
+            <sha512 value="74506f83a61635e7ce8617ba573867b9beada3eeb94bfca827a510511b488c8c4999f8be875bca4f47d8bc7ec1eb47fdd469bc47d39127907996ff7fd90d4264" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-build-tools-api" version="2.1.21">
+         <artifact name="kotlin-build-tools-api-2.1.21.jar">
+            <sha512 value="6bf7c3d19b5cc0c0853255f68556156f7b49a8cf256106bfd4c7a4932ccecc363ad539f29c91f0b53872a065594fa07e18d72948d02b1ecdc4e935db60f6af9b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-build-tools-api-2.1.21.pom">
+            <sha512 value="46c2d249ddc91d7f6f94c601e281fd409181d86891c388331ba1c7cb96c5e31a454209fef12f8c9b0f16f1f7aa205e876c2859dc5f75a80134e73947464db390" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-build-tools-impl" version="2.1.21">
+         <artifact name="kotlin-build-tools-impl-2.1.21.jar">
+            <sha512 value="e366caf5d49804e196af07564da44164c5eed35c91b01423bab06f929231465bb79b0650d1629b04a1172318d1cbf49cbad64f644d6594819bc20f7420eb3dae" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-build-tools-impl-2.1.21.pom">
+            <sha512 value="5f24ab97e2cfdbca9614a2b95d55cb46768a01ba9d6c202d1b59d21c2eb87adc1d26452fda2a861f5f09f8424900e6e8ed9f2aa7d8511032b11016518c951126" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-compiler-embeddable" version="2.1.10">
+         <artifact name="kotlin-compiler-embeddable-2.1.10.jar">
+            <sha512 value="ef4ec989b26fe2e1f0f89f1fb0cefeb8de8cc32c0807c17fb6a61dbbf95c2bebb03460326b475758a01c76768f6a8c1df7e51af203659ac7c25d0d83ccf6b153" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-compiler-embeddable-2.1.10.pom">
+            <sha512 value="989d358ff992f1710771f621cda120cb4d061e74a06462d847fa97829ad1608403d78c6d4c28f6508b1d396532103a7b7c7e2195aafcc6ff3ca7a8b944e99769" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-compiler-embeddable" version="2.1.21">
+         <artifact name="kotlin-compiler-embeddable-2.1.21.jar">
+            <sha512 value="c1017586835adc14aaf7c20dfad93367260cd6cfc5edcf25b40fa3eb9631d3552ed183b10238d6bb16d6a383d961071f07e667a86ce99d4df008c4e0664d1b04" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-compiler-embeddable-2.1.21.pom">
+            <sha512 value="259ce2a259ae35c73aae0a5a35bdda9b81b6e4e9ca3e649bb6ac8c51ebc03d7cdbc8d1ad9cb90079c52d4282a4c8ffb0150fb5b8ee8caed9e973fc66ac52a48d" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-compiler-runner" version="2.1.21">
+         <artifact name="kotlin-compiler-runner-2.1.21.jar">
+            <sha512 value="895cdc1cd0ad6ca351058421e234b7fbb1f10a2fed841341bc6bec12eed7cff216fa2470353745bf09bb0cfc84cfb6913abd5ece7c9ceb32c8cfcb03a0761309" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-compiler-runner-2.1.21.pom">
+            <sha512 value="50804ba7ce3b4f51fb3a7f6ac5c09fb67e61fafef763bb2d7e5293eff279c14b557a777095a15ff3e81995c7019f7e49ccc4155963cf59cef19b4cdc6b53dfbb" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-daemon-client" version="2.1.21">
+         <artifact name="kotlin-daemon-client-2.1.21.jar">
+            <sha512 value="0c95a11343598235c5dfc0a30ca73cf1c8d857014e27c8804bdb67b55802c2745ab9e2b014614632bc992163ce2b16cd98d7e1fd18ae97c3bd8b985316b66e8f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-daemon-client-2.1.21.pom">
+            <sha512 value="c724684711720e0c3da2614158d59da13b9667e6ac4f9d0e609a8f2e1c0f110d5db4e4e712e1c2fe51b543cc71e3017c0c7b4661b066b58409835780c8a743c7" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-daemon-embeddable" version="2.1.10">
+         <artifact name="kotlin-daemon-embeddable-2.1.10.jar">
+            <sha512 value="f16c05cffc3e0015b433d8c6c5cc151e56aa41f18c3b693b85fcaeff705f80c582751fa796344ca7fb3dd1c6c1de6d6930eccfc3ff48aaa98a505f910dd26d69" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-daemon-embeddable-2.1.10.pom">
+            <sha512 value="ddef0b43cfa57125f78fd1c0ca46122f3da28a9444d85d34a64e04dd241c04783cecab8244636e4654a1b7abe9b394ce86d241c60989be703be752e94d179b99" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-daemon-embeddable" version="2.1.21">
+         <artifact name="kotlin-daemon-embeddable-2.1.21.jar">
+            <sha512 value="76fd1d11fcd7e87a967dd566994d47b0a0a9e0d2defa5378c1b25c1a9e2f92d1468c0dc41240314902a074a5f1693e430c297a4abe2b9de60a352df672c18880" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-daemon-embeddable-2.1.21.pom">
+            <sha512 value="e4c2dba63a8d431149a61b4d099f6127db7e1ac831c526fffc906dd4bfdb5a9bd0af86ee87ff78e31b7402fa2d3b1ce15684bf49b62e015b95ef81b700dca3d2" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-gradle-plugin" version="2.1.21">
+         <artifact name="kotlin-gradle-plugin-2.1.21-gradle85.jar">
+            <sha512 value="1911a9a6cc29146b040493d49f395a95a308396cdef670e3ed895f44a1ef67fa730ec619b202fa4919de4a8fdc56b3f2cf410f1b5adaa2f0d251e9f5394120f5" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-gradle-plugin-2.1.21.module">
+            <sha512 value="f75abe5f027f232df9461444e3b53a6fd873e765e66d8a0a7cdb4945bc6a6676cf689c33a662c1710d8fa75d962364ffdbb6a18f8100e5d5914914879176db10" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-gradle-plugin-annotations" version="2.1.21">
+         <artifact name="kotlin-gradle-plugin-annotations-2.1.21.jar">
+            <sha512 value="530488c1bc58b533e454ebe7811d0e81d4a5d25e9d037d7268cec431b1410421b884bdefd32a0d2f20a5b8034d2e7bba992105bf297ba667a7de14880e1b4d08" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-gradle-plugin-annotations-2.1.21.pom">
+            <sha512 value="add90cecb4a4933232a1b9a31b0883810d0b5a6763429808a5121a5ae2a88e6b5401813482c6d38ed486c7f3eb8b68d7e189d51302263defaecd007f372186d3" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-gradle-plugin-api" version="2.1.21">
+         <artifact name="kotlin-gradle-plugin-api-2.1.21-gradle85.jar">
+            <sha512 value="39f92ef5661ae0815c73668accf2b4c5b4b833975cd720b306c026aba68ac6102c483910b888e15e329c66285c3b5eb364bb518002e72b8e5e6ca6fcc49562fc" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-gradle-plugin-api-2.1.21.jar">
+            <sha512 value="39f92ef5661ae0815c73668accf2b4c5b4b833975cd720b306c026aba68ac6102c483910b888e15e329c66285c3b5eb364bb518002e72b8e5e6ca6fcc49562fc" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-gradle-plugin-api-2.1.21.module">
+            <sha512 value="5f5668b907dd9bcfd05c4172f12020878b235fd23597dfd17778dc5900b007b2669e4e3f77cab34348677daaaef2f7e78cbcdf05ae8938dad7574e834ed7a542" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-gradle-plugin-idea" version="2.1.21">
+         <artifact name="kotlin-gradle-plugin-idea-2.1.21.jar">
+            <sha512 value="294a4203b2b0a611b1d8deebb4252a7e45b053226a579d1c1bb7b8f12af0d47a3d3a582383f228d9c27414aacda73a70baf67a94a0f191248905e59c18175a75" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-gradle-plugin-idea-2.1.21.module">
+            <sha512 value="5a2f83908aeec2e1f0e9eb0a416832978b61944542d7a344b8428c9f178300a49f5e44a0f8fc1e817189d48f0e8ae1e6856c85d9c4536da6f0e0d9a7a6993287" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-gradle-plugin-idea-proto" version="2.1.21">
+         <artifact name="kotlin-gradle-plugin-idea-proto-2.1.21.jar">
+            <sha512 value="e00455745f73210701b6f17cfa4963d5a0ebd33513ee0314b16d0d4a92ef268775808b013f601abef5a1d6119b3f55e0f326825b786663544879f27be6386b3b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-gradle-plugin-idea-proto-2.1.21.pom">
+            <sha512 value="bbb283a3f2861f7229b4a46f5c0600510f31e63ceb443ee0587c0a25256795af660a1433ef5c9dbf87f0731e20e1e394c00019c8c82ec73093151838d138304f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-gradle-plugin-model" version="2.1.21">
+         <artifact name="kotlin-gradle-plugin-model-2.1.21.jar">
+            <sha512 value="9816fd5539bb9701bb2352b78a4caaf01df71036676d0410361c91b42cd7eb8c01e00e38fb3914a5838710bc96b5fc7fa695927867ddb4c4cc8170760a7a0d0a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-gradle-plugin-model-2.1.21.module">
+            <sha512 value="2523e82ab56a79b448b81b56dd5e2a596c7dd3be5f48670ea05962a7c923393042b5eba32f2e6aa633eafdfad51f7e6c48f5a0aba0e3e39fa31252ce97d66f99" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-gradle-plugins-bom" version="2.1.21">
+         <artifact name="kotlin-gradle-plugins-bom-2.1.21.module">
+            <sha512 value="de5c08461f8ff442702f60d037ca6b72256a51552543a4d21cc16ac59a5e6cff9c75e5bc7012222801a6422bb4717efe368f1ab622683ba500f0147ecc0d88a0" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-gradle-plugins-bom-2.1.21.pom">
+            <sha512 value="bf39fcf4ecbb30ed6bba7e7ebcb2991e35ab1d6ae1c1b9828ff43502ba4d6407f19d0ec312636e9ee7ba3cb50680b1fd682ecbd0cc0955e3794d6e256880cb3c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-klib-commonizer-api" version="2.1.21">
+         <artifact name="kotlin-klib-commonizer-api-2.1.21.jar">
+            <sha512 value="d6bd6ea50374ffa504e8e653c7fe7697e36455464050bf1e526e96775e830cbe81293b13a34e4136021c3ce75b48b5fabba57c66067ef0772f34b8e19c5c8a83" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-klib-commonizer-api-2.1.21.pom">
+            <sha512 value="f777e87b54888bf25157a8955afa87fefefcef09adae7c46f890a9686057eacdbb1eed989dd3f713188f88e360a805425b380663ee07ff0d07aae4409aa6fd7b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-klib-commonizer-embeddable" version="2.1.21">
+         <artifact name="kotlin-klib-commonizer-embeddable-2.1.21.jar">
+            <sha512 value="e3453012f0fc685b24a1ac07c7bd5df45672b9a002b69823509bca1eb0f23fa4d68eb4d5b1e34fcb6f66a73e986550e8d2d0e895d53dca6b509ecec0fda291f3" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-klib-commonizer-embeddable-2.1.21.pom">
+            <sha512 value="cbf8ca5d2dcd7f4bb5a21a57661f2bd55349eb2a3390b4c15a7351956535ecee58a83a08112f096481f95bf885f6e8d7b4ce1941de2ef388bd66d71e6e031e38" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-native-utils" version="2.1.21">
+         <artifact name="kotlin-native-utils-2.1.21.jar">
+            <sha512 value="0c96b2a303a33b1bca6712b3cb99ea309ff7f3f1d1912d933085dad2aa35e5a9b44631f24c1548d5de2c712ae21957c4aaa3178a43c6d605af69bb87298b7255" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-native-utils-2.1.21.pom">
+            <sha512 value="fcd6a6992148d9ff99e84ceb670587dd4028fc5c19814873886da1a6fe0c4bc6ef06b8bd0ba9abaa39f94bd4865343347911a18f3e0f39cf2729b62f59e8dbf1" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-reflect" version="1.6.10">
+         <artifact name="kotlin-reflect-1.6.10.jar">
+            <sha512 value="b28392f114dc049bc4582c5bdbb5b60d74358668efb25579c2ed5ac749debda89dc7426aed1f7f548b5f121f7df227c9d37b4aa49b315a0779afd5847d17872d" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-reflect-1.6.10.pom">
+            <sha512 value="3765a8094a88ebdfac50ac898a6cb3e446bc7493fb6f9fad95a4805170f987b9ca0c5c76ed2a22fb53b5171d4564b353a138e4aaad11d42a50ebfe1a11978fe9" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-reflect" version="2.1.21">
+         <artifact name="kotlin-reflect-2.1.21.jar">
+            <sha512 value="b3f93ed791b0d47bab3e50ca789c3d1d90010fa37cc9c4a05f53537fdb9c7a998a8ed53be425bd55f43019374abd1a53c51d0f2ad9d717597f91d09170e4f5f9" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-reflect-2.1.21.pom">
+            <sha512 value="0914fc4ae47297d2fa583bd5536ea25e126db5bb959d174c44c875a740fe5e1bc603092a592871360105dacc6fc978e3543e3862f230080f7b14122b6d1a6971" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-script-runtime" version="2.1.10">
+         <artifact name="kotlin-script-runtime-2.1.10.jar">
+            <sha512 value="14b212c332c918a43bbce9384643d70827c3da7d4cfac96b69069a4d5e29de3959df86890814b29ded63f859aac6b003faa5b3e29e831a0e2c214f008ac31197" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-script-runtime-2.1.10.pom">
+            <sha512 value="86577db8d56ebb0cf5127463bbb425e3953d7298e6577d002e576bd21eebb1f6f73e2fa702fad1b535bc8355f7662c999a4d18637dcdb070ca8faa69daf20734" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-script-runtime" version="2.1.21">
+         <artifact name="kotlin-script-runtime-2.1.21.jar">
+            <sha512 value="187b4b8d4aef0271cff60414a5bfe8fc5b84368b695efa17a379e1c53312baaf3fb6ba8545aad5993c0c46e1e02914265483acb4fc79e6cb5f4d47acecef5b31" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-script-runtime-2.1.21.pom">
+            <sha512 value="7168739a1da481f832ac2e95a1fd5c5452fa0d7224f18785190a59c9d5a6aa923753d140b433fe21b658bf07ff37c551c7e4c8e821c9f4ec8ae051eb120a940f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-scripting-common" version="2.1.21">
+         <artifact name="kotlin-scripting-common-2.1.21.jar">
+            <sha512 value="30c897237a7674bf2c0d2382eb1ed3e984c255c64ae052c2c95041959499ab81ecb10046e7afee5a23df5678b3c0c35feb153a401b12400e358d18ec5270d678" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-scripting-common-2.1.21.pom">
+            <sha512 value="65bd98889195f7e7ec5f5387f8aa315b735d7ef867a4369675883255661f17fe24201233cd483352bf097b047132d55c1f3b97f0dafdfc80f9763f69640a3036" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-scripting-compiler-embeddable" version="2.1.21">
+         <artifact name="kotlin-scripting-compiler-embeddable-2.1.21.jar">
+            <sha512 value="18a13c231035a8a27005872478ae543d93f1056e074d632fadd30dfb10601e8034aab984e3a958d6c02d9f6468d9fe4d8ccc7c9c21aa38ae2d967c110edbb3f5" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-scripting-compiler-embeddable-2.1.21.pom">
+            <sha512 value="2e0929880f09ffaa07a5d5f65cb82a7058cfdc856695816dc9f10575253d4dd06813d4e94323fac60f565c39cc5d97b591b3a46f2323c19822792f374491d1b7" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-scripting-compiler-impl-embeddable" version="2.1.21">
+         <artifact name="kotlin-scripting-compiler-impl-embeddable-2.1.21.jar">
+            <sha512 value="647da81d0267b92e00a75e6cf7aab7315aa8e24d6d862115f34a45851c238d42b747eb84500ab466e14a211e758d33be434177fb7cb8b06854335a8d83550f4e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-scripting-compiler-impl-embeddable-2.1.21.pom">
+            <sha512 value="738cb59dd6087fe157a320bb520171e70ae4a77b29a9e1b0b3d15248a3b880cd343575aecab9364a60e630ef0ee9c2a220ef37d57477731ae659ebdfedbf4d97" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-scripting-jvm" version="2.1.21">
+         <artifact name="kotlin-scripting-jvm-2.1.21.jar">
+            <sha512 value="b8a29dcea51af00537df407bed763b239f15b4d43c38abafb87cc24a6b5fcff6d4e7cdf9809287b8c23eb28002a66d77efcb068988b2bfb66002c9b33e9b7c47" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-scripting-jvm-2.1.21.pom">
+            <sha512 value="384695eedb1109cede391709583092ae9291164bd58f7040c713678284bf0f731ade40ecbdced082baa709f4a4c7382fc9ca68a5cace17f22766f3a422bccc29" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-serialization" version="2.1.21">
+         <artifact name="kotlin-serialization-2.1.21-gradle85.jar">
+            <sha512 value="10ae036ece9477106ecfc431449b8854e96fbf95592d95b00914ca857a42b450ace3ddda70706c5dbf8b62e1135afc7330002ab40c3b5aa7f884c3575a8bbb40" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-serialization-2.1.21.module">
+            <sha512 value="80f274cfa8b73a0b1d7bdb480f1a7d7e4f45a7979e46d9fb6d595cf1211edcf46558ddad52a66287812c47b9ecf3e0d228a104f683ddda289e833fced9e24667" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-serialization-compiler-plugin-embeddable" version="2.1.21">
+         <artifact name="kotlin-serialization-compiler-plugin-embeddable-2.1.21.jar">
+            <sha512 value="ee0517ed66746942f1ec83bed1dce69a9ee786b2ebdb59fa445f6fa72001fc62ff5a74bf6b3df1afde95e89165a1e548664023dd2658df46ac3424aa0f12ca3f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-serialization-compiler-plugin-embeddable-2.1.21.pom">
+            <sha512 value="cf8303c4a080e095126fe603f9fa20ca5e07dd6e0e37fa3e68a10e628d6cf0bbf1c31cea4e9fff0a362051fc8ba1045aab1630c960489c279ff262e14d665570" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-stdlib" version="2.1.10">
+         <artifact name="kotlin-stdlib-2.1.10.jar">
+            <sha512 value="a1dbb574473ddac3d4eb783e7257aa3ca78cbac9eed26593a6642052b2bca07d3a9d4ec935de339df0fc1f324bf4c05a8227c7623034b5e2930b1a46363e7375" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-stdlib-2.1.10.module">
+            <sha512 value="74f6d7adb99bf907f62c7b3aa7290c66835be98661123c9f2890657ab136b079f94a8e727f263d95bafd8beb298c41d1c7d56eb51ab70a6d95c8f29de3e08807" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-stdlib" version="2.1.21">
+         <artifact name="kotlin-stdlib-2.1.21-all.jar">
+            <sha512 value="32085f2a5167dee55d365c40eb7b6a426c8cb9101cc8cdfb058068bfea922880828b187ac86e633b34a9b01af3d32aa034dd423409b6b06a8ff68c460f76d2b9" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-stdlib-2.1.21.jar">
+            <sha512 value="6f7962827c16cb87223a7fe3b2a8498619c501bd2f64e09377a0e8ba8d59b9adcfe11f6eaa429d91c7bfb8c96435de159f75d22156d0b234a2ddad33558aa209" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-stdlib-2.1.21.module">
+            <sha512 value="d7a7348d93147e66218a304bfb6928b95da9a1f67527ad70850a58c94ddb00e21f1724ba2598e622ce2de3f1bc70cd7e3aa2d51c1f5e298f21d9493bf4c10907" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-stdlib" version="2.2.0">
+         <artifact name="kotlin-stdlib-2.2.0.jar">
+            <sha512 value="1514caef0f4eab6b7608ca6188c89c27955e4b4e3ff06ab0f2a6f9944ca84ff9172e2a37e17146f92e3b6beee0bd761c6c6720700304de191cdd81de113c39ee" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-stdlib-2.2.0.module">
+            <sha512 value="c8e9d4a5f01834c3e1b56e6790854b9601fd23ddaa8ece1ff48360289a59b10b55d3b250b81446a2a0f1c0621b7898b5e4faf60b8aa5c27282387efbc9aa6b2c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-test" version="2.1.21">
+         <artifact name="kotlin-test-2.1.21-all.jar">
+            <sha512 value="a136d9de47c6f39bb3dc8f9183f8aa9b1838f494bcec8179e10e9ed7d64408c99bed07eddfebe6aa945f623a92bd26f2f49f9a5b3164272926b8443998a97d94" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-test-2.1.21.jar">
+            <sha512 value="ceca038288ae9cd3e59776d4e6e39b757f121cbb1a57f9bab94914fe0073ab7b41d0fce21d0bfa9480f06a3be7b2280db4d898b8f9240cff8c8ce871c2fe5d25" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-test-2.1.21.module">
+            <sha512 value="dfeba1b0261e7701d2752db88eec3c7d427bb9b5b2f983f0827a1ad0347626d7af5ba3c9445fb967b75207a181132133f4980b30d1bb81935ca9791b1505a6d4" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-test-junit5" version="2.1.21">
+         <artifact name="kotlin-test-junit5-2.1.21.jar">
+            <sha512 value="1c528e72b6391568d7db25d51d47b3146e4ee77f682e5b3b3f323c6fbabe13e9ca52cef3376e16191c217ea45f9c09296a651aaa0fb95c0fd2f50f243dbf818c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-test-junit5-2.1.21.module">
+            <sha512 value="cac71082c327fc10fe1bd60c44121b1ba640a18e81baba8344d94d52b2a0a166dbbfb1a4d0c23e8f5d5fbdd2c541fcb59474c32325ab3a7dd1e13a63027a0cc0" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-tooling-core" version="2.1.21">
+         <artifact name="kotlin-tooling-core-2.1.21.jar">
+            <sha512 value="e66f78b032424e633e0d5eb9a7fac4ef31b9af22e1d7f3ccdf0efdf83bc2bf011b430de535f1226c40460fa35f362867e465ab50d0f94d9d47715096c17843a7" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-tooling-core-2.1.21.pom">
+            <sha512 value="2af454d62e8887ddaa73581b68496a90ca410e8f4a08654a7283066423c44a6ab9dcb3a6b7e35a99cfffd61524a1ae41854e670944c7b5cefd247efd8b80e908" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-util-io" version="2.1.21">
+         <artifact name="kotlin-util-io-2.1.21.jar">
+            <sha512 value="cd587cc40c4f7429b1fade2bc6da3632f71676c95870d84a30b0bd8309e526531bf9a603172668f5764df0a1ef3472b65c10c282c1ce2302b1584b1f70d40aee" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-util-io-2.1.21.pom">
+            <sha512 value="54de6d2e2f470f6d001e0cb1dcbf700462d4ed258fea4a1c00339fb5ebf881665910d94bfe638bd4dbadbd2e7fec6c6ab5f11bc09e4449850970126dcb2e30cb" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-util-klib" version="2.1.21">
+         <artifact name="kotlin-util-klib-2.1.21.jar">
+            <sha512 value="c00b825ba11ceeb71381e3d3ba51af20542cbee9e899a15d9230630a97db77025b90e65ac59729289119e380b1d80bcd30fd34ca6811de14e94ec79b0bd5a4e7" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-util-klib-2.1.21.pom">
+            <sha512 value="a920ac18f747f9b572030382ff7d0126958d3e0258f3799fcc5bec2fe0bd9123465b6371ce510e74a7a237ab43205bd55224d8662eff3c7e8bcaca59e5f6c71d" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin" name="kotlin-util-klib-metadata" version="2.1.21">
+         <artifact name="kotlin-util-klib-metadata-2.1.21.jar">
+            <sha512 value="ee36901fdc2705b4ea0bbfa2e3d063b23eb7ebd088ec1f2ef8879f9cd538b64da9e685d94188a80768d2e37ab30f859ae7ed8127e571d74f4e189f1b3a8ce549" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlin-util-klib-metadata-2.1.21.pom">
+            <sha512 value="355933b3f5b7a92e697aca251aa68581b8036b1563074b2c417c4ad3526f48fa96d07fec3b0e545c43bbb8b9b4703beb899c56b7961f37067f45eeb28979d504" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin.jvm" name="org.jetbrains.kotlin.jvm.gradle.plugin" version="2.1.21">
+         <artifact name="org.jetbrains.kotlin.jvm.gradle.plugin-2.1.21.pom">
+            <sha256 value="17305610734efbc85731dc281ae93e55f8753f9f7aacd61de42367cfe31a6df0" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="abff6181abb8338e12da8580f1102f3117cae72418dbf68916ed00c84ab9cdabf949302ff5697e6cbf12fdfdbc1f4a6340c0209a66ca7e05edaf83966d89baab" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlin.plugin.serialization" name="org.jetbrains.kotlin.plugin.serialization.gradle.plugin" version="2.1.21">
+         <artifact name="org.jetbrains.kotlin.plugin.serialization.gradle.plugin-2.1.21.pom">
+            <sha256 value="5f9955c229afe2ab4fef4067bb5a9d65d4474ad4f005ca83938f351df48f0936" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="cdad6f725747ed0c5f896654386f529acddb6fe4f0077ee25aa797ee07991c74c268ab9cc637dcafc188f25fd87623f0a1ca18f35e412f9756e33cdcc16c8f55" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="atomicfu" version="0.23.1">
+         <artifact name="atomicfu-0.23.1.module">
+            <sha512 value="40dc36e3310f965790b6a1d10eea84477c183c138855b27711f6a9f4d334e67a907032b5e41cece165c07ad2b771e49e1fcae09444901adf997be4d4801d946b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="atomicfu" version="0.27.0">
+         <artifact name="atomicfu-0.27.0.module">
+            <sha512 value="5fbe493178aaa832c8e2fee7e8af949c648adb65e7747396536d91d2f08884f9fa50f33ec619c7c76b72146499da147119060b89ad160f578879ce32e466d161" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="atomicfu-metadata-0.27.0.jar">
+            <sha512 value="830f18a510e0e892f6a0f2dab0badda34f5385e11fcc58c01c5dc08642b040d340a9c11b372e5f1a516cee2119540386aa3811462a7257f2194d508dac278e2c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-coroutines-bom" version="1.10.2">
+         <artifact name="kotlinx-coroutines-bom-1.10.2.pom">
+            <sha512 value="019fd13ac4ed6829a32489afe003762936937d6894f16ac36f611beb2ef7e9fbb282e56479863da8daa156aa77f834c30420604e431b6e2e56311e3e0240b606" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-coroutines-core" version="1.10.2">
+         <artifact name="kotlinx-coroutines-core-1.10.2.module">
+            <sha512 value="a88eb8e578850c3ca9e12f9067d761287a3e70c99657f41df959085bd47a9fe7982f835ab37880ca55fe5ebf62e02dbc947794194aee9b03330bc1fb24ed9404" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-coroutines-core-metadata-1.10.2.jar">
+            <sha512 value="a53c88f926ffeeae620009ac90a7c1aad4df3cb3963975ef2eb0090f819ffe3c74bbaed03dc84a45f488eab424c02ae0c1c093d9f52fd8a8bcfaf20713e2c570" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-coroutines-core-jvm" version="1.10.2">
+         <artifact name="kotlinx-coroutines-core-jvm-1.10.2.jar">
+            <sha512 value="238fd451f80e222480c880dd8bcfd76e9203b6833a0306a55483b3f9eb0b25651242a3e7beaf7510d5e39922f1d3d987fca79468d945eb35b0f07156a7887ba0" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-coroutines-core-jvm-1.10.2.module">
+            <sha512 value="d105252b959981bf5a1accd86ff176d032eeed22d0e5647eb2d5c811e43019408743ba91a59a21250bcc2bdb0b135c545b57eeba345679ae749d241bec16df7b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-coroutines-core-jvm" version="1.6.4">
+         <artifact name="kotlinx-coroutines-core-jvm-1.6.4.jar">
+            <sha512 value="a4fb638b7427b4e2a87d750958e6ca66c75eefb64c4f359cbfa2d08c868455aa0ff9091c2f2e61f1e4a7c51a3771c68795e96cf306368945940f172dd324742d" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-coroutines-core-jvm-1.6.4.module">
+            <sha512 value="26487245cd1853111b14f3b5039e6b73ef77f201fe77bbb4f900d118faf3b8c320ff40a200efa406f165dffd94cdf2e19981f65f9aac3911cce228a1dc167e94" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-coroutines-core-jvm" version="1.8.0">
+         <artifact name="kotlinx-coroutines-core-jvm-1.8.0.jar">
+            <sha512 value="081391dcc0b66e4f71401a0684c8f0fe0fa10f195ca5e50208419b4f6110d9b0f90250a43950114d75c79455b9d304afadc069b98c5bc86afa7701ddaed51af1" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-coroutines-core-jvm-1.8.0.module">
+            <sha512 value="44fbb461d2e7d505915d94fd06d48660482aaf75f136862ff7567ec3dc868a84e645785b45710c2045ffe6087f86585b917703e25892d1c68093537dbab5a665" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-coroutines-debug" version="1.10.2">
+         <artifact name="kotlinx-coroutines-debug-1.10.2.jar">
+            <sha512 value="551cdfa648b5629fc8b313b07a18d98be8953cc9787209a962b7e1eac3bfa15f8a3e3e8c2516c650176d94cd58c7b63b2e78aea8e4daa63cb930d520dd93442b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-coroutines-debug-1.10.2.module">
+            <sha512 value="391452870e18dd5eff837756281f1f65febf715156946604051d02ba1d65ca8e73b9c7fed80e74530d0d0c599331b599eb0dad9224b260db8f2599a51defa5d5" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-coroutines-slf4j" version="1.10.2">
+         <artifact name="kotlinx-coroutines-slf4j-1.10.2.jar">
+            <sha512 value="e0688d8b0d58774656d147c90438ca3bece9f2052c5ca8c6965817fc29c790e229751f81874a3d06b2291feacea004a7c1b8d7769d2cdd03cd3dc9ddaf5fa183" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-coroutines-slf4j-1.10.2.module">
+            <sha512 value="956e8b4b2a38dfca46012e1c6f1484d958f860ee57cb8d16767dc2c8c24ec4847c7271b911c30dd4b7e93470bcc3941a9c0d384dd53e41d0dc846394a9e097f4" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-coroutines-test" version="1.10.2">
+         <artifact name="kotlinx-coroutines-test-1.10.2.module">
+            <sha512 value="b2db5984c294a6e3564ca52e0b4209ee33253e4d3e780414410ecd4764b3b08c3a9f2c35ef4ad37d75250c1d8b91825ba7dd6d2655a162f3c946c43f62307d84" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-coroutines-test-metadata-1.10.2.jar">
+            <sha512 value="4fbb3a96eb34b8d2dd284cc876b186d92146644d7c4b2eb740af6998d3742246a371255efba1ee3af78e6d8a2eacd7ebb7ae515254727381d800257d62034a9c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-coroutines-test-jvm" version="1.10.2">
+         <artifact name="kotlinx-coroutines-test-jvm-1.10.2.jar">
+            <sha512 value="78dc16d661a2c21d70f7b74cde106d507e398d772534057d9459991301c76da4159de018a970106a62363ef6f080c4cb2162b6b1a3a636aae9f5a5ae4fc335a9" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-coroutines-test-jvm-1.10.2.module">
+            <sha512 value="970b873aeb6aab154be853453c57f669424f73180250ce506117fec60625c5f2d13c7f2552a9a6be23b8ce1a74f3ae3a283d8a644a2814ea86508d3db8cf8fab" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-io-bytestring" version="0.6.0">
+         <artifact name="kotlinx-io-bytestring-0.6.0.module">
+            <sha512 value="86f369907c2c84a177a3003a9e5af7cd3515397f6ee106b441943e5154c687a863818cd09b95552273e8b09f1b1bc8b12bc3d35386a44813b6d34d7952be48d3" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-io-bytestring" version="0.7.0">
+         <artifact name="kotlinx-io-bytestring-0.7.0.module">
+            <sha512 value="c88eb20be074aef7eeb362b0e0ee2583fd1b89ba808067154f66a4d218f6459b19821430ce210a7c456d9584f38215ce4cfcd73ee0c5b0802eecc37aa0b29fbc" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-io-bytestring-metadata-0.7.0.jar">
+            <sha512 value="4e89799e377387de7254edca799cf14f7ac2a90273fcd2b534842716d3b1df2a167dec63fd1834c7e423528e056756516ae39939ffc9dbb3c078f7f10fb0cb69" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-io-bytestring-jvm" version="0.7.0">
+         <artifact name="kotlinx-io-bytestring-jvm-0.7.0.jar">
+            <sha512 value="646ada4367044be8d051aff3eb9424e6dffdb7bb95ddff2f95d5f0f51f652e0b33662779eab02a0e9317676f9647dd684e10fafaae26af46d60cfa6226c45d19" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-io-bytestring-jvm-0.7.0.module">
+            <sha512 value="e24ca82f47b4502b23987135e92c8b6bed273f20b7c0f206f3df46ecb7a1184e37d7042f4060e9e153a39d8633554c90cf17017c42e1374bbf40338d925657ce" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-io-core" version="0.6.0">
+         <artifact name="kotlinx-io-core-0.6.0.module">
+            <sha512 value="bb6282190c87000e6596b3fbd00ec323942f4682866fe7dd9e7a950f2599f4694277485fb67e5682303edb1fe143953f6573e5454937d4a0e57afacf9d01b641" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-io-core" version="0.7.0">
+         <artifact name="kotlinx-io-core-0.7.0.module">
+            <sha512 value="2dd68c5ec88914d7ed47e9792ac1ccea669c33a664d1b2b4f69c1d41ddc06df6ef5ae9d517b37ebfa9860781a003e7995fd72ad5cad57a34ecb8b20659bf5d43" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-io-core-metadata-0.7.0.jar">
+            <sha512 value="efeb5ebd5cff67fc689df5aa862b82d0ba50921f52e0e14cee05cb1f060bc97052889f72355bc98bdc2a45025745da768de094f25cc0acc3c194f0357e6b5e99" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-io-core-jvm" version="0.6.0">
+         <artifact name="kotlinx-io-core-jvm-0.6.0.module">
+            <sha512 value="2b06959848bd9ea5b5d64e13068da65a7fb98b39084a94157eb7d1c5a6ff3b114551dce4e4ed02a8bf434467c4aded42175e3b24c7934a0a9d2c4ab984cb2ae5" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-io-core-jvm" version="0.7.0">
+         <artifact name="kotlinx-io-core-jvm-0.7.0.jar">
+            <sha512 value="fe04759d2b3b505911b7e0da37089a40f0711ea718a294e72e231c1f5f72c02fb919b5e29d2d58dc310f1bfba2171f0dcb4d6083138ed7f35c020c832fd56f4e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-io-core-jvm-0.7.0.module">
+            <sha512 value="c58ca6f330d3dda4478cd2a24127eef149c377ebdcc265c899b4d3929291e6d40b53a939d576fd143be4626ef146a0b1ac7a0d75b9dcbb40c951afec0fc1004a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-serialization-bom" version="1.8.1">
+         <artifact name="kotlinx-serialization-bom-1.8.1.pom">
+            <sha512 value="f803ed322b63adf2ecc516a14e5acdbdcec96088519320ab9d18cda5d7ca5afcdbae7e2c77262b2cd25bbed5f096902c10c90369f1ffe3d2504a7fea60e6e55e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-serialization-cbor" version="1.8.1">
+         <artifact name="kotlinx-serialization-cbor-1.8.1.module">
+            <sha512 value="68303df76197ef235aca549d58fa8ef81533ffecff7628f2652f8e3e4098616de6a5cf37f1d35b4122bae27ff7a8f2b477cec21e07781d60ab71138903842e2f" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-serialization-cbor-metadata-1.8.1.jar">
+            <sha512 value="cadf0dcdea871d280e419db650d1ecd697ecf011ede99c03e704abbf2682db2546437bf2b8bc1a7e9c10331f44075e1010a83bb38edee57ab862d6ca055cf32e" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-serialization-cbor-jvm" version="1.8.1">
+         <artifact name="kotlinx-serialization-cbor-jvm-1.8.1.jar">
+            <sha512 value="d3521d4d448c8f95d07bc3358072ae210633048d205508d183c484928961c6020f23c64e3b71114bbb7588313da167d3124f4530f867189a261c5049cca6be34" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-serialization-cbor-jvm-1.8.1.module">
+            <sha512 value="58fbe405ced00a9bb63725b8b70fd98209eea39b5268cf3814e683184ff646ea200a199c6edfddcd0bbd1935601a97b84fcddd9e0f2505a298c1ebc02cd2a075" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-serialization-core" version="1.8.1">
+         <artifact name="kotlinx-serialization-core-1.8.1.module">
+            <sha512 value="0c59b07ff72e77be70be17facaed47e74aee14ff8e13ba55699ce8f936400ce81652c6035e0a8b7b185843ddf667b6f3295d6845ace26bd3c6efe30023bb5966" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-serialization-core-metadata-1.8.1.jar">
+            <sha512 value="af76935207021a3ca7c3947dec35ace252cf9fd94b8c147f91175dea6ad264a646144e2fbe28aab029f562ec904723565982ca21dc0469d0b9f9a1e9e926ace1" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-serialization-core-jvm" version="1.8.1">
+         <artifact name="kotlinx-serialization-core-jvm-1.8.1.jar">
+            <sha512 value="790087dc51da11c24de9bf5e12f12423b665fdbe724f15503836de1622153225348255053e5d981d5a9c615ce1b4c82d03fe33d04c6bb03646b0bafaca4920bf" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-serialization-core-jvm-1.8.1.module">
+            <sha512 value="4aeddf45e1297050e6e5c59d8473bee711517d340f3333f99dd6f16a844ac0a73cb45955639b64dd40648797b19baa5d44d5b7dd90399cdce93feac5b82eeb4a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-serialization-json" version="1.8.1">
+         <artifact name="kotlinx-serialization-json-1.8.1.module">
+            <sha512 value="bfbf1bbed1ab9b29e3f9c24ee14e9807bf7a036aa6c3643e22ac0482f889b86869695c92505577bbffa68171cf9b43a848b3922b9f36034c7481ffb5aaa6bb20" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-serialization-json-metadata-1.8.1.jar">
+            <sha512 value="46aac1753f7edb31634590e47c8795de9815e20f23ffb0fd551ce78bf5b2a9c9fb0f92f8084cfbe41a8879b125cf5b2722edaa35de1212b643c6cb3130ef69ac" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-serialization-json-io" version="1.8.1">
+         <artifact name="kotlinx-serialization-json-io-1.8.1.module">
+            <sha512 value="098e1cd19379d8b4b187bfa6312c3df0081e296db13cd4ec2d5f13bfacc80b3e5dba5779b2e92f4629aaa2f6def0c24dbc75f1b341d1f2bd04b91bb319ba54a9" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-serialization-json-io-metadata-1.8.1.jar">
+            <sha512 value="baf07c1a70bc7d5e852625a1a8ba0751c3da5edc7b44e6139790fb3a299f080f588ccc369b754ae34593d00f099336329fb4d73b8b6608112af72c09b1ded3d8" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-serialization-json-io-jvm" version="1.8.1">
+         <artifact name="kotlinx-serialization-json-io-jvm-1.8.1.jar">
+            <sha512 value="7a434f5d6d481a8ae0125bb3e4e53fe91e6c783bfe9bb93592da537323f0b398279340754c302facbeeaf3463bb77aaf2d98dfdb2264f2befe5e3e5611e619f4" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-serialization-json-io-jvm-1.8.1.module">
+            <sha512 value="060058ec37eeee44ed946af7b65c5e767f99b50fec3a566a2bc47e5a941fc12e1aa85b432cfe44fd7b3f59a61127e86487980604f8ce0dbd5b5b9215d1252b6b" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.jetbrains.kotlinx" name="kotlinx-serialization-json-jvm" version="1.8.1">
+         <artifact name="kotlinx-serialization-json-jvm-1.8.1.jar">
+            <sha512 value="0b28392fa4185b9edb5f61e564907122a2c019d952de36dd752dbcc323dc5ebd02fa8d2609cee1fcf8e4b1dfe603b28dead68abf73d85e38977f59bd45bf2baa" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="kotlinx-serialization-json-jvm-1.8.1.module">
+            <sha512 value="ae6499a3c1fa51d8194d303085b72bb677841780dcbb0b48063b66c36da28d09ac56dc8c2ba697d8dc44e203f632160d8d935c17e1ea3d7ed544f392c54b5e85" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.mockito" name="mockito-bom" version="4.11.0">
+         <artifact name="mockito-bom-4.11.0.pom">
+            <pgp value="147B691A19097624902F4EA9689CBE64F4BC997F"/>
+         </artifact>
+      </component>
+      <component group="org.ow2" name="ow2" version="1.5.1">
+         <artifact name="ow2-1.5.1.pom">
+            <sha256 value="321ddbb7ee6fe4f53dea6b4cd6db74154d6bfa42391c1f763b361b9f485acf05" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+            <sha512 value="5dbdf60bace26f9dbe2610d3de178e729fae77d65f57cb8238a828d020aaf1b4cc3d3d804bbdcf4a385c141b14fbf92ff689d9caa1f9e86542b5c47b0b1e9288" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.slf4j" name="slf4j-api" version="2.0.17">
+         <artifact name="slf4j-api-2.0.17.jar">
+            <sha512 value="9a3e79db6666a6096a3021bb2e1d918f30f589d8de51d6b600f8ebd92515a510ae2d8f87919cc2dfa8365d64f10194cac8dfa0fb950160eef0e9da06f6caaeb9" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+         <artifact name="slf4j-api-2.0.17.pom">
+            <sha512 value="462872ccda241179a77ebc89c3f7be93870fffae344e09d3cccc33d6448336dc77affc9572f420d7da788b3f0eb072b7facc9b7e609b33742ed48f4bb467cb70" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.slf4j" name="slf4j-bom" version="2.0.17">
+         <artifact name="slf4j-bom-2.0.17.pom">
+            <sha512 value="cb2db4597b98b9981959413e3ffcd5882f8e267d3d51f989c396807c36893296065cbe443a173029e8d3a0851eced25f5149dc2dafa0dd2c29fca737180a7029" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.slf4j" name="slf4j-parent" version="2.0.17">
+         <artifact name="slf4j-parent-2.0.17.pom">
+            <sha512 value="5b16a209843c18a478a0a16dff83ae1c75eedbdeadc15a958d536a36631d4d39a9998e085c165a79ced8ad187f021e2f3cd4068856ca174db35657ef5a473c5a" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+      <component group="org.sonatype.oss" name="oss-parent" version="7">
+         <artifact name="oss-parent-7.pom">
+            <sha256 value="b51f8867c92b6a722499557fc3a1fdea77bdf9ef574722fe90ce436a29559454" origin="Generated by Gradle" reason="Artifact is not signed"/>
+            <sha512 value="63b0951f793ee9d25239ee44760e4d51de3b8503e438e567862306f2d175019d8617eb854bc4ee2374c39f385e0a1094c3c7097f899b2074e4acda14fe6030fb" origin="Generated by Gradle" reason="Artifact is not signed"/>
+         </artifact>
+      </component>
+      <component group="org.sonatype.oss" name="oss-parent" version="9">
+         <artifact name="oss-parent-9.pom">
+            <pgp value="44FBDBBC1A00FE414F1C1873586654072EAD6677"/>
+         </artifact>
+      </component>
+      <component group="org.springframework" name="spring-framework-bom" version="5.3.39">
+         <artifact name="spring-framework-bom-5.3.39.pom">
+            <pgp value="48B086A7D843CFA258E83286928FBF39003C0425"/>
+            <sha512 value="3cdfeab209e770d9b555bb759c958f816a4313413f8deb4060954aa72a2170de5f2e90e6b076cd185e853cdc02f5bd7356720084c90a3cbe5847bd6d04e5017c" origin="Generated by Gradle" reason="A key couldn't be downloaded"/>
+         </artifact>
+      </component>
+   </components>
+</verification-metadata>

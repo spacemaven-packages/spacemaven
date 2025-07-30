@@ -95,23 +95,32 @@ kotlin {
     }
 }
 
-if(project.hasProperty("spm.buildingFromDockerImage")) {
-    /*processResources {
-        exclude 'log4j2.xml'
-        rename("log4j2-prod.xml", "log4j2.xml")
-    }*/
+kotlin.target.compilations.main.getCompileTaskProvider().configure {
+    dependsOn('generateJte')
+}
 
-    kotlin.target.compilations.main.getCompileTaskProvider().configure {
-        dependsOn('generateJte')
-    }
-
-    kotlin.sourceSets.named("main") {
-        kotlin.srcDir project.layout.buildDirectory.get().file('generated-sources/jte')
-    }
+kotlin.sourceSets.named("main") {
+    kotlin.srcDir project.layout.buildDirectory.get().file('generated-sources/jte')
 }
 
 test {
     useJUnitPlatform()
 }
 
+tasks.register('dockerBuild', Exec) {
+    dependsOn 'installDist'
 
+    def imageName = project.getProperties().get('docker.image', 'spacemaven')
+    def tag = project.getProperties().get('docker.tag', 'indev')
+
+    commandLine 'docker', 'build', "--tag=$imageName:$tag", project.rootDir.getAbsolutePath()
+}
+
+tasks.register('dockerPush', Exec) {
+    dependsOn 'dockerBuild'
+
+    def imageName = project.getProperties().get('docker.image', 'spacemaven')
+    def tag = project.getProperties().get('docker.tag', 'indev')
+
+    commandLine 'docker', 'push', "$imageName:$tag"
+}

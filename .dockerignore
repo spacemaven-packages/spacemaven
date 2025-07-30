@@ -3,7 +3,7 @@ build
 .gradle
 .idea
 .gitignore
-!build/tasks/_spacemaven_executableJarJvm
+!build/install/spacemaven
 /jte-classes/
 Dockerfile
 .dockerignore
