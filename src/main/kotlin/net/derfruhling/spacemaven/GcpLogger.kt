@@ -10,6 +10,13 @@ import io.ktor.server.plugins.*
 import io.ktor.server.request.*
 import io.ktor.server.routing.*
 import io.ktor.utils.io.*
+import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator
+import io.opentelemetry.api.trace.Span
+import io.opentelemetry.api.trace.Tracer
+import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator
+import io.opentelemetry.context.Context
+import io.opentelemetry.context.propagation.ContextPropagators
+import io.opentelemetry.context.propagation.TextMapPropagator
 import net.logstash.logback.composite.AbstractJsonProvider
 import org.slf4j.MDC
 import java.time.Instant
@@ -36,11 +43,21 @@ class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
 
     private val mapped = ThreadLocal.withInitial { mutableListOf<String>() }
 
-    val traceValue by lazy {
-        (call.request.header("traceparent")?.split('-')?.get(1)
-            ?: call.request.header("x-cloud-trace-context")?.split('/')?.first())
-            ?.let { "projects/spacemaven/traces/$it" }
+    @OptIn(ExperimentalStdlibApi::class)
+    private val traceParts by lazy {
+        (call.request.header("traceparent")
+            ?.split('-')
+            ?.subList(1, 3)
+        ?: call.request.header("x-cloud-trace-context")
+            ?.split(';', limit = 2)
+            ?.first()
+            ?.split('/', limit = 2)
+            ?.let { listOf(it[0], it[1].toULong().toHexString()) })
     }
+
+    val traceValue by lazy { traceParts?.get(0)?.let { "projects/spacemaven/traces/$it" } }
+    private val otelSpanId by lazy { Span.current().spanContext.spanId.takeUnless { it.length == 16 && it.all { c -> c == '0' } } }
+    val spanValue by lazy { otelSpanId ?: traceParts?.get(1) }
 
     val methodValue by lazy { call.request.httpMethod.value.uppercase() }
     val requestUrlValue by lazy { call.request.uri }
@@ -97,6 +114,7 @@ class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
 
     private fun setupContextFor(f: () -> Unit) {
         push("gcpTrace", traceValue)
+        push("gcpSpan", spanValue)
         push("gcpHttpMethod", methodValue)
         push("gcpHttpUrl", requestUrlValue)
         push("gcpHttpRemoteIp", remoteIpValue)
@@ -148,6 +166,9 @@ class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
             val map = event.mdcPropertyMap
 
             if("gcpTrace" in map) generator.writeStringField("logging.googleapis.com/trace", map["gcpTrace"]!!)
+            if("gcpSpan" in map) generator.writeStringField("logging.googleapis.com/spanId", map["gcpSpan"]!!)
+            generator.writeBooleanField("logging.googleapis.com/trace_sampled", "gcpTrace" in map && "gcpSpan" in map)
+
             if("gcpHttpMethod" in map) {
                 generator.writeObjectFieldStart("httpRequest")
 
