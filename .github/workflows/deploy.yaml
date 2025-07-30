@@ -41,7 +41,6 @@ jobs:
           add-job-summary: on-failure
           add-job-summary-as-pr-comment: on-failure
           validate-wrappers: true
-          dependency-graph: generate-and-submit
           cache-encryption-key: ${{ secrets.CACHE_ENCRYPTION_KEY }}
       - name: Build Docker image
         run: ./gradlew -Pdocker.image=${{ secrets.GCP_DOCKER_REGISTRY }}/server -Pdocker.tag=${{ github.ref_name }} dockerBuild
