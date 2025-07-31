@@ -296,19 +296,10 @@ private fun Route.setupBucketPut(path: String, dir: File, repoName: String, isMa
             val newPath = newFile.toPath()
             Files.createDirectories(newPath.parent)
 
-            val channel = call.receiveChannel()
-            Files.newByteChannel(newPath, StandardOpenOption.CREATE, StandardOpenOption.WRITE)
-                .use { sink ->
-                    while (true) {
-                        try {
-                            channel.read { buffer ->
-                                sink.write(buffer)
-                            }
-                        } catch (_: EOFException) {
-                            break
-                        }
-                    }
-                }
+            Files.newByteChannel(newPath,
+                StandardOpenOption.TRUNCATE_EXISTING,
+                StandardOpenOption.CREATE,
+                StandardOpenOption.WRITE).use { call.receiveChannel().copyTo(it) }
 
             if (isMavenRepository && !newFile.parent.matches(Regex("([^_]+)_(debug|release)_([^_]+)"))) {
                 if (newFile.name == "maven-metadata.xml") {
