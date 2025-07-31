@@ -1,29 +1,16 @@
-package net.derfruhling.spacemaven
+package net.derfruhling.spacemaven.modules
 
-import com.google.auth.oauth2.GoogleCredentials
-import com.google.cloud.datastore.DatastoreOptions
-import gg.jte.ContentType
-import gg.jte.TemplateEngine
-import gg.jte.resolve.ResourceCodeResolver
-import io.ktor.http.*
-import io.ktor.server.application.*
-import io.ktor.server.jte.*
-import io.ktor.server.cio.*
+import io.ktor.http.HttpHeaders
+import io.ktor.server.application.Application
+import io.ktor.server.application.install
 import io.opentelemetry.api.trace.SpanKind
 import io.opentelemetry.api.trace.StatusCode
 import io.opentelemetry.instrumentation.ktor.v3_0.KtorServerTelemetry
+import net.derfruhling.spacemaven.Builtin
+import net.derfruhling.spacemaven.loggingPlugin
 import java.time.Instant
 
-val datastore = DatastoreOptions.newBuilder()
-    .setProjectId("spacemaven")
-    .setCredentials(GoogleCredentials.getApplicationDefault())
-    .build().service!!
-
-fun main(args: Array<String>) {
-    EngineMain.main(args)
-}
-
-fun Application.module() {
+fun Application.configureMonitoring() {
     install(loggingPlugin)
 
     Builtin.openTelemetry?.let { openTelemetry ->
@@ -54,16 +41,4 @@ fun Application.module() {
             }
         }
     }
-
-    install(Jte) {
-        if(this@module.developmentMode) {
-            val resolver = ResourceCodeResolver("templates", ClassLoader.getSystemClassLoader())
-            templateEngine = TemplateEngine.create(resolver, ContentType.Html)
-        } else {
-            templateEngine = TemplateEngine.createPrecompiled(ContentType.Html)
-        }
-    }
-
-    configureSecurity()
-    configureRouting()
 }

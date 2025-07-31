@@ -1,5 +1,6 @@
 package net.derfruhling.spacemaven
 
+import com.google.cloud.datastore.Datastore
 import com.google.cloud.datastore.Key
 import com.google.cloud.datastore.Query
 import com.google.cloud.datastore.StructuredQuery
@@ -14,6 +15,11 @@ import io.ktor.server.routing.*
 import io.ktor.server.util.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
+import net.derfruhling.spacemaven.modules.get
+import net.derfruhling.spacemaven.modules.getAllHeadRefs
+import net.derfruhling.spacemaven.modules.getAllSpecRefs
+import net.derfruhling.spacemaven.modules.specRef
+import org.koin.ktor.ext.inject
 import kotlin.time.Duration.Companion.hours
 
 fun Routing.setupWebApp(application: Application) {
@@ -27,10 +33,10 @@ fun Routing.setupWebApp(application: Application) {
             )
 
             val specs = listOf(
-                application.async { "native" to getAllHeadRefs(0, "native") },
-                application.async { "tools" to getAllHeadRefs(0, "tools") },
-                application.async { "public" to getAllHeadRefs(0, "public") },
-                application.async { "gradle-plugins" to getAllHeadRefs(0, "gradle-plugins") },
+                application.async { "native" to application.getAllHeadRefs(0, "native") },
+                application.async { "tools" to application.getAllHeadRefs(0, "tools") },
+                application.async { "public" to application.getAllHeadRefs(0, "public") },
+                application.async { "gradle-plugins" to application.getAllHeadRefs(0, "gradle-plugins") },
             )
 
             call.respond(
@@ -66,12 +72,19 @@ fun Routing.setupWebApp(application: Application) {
                 val artifactId: String by call.parameters
 
                 val page = call.queryParameters["page"]?.toInt() ?: 1
-                val specs = getAllSpecRefs(repo, page - 1, groupId, artifactId)
+                val specs = application.getAllSpecRefs(
+                    repo,
+                    page - 1,
+                    groupId,
+                    artifactId
+                )
 
                 if (specs.isEmpty()) {
                     call.respond(HttpStatusCode.NotFound)
                     return@get
                 }
+
+                val datastore by inject<Datastore>()
 
                 call.respond(
                     JteContent(
@@ -123,7 +136,11 @@ fun Routing.setupWebApp(application: Application) {
                         .setNamespace(repo)
                         .build()
 
-                    val spec = datastore.get(specKey)?.let { specRef(it) } ?: run {
+                    val datastore by inject<Datastore>()
+
+                    val spec = datastore.get(specKey)?.let {
+                        specRef(it)
+                    } ?: run {
                         call.respond(HttpStatusCode.NotFound)
                         return@get
                     }

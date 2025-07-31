@@ -1,4 +1,4 @@
-package net.derfruhling.spacemaven
+package net.derfruhling.spacemaven.modules
 
 import com.google.cloud.datastore.*
 import com.google.cloud.datastore.StructuredQuery.CompositeFilter.and
@@ -20,7 +20,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
+import net.derfruhling.spacemaven.HeadRef
+import net.derfruhling.spacemaven.SpecRef
+import net.derfruhling.spacemaven.setupLogging
+import net.derfruhling.spacemaven.setupSpecApi
+import net.derfruhling.spacemaven.setupWebApp
+import org.koin.ktor.ext.inject
 import org.w3c.dom.Element
 import java.io.EOFException
 import java.io.File
@@ -103,7 +108,9 @@ fun Application.configureRouting() {
     }
 }
 
-private suspend fun getAllSpecRefs(page: Int): List<SpecRef> {
+private suspend fun Application.getAllSpecRefs(page: Int): List<SpecRef> {
+    val datastore by inject<Datastore>()
+
     return withContext(Dispatchers.Unconfined) {
         buildList {
             val results = datastore.run(
@@ -122,7 +129,9 @@ private suspend fun getAllSpecRefs(page: Int): List<SpecRef> {
     }
 }
 
-suspend fun getAllSpecRefs(repoName: String, page: Int, groupId: String, artifactId: String): List<SpecRef> {
+suspend fun Application.getAllSpecRefs(repoName: String, page: Int, groupId: String, artifactId: String): List<SpecRef> {
+    val datastore by inject<Datastore>()
+
     return withContext(Dispatchers.Unconfined) {
         buildList {
             val results = datastore.run(
@@ -152,7 +161,9 @@ fun specRef(it: Entity) = SpecRef(
     it.getString("release")
 )
 
-fun getAllHeadRefs(page: Int, repository: String): List<HeadRef> {
+fun Application.getAllHeadRefs(page: Int, repository: String): List<HeadRef> {
+    val datastore by inject<Datastore>()
+
     val results = datastore.run(
         Query.newEntityQueryBuilder()
             .setLimit(20)
@@ -178,31 +189,6 @@ fun headRef(it: Entity) = HeadRef(
     it.getString("latest"),
     it.getString("release")
 )
-
-@Serializable
-data class SpecRef(
-    val groupId: String,
-    val artifactId: String,
-    val version: String,
-    val repository: String,
-    val latestVersion: String?,
-    val latestReleaseVersion: String?
-) {
-    val fullyQualifiedName get() = "$groupId:$artifactId:$version"
-    val repositoryUrl get() = "https://spacemaven.derfruhling.net/$repository/"
-}
-
-@Serializable
-data class HeadRef(
-    val groupId: String,
-    val artifactId: String,
-    val repository: String,
-    val latestVersion: String?,
-    val latestReleaseVersion: String?
-) {
-    val fullyQualifiedName get() = "$groupId:$artifactId"
-    val repositoryUrl get() = "https://spacemaven.derfruhling.net/$repository/"
-}
 
 private fun Route.bucket(
     developmentMode: Boolean,
@@ -239,6 +225,8 @@ private fun Route.bucket(
 }
 
 private fun Route.setupBucketPut(path: String, dir: File, repoName: String, isMavenRepository: Boolean) {
+    val datastore by inject<Datastore>()
+
     put {
         if (call.response.isCommitted) return@put
         val principal =
@@ -296,7 +284,9 @@ private fun Route.setupBucketPut(path: String, dir: File, repoName: String, isMa
 
 private val documentBuilders = DocumentBuilderFactory.newInstance()
 
-private suspend fun readMetadataDocument(dir: File, repoName: String, newFile: File) = withContext(Dispatchers.Unconfined) {
+private suspend fun Route.readMetadataDocument(dir: File, repoName: String, newFile: File) = withContext(Dispatchers.Unconfined) {
+    val datastore by inject<Datastore>()
+
     val log by lazy { KotlinLogging.logger {} }
     val document = newFile.inputStream().buffered().use { documentBuilders.newDocumentBuilder().parse(it) }
 

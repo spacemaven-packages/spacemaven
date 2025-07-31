@@ -1,5 +1,6 @@
 package net.derfruhling.spacemaven
 
+import com.google.cloud.datastore.Datastore
 import com.google.cloud.datastore.Query
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.*
@@ -8,6 +9,8 @@ import io.ktor.server.routing.*
 import io.ktor.server.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import net.derfruhling.spacemaven.modules.get
+import org.koin.ktor.ext.inject
 import kotlin.time.Duration.Companion.days
 
 fun Routing.setupSpecApi() {
@@ -19,6 +22,7 @@ fun Routing.setupSpecApi() {
 
         val specRef = withContext(Dispatchers.Unconfined) {
             buildList {
+                val datastore by inject<Datastore>()
                 val results = datastore.run(
                     Query.newEntityQueryBuilder()
                         .setLimit(20)
@@ -55,6 +59,7 @@ fun Routing.setupSpecApi() {
         val fullSpec: String by call.parameters
 
         val specRef = withContext(Dispatchers.Unconfined) {
+            val datastore by inject<Datastore>()
             val key = datastore.newKeyFactory()
                 .setKind("SpecRef")
                 .newKey(fullSpec)

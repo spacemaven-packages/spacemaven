@@ -10,7 +10,7 @@ plugins {
 }
 
 application {
-    mainClass = 'net.derfruhling.spacemaven.ApplicationKt'
+    mainClass = 'io.ktor.server.cio.EngineMain'
     applicationDefaultJvmArgs = [
             "--enable-native-access=ALL-UNNAMED",
             "-Xms512M",
@@ -51,6 +51,8 @@ configurations {
     }
 }
 
+def koin_version = '4.0.3'
+
 dependencies {
     implementation platform('com.google.cloud:libraries-bom:26.61.0')
     implementation platform('org.apache.logging.log4j:log4j-bom:2.25.1')
@@ -65,6 +67,8 @@ dependencies {
     implementation 'io.ktor:ktor-serialization-kotlinx-cbor'
     implementation 'io.ktor:ktor-serialization-kotlinx-xml'
     implementation 'io.ktor:ktor-server-jte'
+    implementation "io.insert-koin:koin-ktor:$koin_version"
+    implementation "io.insert-koin:koin-logger-slf4j:$koin_version"
     implementation 'io.github.oshai:kotlin-logging:7.0.3'
 
     implementation 'com.google.cloud:google-cloud-datastore:2.31.0'

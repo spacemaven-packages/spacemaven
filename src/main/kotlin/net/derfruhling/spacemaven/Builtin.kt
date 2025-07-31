@@ -1,10 +1,14 @@
 package net.derfruhling.spacemaven
 
+import com.google.cloud.datastore.Datastore
 import com.google.cloud.datastore.Key
 import io.opentelemetry.sdk.OpenTelemetrySdk
 import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk
+import net.derfruhling.spacemaven.modules.headRef
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-object Builtin {
+object Builtin : KoinComponent {
     @JvmStatic
     fun defaultConfigurationFor(repo: String): String? {
         return when(repo) {
@@ -24,6 +28,7 @@ object Builtin {
 
     @JvmStatic
     fun getLatestVersionOfOrNull(name: String): String? {
+        val datastore by inject<Datastore>()
         val entity = datastore.get(Key.newBuilder("spacemaven", "HeadRef", name)
             .build())
 
