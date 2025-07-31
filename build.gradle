@@ -31,7 +31,7 @@ application {
 jib {
     container {
         jvmFlags = application.applicationDefaultJvmArgs.toList()
-        ports = ["8080:8080/tcp"]
+        ports = ["8080/tcp"]
     }
 }
 
