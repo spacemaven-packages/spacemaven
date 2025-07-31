@@ -267,7 +267,7 @@ private fun Route.setupBucketPut(path: String, dir: File, repoName: String, isMa
             if(!isMavenRepository) {
                 // build cache access times
                 val key = Key.newBuilder("spacemaven", "TrackedBuildCacheAccessTime", newPath.name)
-                    .setNamespace(path.replace('/', '.'))
+                    .setNamespace(path.substringBeforeLast('/').replace('/', '.'))
                     .build()
 
                 datastore.put(Entity.newBuilder(key)
