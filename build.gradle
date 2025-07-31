@@ -31,6 +31,7 @@ application {
 jib {
     container {
         jvmFlags = application.applicationDefaultJvmArgs.toList()
+        mainClass = 'io.ktor.server.cio.EngineMain'
         ports = ["8080/tcp"]
     }
 }
