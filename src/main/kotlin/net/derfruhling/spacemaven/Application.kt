@@ -8,7 +8,7 @@ import gg.jte.resolve.ResourceCodeResolver
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.jte.*
-import io.ktor.server.netty.*
+import io.ktor.server.cio.*
 import io.opentelemetry.api.trace.SpanKind
 import io.opentelemetry.api.trace.StatusCode
 import io.opentelemetry.instrumentation.ktor.v3_0.KtorServerTelemetry

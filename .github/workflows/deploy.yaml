@@ -44,8 +44,6 @@ jobs:
           add-job-summary-as-pr-comment: on-failure
           validate-wrappers: true
           cache-encryption-key: ${{ secrets.CACHE_ENCRYPTION_KEY }}
-      - name: Build Docker image
-        run: ./gradlew -Pdocker.image=${{ secrets.GCP_DOCKER_REGISTRY }}/server -Pdocker.tag=${{ github.ref_name }} dockerBuild
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
@@ -53,6 +51,6 @@ jobs:
       - name: Configure Docker to push to gcloud
         run: gcloud auth configure-docker ${{ secrets.GCP_LOCATION }}-docker.pkg.dev
       - name: Push Docker image
-        run: ./gradlew -Pdocker.image=${{ secrets.GCP_DOCKER_REGISTRY }}/server -Pdocker.tag=${{ github.ref_name }} dockerPush
+        run: ./gradlew -Pspacemaven.user=${{ secrets.SPM_USERNAME }} -Pspacemaven.key=${{ secret.SPM_KEY }} jib --image=${{ secrets.GCP_DOCKER_REGISTRY }}/server:${{ github.ref_name }}
       - name: Deploy to GCP
         run: gcloud run deploy ${{ secrets.GCP_RUN_SERVICE_NAME }} --image ${{ secrets.GCP_DOCKER_REGISTRY }}/server:${{ github.ref_name }} --region ${{ secrets.GCP_RUN_REGIONS }} --platform managed --project ${{ secrets.GCP_PROJECT_ID }}

@@ -3,26 +3,19 @@ package net.derfruhling.spacemaven
 import ch.qos.logback.classic.Level
 import ch.qos.logback.classic.spi.ILoggingEvent
 import com.fasterxml.jackson.core.JsonGenerator
-import io.ktor.http.*
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.server.application.*
 import io.ktor.server.application.hooks.*
 import io.ktor.server.plugins.*
 import io.ktor.server.request.*
 import io.ktor.server.routing.*
 import io.ktor.utils.io.*
-import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator
 import io.opentelemetry.api.trace.Span
-import io.opentelemetry.api.trace.Tracer
-import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator
-import io.opentelemetry.context.Context
-import io.opentelemetry.context.propagation.ContextPropagators
-import io.opentelemetry.context.propagation.TextMapPropagator
 import net.logstash.logback.composite.AbstractJsonProvider
 import org.slf4j.MDC
 import java.time.Instant
 import kotlin.coroutines.*
 import kotlin.reflect.KProperty
-
 
 
 class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
@@ -196,7 +189,11 @@ class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
 
 suspend inline fun RoutingContext.setupLogging(crossinline f: suspend GcpLogger.() -> Unit) {
     val gcpLogger = GcpLogger(call)
-    gcpLogger.runSuspend { gcpLogger.f() }
+    gcpLogger.runSuspend {
+        val log = KotlinLogging.logger {}
+        log.info { "HTTP ${call.request.httpMethod.value}: ${call.request.path()}" }
+        gcpLogger.f()
+    }
 }
 
 val loggingPlugin = createApplicationPlugin("loggingPlugin") {

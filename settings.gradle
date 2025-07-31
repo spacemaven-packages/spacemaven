@@ -1,1 +1,17 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+
+        // required for spacemaven's gradle plugins
+        maven { url 'https://repo.clojars.org/' }
+
+        maven { url 'https://spacemaven.derfruhling.net/gradle-plugins/' }
+    }
+}
+
+plugins {
+    id 'net.derfruhling.spacemaven.build-cache' version '0.1.+'
+}
+
 rootProject.name = 'spacemaven'

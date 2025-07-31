@@ -6,6 +6,7 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization' version '2.1.21'
     id 'io.ktor.plugin' version '3.2.3'
     id 'gg.jte.gradle' version '3.2.1'
+    id 'com.google.cloud.tools.jib' version '3.4.5'
 }
 
 application {
@@ -15,7 +16,15 @@ application {
             "-Xms512M",
             "-Xmx512M",
             "-Dotel.java.global-autoconfigure.enabled=true",
-            "-Dotel.instrumentation.common.db-statement-sanitizer.enabled=true"
+            "-Dotel.instrumentation.common.db-statement-sanitizer.enabled=true",
+            "-Dotel.service.name=spacemaven",
+            "-Dotel.resource.attributes=gcp.project_id=spacemaven",
+            "-Dotel.metrics.exporter=otlp",
+            "-Dotel.traces.exporter=otlp",
+            "-Dotel.logs.exporter=none",
+            "-Dotel.exporter.otlp.endpoint=https://telemetry.googleapis.com",
+            "-Dotel.exporter.otlp.protocol=http/protobuf",
+            "-Dgoogle.cloud.project=spacemaven",
     ]
 }
 
@@ -43,7 +52,7 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:2.1.21'
     implementation 'io.ktor:ktor-server-core'
     implementation 'io.ktor:ktor-server-auth'
-    implementation 'io.ktor:ktor-server-netty'
+    implementation 'io.ktor:ktor-server-cio'
     implementation 'io.ktor:ktor-server-content-negotiation'
     implementation 'io.ktor:ktor-serialization-kotlinx-json'
     implementation 'io.ktor:ktor-serialization-kotlinx-cbor'
@@ -78,19 +87,15 @@ jte {
     sourceDirectory = file('src/main/resources/templates').toPath()
 }
 
-/*
- * this is actually built with jvm 24, but 24 is so new that kotlin doesn't
- * know about it yet, so we'll have to settle with 23
- */
 java {
-    targetCompatibility = JavaVersion.VERSION_23
-    sourceCompatibility = JavaVersion.VERSION_23
+    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_21
 }
 
 kotlin {
     target {
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_23
+            jvmTarget = JvmTarget.JVM_21
         }
     }
 }

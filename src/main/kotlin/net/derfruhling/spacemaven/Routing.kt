@@ -1,9 +1,8 @@
 package net.derfruhling.spacemaven
 
-import com.google.cloud.datastore.Entity
-import com.google.cloud.datastore.FullEntity
-import com.google.cloud.datastore.Query
-import com.google.cloud.datastore.StringValue
+import com.google.cloud.datastore.*
+import com.google.cloud.datastore.StructuredQuery.CompositeFilter.and
+import com.google.cloud.datastore.StructuredQuery.PropertyFilter.eq
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.cbor.*
@@ -17,6 +16,9 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.utils.io.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import org.w3c.dom.Element
@@ -24,11 +26,9 @@ import java.io.EOFException
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.StandardOpenOption
+import java.time.Instant
 import javax.xml.parsers.DocumentBuilderFactory
-import com.google.cloud.datastore.StructuredQuery.CompositeFilter.and
-import com.google.cloud.datastore.StructuredQuery.PropertyFilter.eq
-import kotlinx.coroutines.*
-
+import kotlin.io.path.name
 import io.ktor.server.routing.get as getVerbatim
 import io.ktor.server.routing.put as putVerbatim
 
@@ -255,10 +255,11 @@ private fun Route.setupBucketPut(path: String, dir: File, repoName: String, isMa
         if (newFile.startsWith(dir)) {
             val updating = newFile.exists()
 
-            Files.createDirectories(newFile.toPath().parent)
+            val newPath = newFile.toPath()
+            Files.createDirectories(newPath.parent)
 
             val channel = call.receiveChannel()
-            Files.newByteChannel(newFile.toPath(), StandardOpenOption.CREATE, StandardOpenOption.WRITE)
+            Files.newByteChannel(newPath, StandardOpenOption.CREATE, StandardOpenOption.WRITE)
                 .use { sink ->
                     while (true) {
                         try {
@@ -273,6 +274,17 @@ private fun Route.setupBucketPut(path: String, dir: File, repoName: String, isMa
 
             if (isMavenRepository && newFile.name == "maven-metadata.xml" && !newFile.parent.matches(Regex("([^_]+)_(debug|release)_([^_]+)"))) {
                 readMetadataDocument(dir, repoName, newFile)
+            }
+
+            if(!isMavenRepository) {
+                // build cache access times
+                val key = Key.newBuilder("spacemaven", "TrackedBuildCacheAccessTime", newPath.name)
+                    .setNamespace(path.replace('/', '.'))
+                    .build()
+
+                datastore.put(Entity.newBuilder(key)
+                    .set("lastAccessed", Instant.now().epochSecond)
+                    .build())
             }
 
             call.respond(if (updating) HttpStatusCode.OK else HttpStatusCode.Created)
