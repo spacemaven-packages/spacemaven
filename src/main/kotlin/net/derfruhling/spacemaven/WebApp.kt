@@ -35,7 +35,7 @@ fun Routing.setupWebApp(application: Application) {
 
             call.respond(
                 JteContent(
-                    "index.kte", mapOf(
+                    "index.jte", mapOf(
                         "locale" to getLocalizationContext(call.request.acceptLanguageItems().map { it.value }),
                         "allSpecs" to specs.awaitAll(),
                         /*
@@ -75,7 +75,7 @@ fun Routing.setupWebApp(application: Application) {
 
                 call.respond(
                     JteContent(
-                        "head.kte", mapOf(
+                        "head.jte", mapOf(
                             "locale" to getLocalizationContext(call.request.acceptLanguageItems().map { it.value }),
                             "specs" to specs,
                             "page" to page,
@@ -130,7 +130,7 @@ fun Routing.setupWebApp(application: Application) {
 
                     call.respond(
                         JteContent(
-                            "dep.kte", mapOf(
+                            "dep.jte", mapOf(
                                 "locale" to getLocalizationContext(
                                     call.request.acceptLanguageItems().map { it.value }),
                                 "spec" to spec,

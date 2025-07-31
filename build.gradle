@@ -83,8 +83,6 @@ dependencies {
     runtimeOnly "io.opentelemetry.contrib:opentelemetry-gcp-auth-extension:1.48.0-alpha"
     runtimeOnly 'io.opentelemetry.contrib:opentelemetry-gcp-resources:1.48.0-alpha'
 
-    development 'gg.jte:jte-kotlin:3.2.1'
-
     testImplementation 'io.ktor:ktor-server-test-host'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5:2.1.21'
 }

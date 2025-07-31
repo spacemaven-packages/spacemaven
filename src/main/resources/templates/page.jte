@@ -1,16 +1,17 @@
 @import gg.jte.Content
 @import net.derfruhling.spacemaven.LocalizationContext
+@import java.util.Objects
 
-@param title: String?
-@param locale: LocalizationContext
-@param head: Content? = null
-@param content: Content
+@param String title
+@param LocalizationContext locale
+@param Content head = null
+@param Content content
 
 <!DOCTYPE html>
 
-<html lang="${locale.language}">
+<html lang="${locale.getLanguage()}">
 <head>
-    <title>${title ?: "Spacemaven"}</title>
+    <title>${Objects.requireNonNullElse(title, "Spacemaven")}</title>
 
     <link rel="stylesheet" href="/static/style.css">
 
