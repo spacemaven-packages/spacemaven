@@ -11,6 +11,8 @@ import io.ktor.server.request.*
 import io.ktor.server.routing.*
 import io.ktor.utils.io.*
 import io.opentelemetry.api.trace.Span
+import kotlinx.coroutines.ThreadContextElement
+import kotlinx.coroutines.withContext
 import net.logstash.logback.composite.AbstractJsonProvider
 import org.slf4j.MDC
 import java.time.Instant
@@ -18,7 +20,7 @@ import kotlin.coroutines.*
 import kotlin.reflect.KProperty
 
 
-class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
+class GcpLogger(private val call: ApplicationCall) : ThreadContextElement<GcpLogger?> {
     inner class Mdc<T>(val name: String, var value: T, val v: (T) -> String? = Any?::toString) {
         operator fun getValue(self: Any?, prop: KProperty<*>): T {
             return value
@@ -71,16 +73,22 @@ class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
     var currentOperationProducer: String? by Mdc("gcpOperationProducer", null)
         private set
 
-    companion object {
+    companion object : CoroutineContext.Key<GcpLogger> {
         val current = ThreadLocal.withInitial<GcpLogger?> { null }
     }
 
-    override val key: CoroutineContext.Key<*> = ContinuationInterceptor
+    override val key: CoroutineContext.Key<*> = GcpLogger
 
-    override fun <T> interceptContinuation(continuation: Continuation<T>): Continuation<T> {
-        return Continuation(continuation.context) { result ->
-            setupContextFor { continuation.resumeWith(result) }
-        }
+    override fun updateThreadContext(context: CoroutineContext): GcpLogger? {
+        val old = current.get()
+        current.set(this)
+        setMdcParts()
+        return old
+    }
+
+    override fun restoreThreadContext(context: CoroutineContext, oldState: GcpLogger?) {
+        current.set(oldState)
+        clearMdcParts()
     }
 
     internal fun bytesReceived(byteCount: Int) {
@@ -105,7 +113,7 @@ class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
         }
     }
 
-    private fun setupContextFor(f: () -> Unit) {
+    private fun setMdcParts() {
         push("gcpTrace", traceValue)
         push("gcpSpan", spanValue)
         push("gcpHttpMethod", methodValue)
@@ -121,25 +129,17 @@ class GcpLogger(private val call: ApplicationCall) : ContinuationInterceptor {
 
         push("gcpOperationId", currentOperationId)
         push("gcpOperationProducer", currentOperationProducer)
+    }
 
-        current.set(this)
-
-        try {
-            f()
-        } finally {
-            current.remove()
-
-            MDC.clear()
-            mapped.get().clear()
-        }
+    private fun clearMdcParts() {
+        MDC.clear()
+        mapped.get().clear()
     }
 
     suspend fun runSuspend(f: suspend () -> Unit) {
         val context = coroutineContext + this
-        setupContextFor {
-            f.createCoroutine(Continuation(context) { result ->
-                result.exceptionOrNull()?.let { throw it }
-            }).resume(Unit)
+        withContext(context) {
+            f()
         }
     }
 
