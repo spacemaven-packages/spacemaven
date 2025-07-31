@@ -52,7 +52,7 @@ configurations {
     }
 }
 
-def koin_version = '4.0.3'
+def koin_version = '4.1.0'
 
 dependencies {
     implementation platform('com.google.cloud:libraries-bom:26.61.0')

@@ -2,6 +2,7 @@ package net.derfruhling.spacemaven
 
 import com.google.cloud.datastore.Datastore
 import com.google.cloud.datastore.Key
+import com.google.cloud.datastore.PathElement
 import com.google.cloud.datastore.Query
 import com.google.cloud.datastore.StructuredQuery
 import com.google.cloud.datastore.aggregation.Aggregation
@@ -133,6 +134,7 @@ fun Routing.setupWebApp(application: Application) {
                     val version: String by call.parameters
 
                     val specKey = Key.newBuilder("spacemaven", "SpecRef", "$groupId:$artifactId:$version")
+                        .addAncestor(PathElement.of("HeadRef", "$groupId:$artifactId"))
                         .setNamespace(repo)
                         .build()
 

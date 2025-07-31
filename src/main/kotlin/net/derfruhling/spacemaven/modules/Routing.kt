@@ -17,7 +17,6 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.utils.io.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import net.derfruhling.spacemaven.HeadRef
@@ -25,8 +24,11 @@ import net.derfruhling.spacemaven.SpecRef
 import net.derfruhling.spacemaven.setupLogging
 import net.derfruhling.spacemaven.setupSpecApi
 import net.derfruhling.spacemaven.setupWebApp
+import nl.adaptivity.xmlutil.dom.iterator
 import org.koin.ktor.ext.inject
+import org.w3c.dom.Document
 import org.w3c.dom.Element
+import org.w3c.dom.NodeList
 import java.io.EOFException
 import java.io.File
 import java.nio.file.Files
@@ -158,8 +160,56 @@ fun specRef(it: Entity) = SpecRef(
     it.getString("version"),
     it.getString("repository"),
     it.getString("latest"),
-    it.getString("release")
+    it.getString("release"),
+    it.getStringOrNull("description"),
+    it.getListOrNull("developers")?.parseDeveloperList(),
+    it.getListOrNull("contributors")?.parseDeveloperList(),
+    it.getEntityOrNull("organization")?.parseOrganization(),
+    it.getEntityOrNull("scm")?.parseScm()
 )
+
+fun List<EntityValue>.parseDeveloperList() = map {
+    val entity = it.get()!!
+    SpecRef.Developer(
+        entity.getString("name"),
+        entity.getStringOrNull("url"),
+        entity.getStringOrNull("email"),
+        entity.getStringOrNull("timezone"),
+        entity.getStringOrNull("organization"),
+        entity.getStringOrNull("organizationUrl"),
+        entity.getStringOrNull("pfpUrl"),
+    )
+}
+
+fun FullEntity<*>.parseOrganization() = SpecRef.Organization(
+    getString("name")!!,
+    getString("url")!!
+)
+
+fun FullEntity<*>.parseScm() = SpecRef.SourceCodeRef(
+    getString("tag")!!,
+    getString("url")!!,
+    getString("connection")!!,
+    getString("developerConnection")!!,
+)
+
+private fun FullEntity<*>.getStringOrNull(name: String): String? = try {
+    getString(name)
+} catch (_: DatastoreException) {
+    null
+}
+
+private fun Entity.getListOrNull(name: String): List<EntityValue>? = try {
+    getList(name)
+} catch (_: DatastoreException) {
+    null
+}
+
+private fun Entity.getEntityOrNull(name: String): FullEntity<IncompleteKey>? = try {
+    getEntity(name)
+} catch (_: DatastoreException) {
+    null
+}
 
 fun Application.getAllHeadRefs(page: Int, repository: String): List<HeadRef> {
     val datastore by inject<Datastore>()
@@ -260,8 +310,14 @@ private fun Route.setupBucketPut(path: String, dir: File, repoName: String, isMa
                     }
                 }
 
-            if (isMavenRepository && newFile.name == "maven-metadata.xml" && !newFile.parent.matches(Regex("([^_]+)_(debug|release)_([^_]+)"))) {
-                readMetadataDocument(dir, repoName, newFile)
+            if (isMavenRepository && !newFile.parent.matches(Regex("([^_]+)_(debug|release)_([^_]+)"))) {
+                if (newFile.name == "maven-metadata.xml") {
+                    readMetadataDocument(dir, repoName, newFile)
+                }
+
+                if (newFile.extension == "pom") {
+                    readPomDocument(dir, repoName, newFile)
+                }
             }
 
             if(!isMavenRepository) {
@@ -291,7 +347,7 @@ private suspend fun Route.readMetadataDocument(dir: File, repoName: String, newF
     val document = newFile.inputStream().buffered().use { documentBuilders.newDocumentBuilder().parse(it) }
 
     val groupId = document.getElementsByTagName("groupId").item(0)?.textContent ?: return@withContext
-    val artifactId = document.getElementsByTagName("groupId").item(0)?.textContent ?: return@withContext
+    val artifactId = document.getElementsByTagName("artifactId").item(0)?.textContent ?: return@withContext
     val versioning = document.getElementsByTagName("versioning").item(0) as Element? ?: return@withContext
     val latest = document.getElementsByTagName("latest").item(0)?.textContent
     val release = document.getElementsByTagName("release").item(0)?.textContent
@@ -299,25 +355,44 @@ private suspend fun Route.readMetadataDocument(dir: File, repoName: String, newF
 
     val versionNodes = versions.childNodes
     var updated = 0
-    for(i in 0..<versionNodes.length) {
-        val e = (versionNodes.item(i) ?: continue) as? Element ?: continue
-        if(e.tagName != "version") continue
+    val tx = datastore.newTransaction()
 
-        val version = e.textContent ?: continue
-        val fullSpecifier = "$groupId:$artifactId:$version";
+    try {
+        for(i in 0..<versionNodes.length) {
+            val e = (versionNodes.item(i) ?: continue) as? Element ?: continue
+            if(e.tagName != "version") continue
 
-        updated++
-        log.debug { "Cataloging artifact $fullSpecifier" }
+            val version = e.textContent ?: continue
+            val fullSpecifier = "$groupId:$artifactId:$version";
 
-        launch {
+            updated++
+            log.debug { "Cataloging artifact $fullSpecifier" }
+
+
+            log.debug { "Writing head ref: $fullSpecifier, latest = $latest, release = $release" }
+
+            val headRefKey = datastore.newKeyFactory()
+                .setKind("HeadRef")
+                .setNamespace(repoName)
+                .newKey("$groupId:$artifactId")
+
+            tx.put((datastore.get(headRefKey)?.let { Entity.newBuilder(headRefKey, it) } ?: Entity.newBuilder(headRefKey))
+                .set("groupId", groupId)
+                .set("artifactId", artifactId)
+                .set("repository", repoName)
+                .set("latest", StringValue.newBuilder(latest).setExcludeFromIndexes(true).build())
+                .set("release", StringValue.newBuilder(release).setExcludeFromIndexes(true).build())
+                .build())
+
             log.debug { "Writing spec ref: $fullSpecifier, latest = $latest, release = $release" }
 
-            val key = datastore.newKeyFactory()
+            val specRefKey = Key.newBuilder("spacemaven", "SpecRef", fullSpecifier)
                 .setKind("SpecRef")
                 .setNamespace(repoName)
-                .newKey(fullSpecifier)
+                .addAncestor(PathElement.of(headRefKey.kind, headRefKey.name))
+                .build()
 
-            datastore.put(FullEntity.newBuilder(key)
+            tx.put((datastore.get(specRefKey)?.let { Entity.newBuilder(specRefKey, it) } ?: Entity.newBuilder(specRefKey))
                 .set("groupId", groupId)
                 .set("artifactId", artifactId)
                 .set("version", version)
@@ -327,23 +402,148 @@ private suspend fun Route.readMetadataDocument(dir: File, repoName: String, newF
                 .build())
         }
 
-        launch {
-            log.debug { "Writing head ref: $fullSpecifier, latest = $latest, release = $release" }
-
-            val partialKey = datastore.newKeyFactory()
-                .setKind("HeadRef")
-                .setNamespace(repoName)
-                .newKey("$groupId:$artifactId")
-
-            datastore.put(FullEntity.newBuilder(partialKey)
-                .set("groupId", groupId)
-                .set("artifactId", artifactId)
-                .set("repository", repoName)
-                .set("latest", StringValue.newBuilder(latest).setExcludeFromIndexes(true).build())
-                .set("release", StringValue.newBuilder(release).setExcludeFromIndexes(true).build())
-                .build())
-        }
+        tx.commit()
+    } catch (e: Exception) {
+        tx.rollback()
+        log.error(e) { "Failed to catalog $groupId:$artifactId" }
+        return@withContext
     }
 
     log.info { "Observed ${versionNodes.length}, updated $updated versions of $groupId:$artifactId" }
 }
+
+private suspend fun Route.readPomDocument(dir: File, repoName: String, newFile: File) = withContext(Dispatchers.Unconfined) {
+    val datastore by inject<Datastore>()
+
+    val log by lazy { KotlinLogging.logger {} }
+    val document = newFile.inputStream().buffered().use { documentBuilders.newDocumentBuilder().parse(it) }
+
+    val groupId = document.getElementsByTagName("groupId").item(0)?.textContent ?: return@withContext
+    val artifactId = document.getElementsByTagName("artifactId").item(0)?.textContent ?: return@withContext
+    val version = document.getElementsByTagName("version").item(0)?.textContent ?: return@withContext
+    val fullSpecifier = "$groupId:$artifactId:$version"
+
+    val tx = datastore.newTransaction()
+
+    try {
+        for((kind, keyName, ancestor) in arrayOf(
+            Triple("SpecRef", fullSpecifier, PathElement.of("HeadRef", "$groupId:$artifactId")),
+            Triple("HeadRef", "$groupId:$artifactId", null)
+        )) {
+            val keyBuilder = datastore.newKeyFactory()
+                .setKind(kind)
+                .setNamespace(repoName)
+
+            ancestor?.let { keyBuilder.addAncestor(it) }
+            val key = keyBuilder.newKey(keyName)
+
+            val original = datastore.get(key)
+            val entity = createSpecRefInfoFromPomDocument(original, key, document).build()
+
+            if(entity.properties.isEmpty()) {
+                log.info { "No catalogable properties available for package $fullSpecifier" }
+                return@withContext
+            }
+
+            tx.put(entity)
+
+            log.debug { "Writing info for package $fullSpecifier on kind $kind" }
+        }
+
+        tx.commit()
+
+        log.info { "Cataloged info for package $fullSpecifier" }
+    } catch(e: Exception) {
+        log.error(e) { "Failed to write info for refs due to an exception" }
+        tx.rollback()
+    }
+}
+
+private fun createSpecRefInfoFromPomDocument(original: Entity?, parent: Key, document: Document): Entity.Builder {
+    val builder = original?.let { Entity.newBuilder(parent, it) } ?: Entity.newBuilder(parent)
+
+    document.getElementsByTagName("description").item(0)?.textContent?.let {
+        builder.set("description", it)
+    }
+
+    val developers = ListValue.newBuilder()
+    val contributors = ListValue.newBuilder()
+
+    for (node in document.getElementsByTagName("developer").asIterable().filterIsInstance<Element>()) {
+        developers.addValue(readMavenDeveloper(parent, node))
+    }
+
+    for (node in document.getElementsByTagName("contributor").asIterable().filterIsInstance<Element>()) {
+        contributors.addValue(readMavenDeveloper(parent, node))
+    }
+
+    if (developers.get().isNotEmpty()) builder.set("developers", developers.build())
+    if (contributors.get().isNotEmpty()) builder.set("contributors", contributors.build())
+
+    document.getElementsByTagName("organization").item(0)?.let {
+        val element = it as Element
+        val name = element.getElementsByTagName("name").item(0)?.textContent ?: return@let
+        val url = element.getElementsByTagName("url").item(0)?.textContent ?: return@let
+
+        builder.set(
+            "organization",
+            EntityValue.newBuilder(
+                Entity.newBuilder(Key.newBuilder(parent, "Organization").build())
+                    .set("name", name)
+                    .set("url", url)
+                    .build()
+            )
+                .setExcludeFromIndexes(true)
+                .build()
+        )
+    }
+
+    document.getElementsByTagName("scm").item(0)?.let {
+        val element = it as Element
+        val connection = element.getElementsByTagName("connection").item(0)?.textContent ?: return@let
+        val developerConnection = element.getElementsByTagName("developerConnection").item(0)?.textContent ?: return@let
+        val tag = element.getElementsByTagName("tag").item(0)?.textContent ?: return@let
+        val url = element.getElementsByTagName("url").item(0)?.textContent ?: return@let
+
+        builder.set(
+            "scm",
+            EntityValue.newBuilder(
+                Entity.newBuilder(Key.newBuilder(parent, "SourceControlInfo").build())
+                    .set("connection", connection)
+                    .set("developerConnection", developerConnection)
+                    .set("tag", tag)
+                    .set("url", url)
+                    .build()
+            )
+                .setExcludeFromIndexes(true)
+                .build()
+        )
+    }
+
+    return builder
+}
+
+private fun readMavenDeveloper(parent: Key, node: Element): FullEntity<IncompleteKey>? {
+    val name = node.getElementsByTagName("name").item(0)?.textContent ?: return null
+    val url = node.getElementsByTagName("url").item(0)?.textContent
+    val email = node.getElementsByTagName("email").item(0)?.textContent
+    val timezone = node.getElementsByTagName("timezone").item(0)?.textContent
+    val organization = node.getElementsByTagName("organization").item(0)?.textContent
+    val organizationUrl = node.getElementsByTagName("organizationUrl").item(0)?.textContent
+    val properties = node.getElementsByTagName("properties") as? Element?
+    val pfpUrl = properties?.getElementsByTagName("picUrl")?.item(0)?.textContent
+
+    val builder = Entity.newBuilder(Key.newBuilder(parent, "Developer").build())
+        .set("name", name)
+
+    url?.let { builder.set("url", it) }
+    email?.let { builder.set("email", it) }
+    timezone?.let { builder.set("timezone", it) }
+    organization?.let { builder.set("organization", it) }
+    organizationUrl?.let { builder.set("organizationUrl", it) }
+    pfpUrl?.let { builder.set("pfpUrl", it) }
+
+    return builder.build()
+}
+
+fun NodeList.asIterable() = Iterable { iterator() }

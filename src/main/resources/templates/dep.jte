@@ -29,5 +29,12 @@
     <div class="horizontal-rule"></div>
     <h3>${locale.lookup("dep.header").replace("%%", spec.getFullyQualifiedName())}</h3>
 
+    @if (spec.getDescription() != null)
+        <pre>${spec.getDescription()}</pre>
+    @else
+        <div>No description available.</div>
+    @endif
+
+    <div class="horizontal-rule"></div>
     @template.code_blocks.dependency(spec = spec)
 `)

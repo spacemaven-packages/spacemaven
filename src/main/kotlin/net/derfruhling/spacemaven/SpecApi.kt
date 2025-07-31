@@ -10,6 +10,7 @@ import io.ktor.server.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.derfruhling.spacemaven.modules.get
+import net.derfruhling.spacemaven.modules.specRef
 import org.koin.ktor.ext.inject
 import kotlin.time.Duration.Companion.days
 
@@ -31,16 +32,7 @@ fun Routing.setupSpecApi() {
                         .build()
                 )
                 for (it in results) {
-                    add(
-                        SpecRef(
-                            it.getString("groupId"),
-                            it.getString("artifactId"),
-                            it.getString("version"),
-                            it.getString("repository"),
-                            it.getString("latest"),
-                            it.getString("release")
-                        )
-                    )
+                    add(specRef(it))
                 }
             }
         }
@@ -65,14 +57,7 @@ fun Routing.setupSpecApi() {
                 .newKey(fullSpec)
 
             datastore.get(key)?.let {
-                SpecRef(
-                    it.getString("groupId"),
-                    it.getString("artifactId"),
-                    it.getString("version"),
-                    it.getString("repository"),
-                    it.getString("latest"),
-                    it.getString("release")
-                )
+                specRef(it)
             }
         }
 
