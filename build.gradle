@@ -28,6 +28,13 @@ application {
     ]
 }
 
+jib {
+    container {
+        jvmFlags = application.applicationDefaultJvmArgs.toList()
+        ports = ["8080:8080/tcp"]
+    }
+}
+
 repositories {
     mavenCentral()
 }
