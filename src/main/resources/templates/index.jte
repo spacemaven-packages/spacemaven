@@ -33,8 +33,8 @@
                 @for(var ref : pair.getSecond())
                     <li>
                         <a href="/repo/${pair.getFirst()}/${ref.getGroupId()}/${ref.getArtifactId()}">
-                            @if(pair.getFirst().equals("gradle-plugins"))
-                            <%-- gradle moment --%>
+                            @if(pair.getFirst().equals("gradle-plugins") && ref.getArtifactId().endsWith(".gradle.plugin"))
+                                <%-- gradle moment --%>
                                 ${ref.getGroupId()}
                             @else
                                 ${ref.getFullyQualifiedName()}
