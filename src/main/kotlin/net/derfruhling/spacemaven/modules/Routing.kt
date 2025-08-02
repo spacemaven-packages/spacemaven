@@ -332,7 +332,7 @@ private fun Route.setupBucketPut(path: String, dir: File, repoName: String, isMa
                 StandardOpenOption.CREATE,
                 StandardOpenOption.WRITE).use { call.receiveChannel().copyTo(it) }
 
-            if (isMavenRepository && !newFile.parent.matches(Regex("([^_]+)_(debug|release)_([^_]+)"))) {
+            if (isMavenRepository && !newFile.parent.contains("_")) {
                 if (newFile.name == "maven-metadata.xml") {
                     readMetadataDocument(dir, repoName, newFile)
                 }
