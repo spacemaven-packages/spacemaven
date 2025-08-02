@@ -42,6 +42,8 @@
                         </a>
                         @if(ref.getLatestReleaseVersion() != null)
                             ${ref.getLatestReleaseVersion()}
+                        @elseif(ref.getLatestVersion() != null)
+                            ${ref.getLatestVersion()}
                         @endif
                     </li>
                 @endfor
