@@ -279,17 +279,31 @@ private fun Route.bucket(
         install(validatePath)
 
         if(!developmentMode) {
-            get {
+            fun RoutingContext.headers() {
                 val extension = path.substringAfterLast('.')
-                call.response.header("Content-Type", when(extension) {
-                    "pom" -> ContentType.Text.Xml
-                    "sha1", "sha256", "sha512", "md5" -> ContentType.Text.Plain
-                    else -> ContentType.defaultForFileExtension(extension)
-                }.toString())
+                call.response.header(
+                    "Content-Type", when (extension) {
+                        "pom" -> ContentType.Text.Xml
+                        "sha1", "sha256", "sha512", "md5" -> ContentType.Text.Plain
+                        else -> ContentType.defaultForFileExtension(extension)
+                    }.toString()
+                )
+            }
+
+            suspend fun RoutingContext.commonResponse() {
+                headers()
 
                 call.respondRedirect(true) {
                     takeFrom("https://storage.googleapis.com/repository-data${call.request.path()}")
                 }
+            }
+
+            head {
+                commonResponse()
+            }
+
+            get {
+                commonResponse()
             }
         }
 
