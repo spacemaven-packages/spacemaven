@@ -286,6 +286,8 @@ private fun Route.bucket(
                 else -> listOf(CacheControl.MaxAge(maxAgeSeconds = 7.days.inWholeSeconds.toInt(), visibility = CacheControl.Visibility.Public))
             }
         }
+
+        enableAutoHeadResponse()
     }
 
     val repoName = path.removeSurrounding("/")
