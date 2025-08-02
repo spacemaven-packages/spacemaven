@@ -367,13 +367,19 @@ private suspend fun Route.readMetadataDocument(dir: File, repoName: String, newF
                 .setNamespace(repoName)
                 .newKey("$groupId:$artifactId")
 
-            tx.put((datastore.get(headRefKey)?.let { Entity.newBuilder(headRefKey, it) } ?: Entity.newBuilder(headRefKey))
-                .set("groupId", groupId)
-                .set("artifactId", artifactId)
-                .set("repository", repoName)
-                .set("latest", StringValue.newBuilder(latest).setExcludeFromIndexes(true).build())
-                .set("release", StringValue.newBuilder(release).setExcludeFromIndexes(true).build())
-                .build())
+            val headBuilder =
+                (datastore.get(headRefKey)?.let { Entity.newBuilder(headRefKey, it) } ?: Entity.newBuilder(headRefKey))
+                    .set("groupId", groupId)
+                    .set("artifactId", artifactId)
+                    .set("repository", repoName)
+
+            if(latest != null) headBuilder.set("latest", StringValue.newBuilder(latest).setExcludeFromIndexes(true).build())
+            else headBuilder.setNull("latest")
+
+            if(release != null) headBuilder.set("release", StringValue.newBuilder(release).setExcludeFromIndexes(true).build())
+            else headBuilder.setNull("release")
+
+            tx.put(headBuilder.build())
 
             log.debug { "Writing spec ref: $fullSpecifier, latest = $latest, release = $release" }
 
@@ -383,14 +389,21 @@ private suspend fun Route.readMetadataDocument(dir: File, repoName: String, newF
                 .addAncestor(PathElement.of(headRefKey.kind, headRefKey.name))
                 .build()
 
-            tx.put((datastore.get(specRefKey)?.let { Entity.newBuilder(specRefKey, it) } ?: Entity.newBuilder(specRefKey))
-                .set("groupId", groupId)
-                .set("artifactId", artifactId)
-                .set("version", version)
-                .set("repository", repoName)
-                .set("latest", StringValue.newBuilder(latest).setExcludeFromIndexes(true).build())
-                .set("release", StringValue.newBuilder(release).setExcludeFromIndexes(true).build())
-                .build())
+            val specBuilder =
+                (datastore.get(specRefKey)?.let { Entity.newBuilder(specRefKey, it) } ?: Entity.newBuilder(specRefKey))
+                    .set("groupId", groupId)
+                    .set("artifactId", artifactId)
+                    .set("version", version)
+                    .set("repository", repoName)
+
+
+            if(latest != null) specBuilder.set("latest", StringValue.newBuilder(latest).setExcludeFromIndexes(true).build())
+            else specBuilder.setNull("latest")
+
+            if(release != null) specBuilder.set("release", StringValue.newBuilder(release).setExcludeFromIndexes(true).build())
+            else specBuilder.setNull("release")
+
+            tx.put(specBuilder.build())
         }
 
         tx.commit()
