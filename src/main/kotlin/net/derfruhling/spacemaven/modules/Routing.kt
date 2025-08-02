@@ -269,43 +269,20 @@ private fun Route.bucket(
     publishAuth: Boolean = true,
     isMavenRepository: Boolean = true
 ) {
-    if(developmentMode) {
-        staticFiles(path, dir)
+    staticFiles(path, dir) {
+        contentType {
+            when(it.extension) {
+                "pom" -> ContentType.Text.Xml
+                "sha1", "sha256", "sha512", "md5" -> ContentType.Text.Plain
+                else -> null
+            }
+        }
     }
 
     val repoName = path.removeSurrounding("/")
 
     route("$path{...}") {
         install(validatePath)
-
-        if(!developmentMode) {
-            fun RoutingContext.headers() {
-                val extension = path.substringAfterLast('.')
-                call.response.header(
-                    "Content-Type", when (extension) {
-                        "pom" -> ContentType.Text.Xml
-                        "sha1", "sha256", "sha512", "md5" -> ContentType.Text.Plain
-                        else -> ContentType.defaultForFileExtension(extension)
-                    }.toString()
-                )
-            }
-
-            suspend fun RoutingContext.commonResponse() {
-                headers()
-
-                call.respondRedirect(true) {
-                    takeFrom("https://storage.googleapis.com/repository-data${call.request.path()}")
-                }
-            }
-
-            head {
-                commonResponse()
-            }
-
-            get {
-                commonResponse()
-            }
-        }
 
         if(publishAuth) {
             authenticate("publish") {
