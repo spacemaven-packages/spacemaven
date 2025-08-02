@@ -35,7 +35,7 @@
         @for(var ref : specs)
             <li>
                 <a href="/repo/${ref.getRepository()}/${ref.getGroupId()}/${ref.getArtifactId()}/${ref.getVersion()}">
-                    @if(ref.getRepository().equals("gradle-plugins"))
+                    @if(ref.getRepository().equals("gradle-plugins") && ref.getArtifactId().endsWith(".gradle.plugin"))
                         <%-- gradle moment --%>
                         ${ref.getGroupId()}:${ref.getVersion()}
                     @else
