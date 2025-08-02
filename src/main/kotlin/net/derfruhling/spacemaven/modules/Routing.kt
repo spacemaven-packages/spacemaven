@@ -232,6 +232,28 @@ fun Application.getAllHeadRefs(page: Int, repository: String): List<HeadRef> {
     }
 }
 
+fun Application.getGradlePluginHeadRefs(page: Int, repository: String): List<HeadRef> {
+    val datastore by inject<Datastore>()
+
+    val results = datastore.run(
+        Query.newEntityQueryBuilder()
+            .setLimit(20)
+            .setOffset(page * 20)
+            .setKind("HeadRef")
+            .setNamespace(repository)
+            .setFilter(eq("isGradlePlugin", true))
+            .build()
+    )
+
+    return buildList {
+        for (it in results) {
+            add(
+                headRef(it)
+            )
+        }
+    }
+}
+
 fun headRef(it: Entity) = HeadRef(
     it.getString("groupId"),
     it.getString("artifactId"),
@@ -359,7 +381,6 @@ private suspend fun Route.readMetadataDocument(dir: File, repoName: String, newF
             updated++
             log.debug { "Cataloging artifact $fullSpecifier" }
 
-
             log.debug { "Writing head ref: $fullSpecifier, latest = $latest, release = $release" }
 
             val headRefKey = datastore.newKeyFactory()
@@ -372,6 +393,7 @@ private suspend fun Route.readMetadataDocument(dir: File, repoName: String, newF
                     .set("groupId", groupId)
                     .set("artifactId", artifactId)
                     .set("repository", repoName)
+                    .set("isGradlePlugin", artifactId == "$groupId.gradle.plugin")
 
             if(latest != null) headBuilder.set("latest", StringValue.newBuilder(latest).setExcludeFromIndexes(true).build())
             else headBuilder.setNull("latest")
@@ -395,7 +417,7 @@ private suspend fun Route.readMetadataDocument(dir: File, repoName: String, newF
                     .set("artifactId", artifactId)
                     .set("version", version)
                     .set("repository", repoName)
-
+                    .set("isGradlePlugin", artifactId == "$groupId.gradle.plugin")
 
             if(latest != null) specBuilder.set("latest", StringValue.newBuilder(latest).setExcludeFromIndexes(true).build())
             else specBuilder.setNull("latest")

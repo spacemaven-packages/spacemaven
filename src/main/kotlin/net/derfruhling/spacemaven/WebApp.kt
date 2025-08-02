@@ -19,6 +19,7 @@ import kotlinx.coroutines.awaitAll
 import net.derfruhling.spacemaven.modules.get
 import net.derfruhling.spacemaven.modules.getAllHeadRefs
 import net.derfruhling.spacemaven.modules.getAllSpecRefs
+import net.derfruhling.spacemaven.modules.getGradlePluginHeadRefs
 import net.derfruhling.spacemaven.modules.specRef
 import org.koin.ktor.ext.inject
 import kotlin.time.Duration.Companion.hours
@@ -37,7 +38,7 @@ fun Routing.setupWebApp(application: Application) {
                 application.async { "native" to application.getAllHeadRefs(0, "native") },
                 application.async { "tools" to application.getAllHeadRefs(0, "tools") },
                 application.async { "public" to application.getAllHeadRefs(0, "public") },
-                application.async { "gradle-plugins" to application.getAllHeadRefs(0, "gradle-plugins") },
+                application.async { "gradle-plugins" to application.getGradlePluginHeadRefs(0, "gradle-plugins") },
             )
 
             call.respond(
