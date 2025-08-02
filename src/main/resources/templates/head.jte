@@ -42,9 +42,6 @@
                         ${ref.getFullyQualifiedName()}
                     @endif
                 </a>
-                @if(ref.getLatestReleaseVersion() != null)
-                    ${ref.getLatestReleaseVersion()}
-                @endif
             </li>
         @endfor
     </ul>
