@@ -280,6 +280,13 @@ private fun Route.bucket(
 
         if(!developmentMode) {
             get {
+                val extension = path.substringAfterLast('.')
+                call.response.header("Content-Type", when(extension) {
+                    "pom" -> ContentType.Text.Xml
+                    "sha1", "sha256", "sha512", "md5" -> ContentType.Text.Plain
+                    else -> ContentType.defaultForFileExtension(extension)
+                }.toString())
+
                 call.respondRedirect(true) {
                     takeFrom("https://storage.googleapis.com/repository-data${call.request.path()}")
                 }
