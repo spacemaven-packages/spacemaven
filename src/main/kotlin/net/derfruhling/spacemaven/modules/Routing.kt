@@ -36,6 +36,8 @@ import java.nio.file.StandardOpenOption
 import java.time.Instant
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.name
+import kotlin.time.Duration.Companion.days
+import kotlin.time.Duration.Companion.hours
 import io.ktor.server.routing.get as getVerbatim
 import io.ktor.server.routing.put as putVerbatim
 
@@ -275,6 +277,13 @@ private fun Route.bucket(
                 "pom" -> ContentType.Text.Xml
                 "sha1", "sha256", "sha512", "md5" -> ContentType.Text.Plain
                 else -> null
+            }
+        }
+
+        cacheControl {
+            when(it.extension) {
+                "pom", "sha1", "sha256", "sha512", "md5", "asc" -> listOf(CacheControl.MaxAge(maxAgeSeconds = 1.hours.inWholeSeconds.toInt(), mustRevalidate = true, visibility = CacheControl.Visibility.Public))
+                else -> listOf(CacheControl.MaxAge(maxAgeSeconds = 7.days.inWholeSeconds.toInt(), visibility = CacheControl.Visibility.Public))
             }
         }
     }
